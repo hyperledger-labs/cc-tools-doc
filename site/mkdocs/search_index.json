@@ -1,0 +1,64 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome-to-mkdocs",
+            "text": "For full documentation visit  mkdocs.org .",
+            "title": "Welcome to MkDocs"
+        },
+        {
+            "location": "/#commands",
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
+            "title": "Commands"
+        },
+        {
+            "location": "/#project-layout",
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Project layout"
+        },
+        {
+            "location": "/about/",
+            "text": "Nunc Eurotas Venus modo\n\n\nUrbes raucos\n\n\nLorem markdownum mutatur mixtos Coroniden, his Idaeo abundet sequentes interdum\nIcare, iam aequum. Posti miserae. Vastum animo; obfuit, mea super petiit axes\namabam \npossent nocituraque\n iacent Antiphates illa fretum duobus proxima.\nDixit recentibus amor inmensum intabescere \nmissi\n, de secundum quicquam.\n\n\nHerculis oranti, urbis sed multi populos, maternis dei! Vates restat. Verso\nnatos mutata fronde et viri \ncaeli\n et referam! In morte, redeamus dum \nquodque\ntorvos\n, servare brevissimus sit cum quae turba, sua. \nNoctes faces arida\n unda\nsimul, et vites nata.\n\n\n\n\nAere sint\n\n\nDemptos timide simulatoremque Aesaris frustra conticuit subterque\n\n\nIovi domitamque pictas dea Dulichium fetibus simul\n\n\nPositas ire\n\n\n\n\nExpellitur mens taurus Procri\n\n\nSortis deus amnis luctor hortaturque accipe opus, pete bene. Cum tecta, et super\nmunera? Quo ut fida dat quas magna mota erat de ac abest da e humum solvi\nTantalus.\n\n\nsata_traceroute_disk.dashboardMemoryBps += importGifSyntax;\nif (1 + access) {\n    command_logic(1, master_drive_png);\n    memory_paste = wordError.sms.e(alu + webmail, 1 + 1);\n    media.web(kerning_firewire_file - pdfIcannBezel, mips,\n            led.system_snmp.isaVolumePpga(53));\n}\nif (cmos(copyWampCrop, user) * filePrinterDdr) {\n    iphoneTiffWamp = onPipelinePci(waisHardening);\n    table_character(balancingUml, 82 * hyper_virtual);\n    cyberbullying(torrent_search);\n} else {\n    typeface_data_manet = 4 - up + pptpAutoresponder;\n    lpiSsid -= seo_network;\n    media_virus(softwareDebug - browser_subnet_ntfs);\n}\nhard_bios_compression += metadata_os_p + repository_troll_flash(\n        meme_token_recursive, 1, 4) + market_horizontal(dvdOnly, ring *\n        irc_data_read);\nvar clientHypertext = whois(vpn_networking_unix, keywordsFat(\n        ipvTimeBacklink));\n\n\n\nTyranni velari. Fila \nmori nobis crines\n Ne arripit Troiae muneris et prior,\nMenoetae vespere, et et. Cuique temperat forti; sanguine negat non, vimine\nvitat, nescio. Bidentum micant.\n\n\nPrimus in retenta coniectos circuitu. Non Pentheus est superest Aeacide natus\n\nniveis soluti solus\n fatale et. Cur arvis Quid unde velatus vocant, sed est\nPagasaea fixa crudele inquit quam.\n\n\nFlammis dedit, comes sibi dis, nec vicem valeant trabes meruere. Feritatis\niuvenis solita nulla, de quod regis gramine nobilitas effudit. Me aequora\n\nfurcas\n et aberant Cephisias scopulos dare vicinia in nentes auctor quibus\namat, suum habet. Me aere, tantum ex in haec, cogamque, facta illa, qui.",
+            "title": "About"
+        },
+        {
+            "location": "/about/#nunc-eurotas-venus-modo",
+            "text": "",
+            "title": "Nunc Eurotas Venus modo"
+        },
+        {
+            "location": "/about/#urbes-raucos",
+            "text": "Lorem markdownum mutatur mixtos Coroniden, his Idaeo abundet sequentes interdum\nIcare, iam aequum. Posti miserae. Vastum animo; obfuit, mea super petiit axes\namabam  possent nocituraque  iacent Antiphates illa fretum duobus proxima.\nDixit recentibus amor inmensum intabescere  missi , de secundum quicquam.  Herculis oranti, urbis sed multi populos, maternis dei! Vates restat. Verso\nnatos mutata fronde et viri  caeli  et referam! In morte, redeamus dum  quodque\ntorvos , servare brevissimus sit cum quae turba, sua.  Noctes faces arida  unda\nsimul, et vites nata.   Aere sint  Demptos timide simulatoremque Aesaris frustra conticuit subterque  Iovi domitamque pictas dea Dulichium fetibus simul  Positas ire",
+            "title": "Urbes raucos"
+        },
+        {
+            "location": "/about/#expellitur-mens-taurus-procri",
+            "text": "Sortis deus amnis luctor hortaturque accipe opus, pete bene. Cum tecta, et super\nmunera? Quo ut fida dat quas magna mota erat de ac abest da e humum solvi\nTantalus.  sata_traceroute_disk.dashboardMemoryBps += importGifSyntax;\nif (1 + access) {\n    command_logic(1, master_drive_png);\n    memory_paste = wordError.sms.e(alu + webmail, 1 + 1);\n    media.web(kerning_firewire_file - pdfIcannBezel, mips,\n            led.system_snmp.isaVolumePpga(53));\n}\nif (cmos(copyWampCrop, user) * filePrinterDdr) {\n    iphoneTiffWamp = onPipelinePci(waisHardening);\n    table_character(balancingUml, 82 * hyper_virtual);\n    cyberbullying(torrent_search);\n} else {\n    typeface_data_manet = 4 - up + pptpAutoresponder;\n    lpiSsid -= seo_network;\n    media_virus(softwareDebug - browser_subnet_ntfs);\n}\nhard_bios_compression += metadata_os_p + repository_troll_flash(\n        meme_token_recursive, 1, 4) + market_horizontal(dvdOnly, ring *\n        irc_data_read);\nvar clientHypertext = whois(vpn_networking_unix, keywordsFat(\n        ipvTimeBacklink));  Tyranni velari. Fila  mori nobis crines  Ne arripit Troiae muneris et prior,\nMenoetae vespere, et et. Cuique temperat forti; sanguine negat non, vimine\nvitat, nescio. Bidentum micant.  Primus in retenta coniectos circuitu. Non Pentheus est superest Aeacide natus niveis soluti solus  fatale et. Cur arvis Quid unde velatus vocant, sed est\nPagasaea fixa crudele inquit quam.  Flammis dedit, comes sibi dis, nec vicem valeant trabes meruere. Feritatis\niuvenis solita nulla, de quod regis gramine nobilitas effudit. Me aequora furcas  et aberant Cephisias scopulos dare vicinia in nentes auctor quibus\namat, suum habet. Me aere, tantum ex in haec, cogamque, facta illa, qui.",
+            "title": "Expellitur mens taurus Procri"
+        },
+        {
+            "location": "/introduction/",
+            "text": "Introdu\u00e7\u00e3o\n\n\nA biblioteca CC-Tools \u00e9 um esfor\u00e7o colaborativo da empresa GoLedger para fornecer aos desenvolvedores uma biblioteca potente e de f\u00e1cil uso para a cria\u00e7\u00e3o de HLF chaincodes.\n\n\nDesenvolvida em GoLang, a biblioteca cc-tools possui diversas caracter\u00edsticas que facilitam a jornada de aprendizado, desenvolvimento e deployment em produ\u00e7\u00e3o de um chaincode para Hyperledger Fabric.\n\n\nA biblioteca CC-Tools est\u00e1 sendo disponibilizada como open-source pela empresa GoLedger para a comunidade de desenvolvimento Hyperledger.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Introduction"
+        },
+        {
+            "location": "/introduction/#introducao",
+            "text": "A biblioteca CC-Tools \u00e9 um esfor\u00e7o colaborativo da empresa GoLedger para fornecer aos desenvolvedores uma biblioteca potente e de f\u00e1cil uso para a cria\u00e7\u00e3o de HLF chaincodes.  Desenvolvida em GoLang, a biblioteca cc-tools possui diversas caracter\u00edsticas que facilitam a jornada de aprendizado, desenvolvimento e deployment em produ\u00e7\u00e3o de um chaincode para Hyperledger Fabric.  A biblioteca CC-Tools est\u00e1 sendo disponibilizada como open-source pela empresa GoLedger para a comunidade de desenvolvimento Hyperledger.",
+            "title": "Introdu\u00e7\u00e3o"
+        },
+        {
+            "location": "/introduction/#commands",
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
+            "title": "Commands"
+        },
+        {
+            "location": "/introduction/#project-layout",
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Project layout"
+        }
+    ]
+}
