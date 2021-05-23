@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction - MkLorum</title>
+  <title>Getting Started - MkLorum</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Introduction";
+    var mkdocs_page_name = "Getting Started";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -64,8 +64,21 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../Getting Started/">Getting Started</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Getting Started</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#getting-started">Getting Started</a></li>
+                
+                    <li><a class="toctree-l4" href="#download-demo-code">Download demo code</a></li>
+                
+                    <li><a class="toctree-l4" href="#folders-distribution">Folders distribution</a></li>
+                
+                    <li><a class="toctree-l4" href="#enviroment-configuration">Enviroment configuration</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -85,19 +98,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Introduction</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#introducao">Introdução</a></li>
-                
-                    <li><a class="toctree-l4" href="#commands">Commands</a></li>
-                
-                    <li><a class="toctree-l4" href="#project-layout">Project layout</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../introduction/">Introduction</a>
         
     </li>
 <li>
@@ -124,7 +126,7 @@
     
       
     
-    <li>Introduction</li>
+    <li>Getting Started</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -134,22 +136,46 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="introducao">Introdução</h1>
-<p>A biblioteca CC-Tools é um esforço colaborativo da empresa GoLedger para fornecer aos desenvolvedores uma biblioteca potente e de fácil uso para a criação de HLF chaincodes.</p>
-<p>Desenvolvida em GoLang, a biblioteca cc-tools possui diversas características que facilitam a jornada de aprendizado, desenvolvimento e deployment em produção de um chaincode para Hyperledger Fabric.</p>
-<p>A biblioteca CC-Tools está sendo disponibilizada como open-source pela empresa GoLedger para a comunidade de desenvolvimento Hyperledger.</p>
-<h2 id="commands">Commands</h2>
+                <h1 id="getting-started">Getting Started</h1>
+<p>O biblioteca GoLedger CC-Tools foi desenvolvida para ser utilizando em sistema operacional Linux.</p>
+<p>Em geral utilizamos a distribuiçã Ubuntu 18+, porém a biblioteca é compatível com outros ambientes, mas alguns ajustes podem ser necessários.</p>
+<h2 id="download-demo-code">Download demo code</h2>
+<p>Para aprender a utilizar a biblioteca GoLedger CC-Tools baixe o respositório do código de demonstração disponível no Github.</p>
+<pre><code class="sh">cd $HOME \
+git clone https://github.com/goledgerdev/cc-tools-demo.git \
+cd cc-tools-demo
+</code></pre>
+
+<h2 id="folders-distribution">Folders distribution</h2>
+<pre><code>. { cc-tools-demo root folder }
+|
+├── chaincode { Smart contract code (GoLang) }
+|   └── assettypes { Asset definitions }
+|   └── txdefs { Blockchain transactions }
+|   └── datatypes { Custom property datatypes }
+|
+├── rest-server { Rest API code (NodeJs) }
+|
+├── fabric { Hyperledger Fabric artifacts }
+</code></pre>
+
+<p>Esse repositório possui os elementos necessários para utilizar as principais funções a biblioteca.</p>
+<h2 id="enviroment-configuration">Enviroment configuration</h2>
+<p>Os seguintes sistemas, plataformas e linguagens devem estar instaladas:</p>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs help</code> - Print this help message.</li>
+<li>Docker 19+</li>
+<li>GCC</li>
+<li>GoLang 1.14+</li>
+<li>NodeJs 10+</li>
+<li>Hyperledger Fabric 1.4 (Hyperledger Fabric 2.x ainda em roadmap)</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
+<p>Para Linux Ubuntu, o execute o seguinte comando, que fará o download e instalação dos sistemas acima antes de iniciar o desenvolvimento.</p>
+<p>O repositório possui um script de configuração.</p>
+<pre><code class="sh">./installPreReqUbuntu.sh
+</code></pre>
+
+<p>Ao final da execução, deve aparecer a seguinte mensagem de sucesso.</p>
+<pre><code class="sh">Enviroment configured
 </code></pre>
               
             </div>
@@ -158,8 +184,10 @@ docs/
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../Tutorial/" class="btn btn-neutral float-right" title="Tutorial"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../about/" class="btn btn-neutral" title="About"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../Assets/" class="btn btn-neutral" title="Assets"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -185,8 +213,10 @@ docs/
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../about/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../Assets/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../Tutorial/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

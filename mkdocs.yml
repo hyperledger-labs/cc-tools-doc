@@ -2,6 +2,6 @@ site_name: MkLorum
 nav:
     - Home: index.md
     - Getting Started: Getting Started.md
-    - About: about.md
     - Tutorial: Tutorial.md
+    - Assets: Assets.md
 theme: readthedocs

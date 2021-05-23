@@ -55,14 +55,33 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#welcome-to-mkdocs">Welcome to MkDocs</a></li>
+                <li class="toctree-l3"><a href="#introducao">Introdução</a></li>
                 
-                    <li><a class="toctree-l4" href="#commands">Commands</a></li>
-                
-                    <li><a class="toctree-l4" href="#project-layout">Project layout</a></li>
+                    <li><a class="toctree-l4" href="#caracteristicas">Características</a></li>
                 
             
             </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="Assets/">Assets</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="Getting Started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="Tutorial/">Tutorial</a>
         
     </li>
 <li>
@@ -113,21 +132,29 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="http://mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+                <h1 id="introducao">Introdução</h1>
+<p>A biblioteca <strong>GoLedger CC-Tools</strong> é um esforço colaborativo da empresa GoLedger para fornecer aos desenvolvedores uma biblioteca potente e de fácil uso para a criação de HLF chaincodes.</p>
+<p>Desenvolvida em GoLang, a biblioteca cc-tools possui diversas características que facilitam a jornada de aprendizado, desenvolvimento e deployment em produção de um chaincode para Hyperledger Fabric.</p>
+<p>A biblioteca CC-Tools está sendo disponibilizada como open-source pela empresa GoLedger para a comunidade de desenvolvimento Hyperledger.</p>
+<h2 id="caracteristicas">Características</h2>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs help</code> - Print this help message.</li>
+<li>Mapeamento de dados dos assets (e suas propriedades) padronizado</li>
+<li>Encapsulamento das funções de interface do sdk de chaincode Hyperledger Fabric </li>
+<li>Gestão dos asset keys padronizada</li>
+<li>Disponibilização de tipos básicos de propriedades dos assets (texto, número, booleano, data)</li>
+<li>Disponibilização de tipos de listas de tipos básicos de propriedades dos assets (arrays de texto, número ou data)</li>
+<li>Customização de tipos de propriedades de assets</li>
+<li>Gestão de assets dentro de assets como referências</li>
+<li>Gestão de listas de referências de assets</li>
+<li>Gestão de lista de assets disponíveis</li>
+<li>Gestão de permissões de escrita por conjunto de organizações para cada propriedade do asset</li>
+<li>Gestão de private data collections por asset (permissões de leitura)</li>
+<li>Transações de Create/Read/Update/Delete (CRUD) pré-definidos</li>
+<li>Customização de Transações, com definição prévia de argumentos, método webservice (GET, POST etc)</li>
+<li>Gestão de lista de transações disponíveis.</li>
+<li>Web service compatível</li>
+<li>Aplicação web pronta para uso compatível</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre>
               
             </div>
           </div>
@@ -135,7 +162,7 @@ docs/
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="about/" class="btn btn-neutral float-right" title="About"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="Assets/" class="btn btn-neutral float-right" title="Assets"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -163,7 +190,7 @@ docs/
       
       
       
-        <span style="margin-left: 15px"><a href="about/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="Assets/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -173,5 +200,5 @@ docs/
 
 <!--
 MkDocs version : 0.14.0
-Build Date UTC : 2021-05-22 18:58:22.989676
+Build Date UTC : 2021-05-23 18:48:11.530002
 -->

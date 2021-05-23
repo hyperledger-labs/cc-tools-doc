@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Assets - MkLorum</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Assets";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> MkLorum</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Assets</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#assets">Assets</a></li>
+                
+                    <li><a class="toctree-l4" href="#asset-definition">Asset definition</a></li>
+                
+                    <li><a class="toctree-l4" href="#property-definition">Property definition</a></li>
+                
+                    <li><a class="toctree-l4" href="#asset-examples">Asset examples</a></li>
+                
+                    <li><a class="toctree-l4" href="#asset-list-definition">Asset list definition</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Getting Started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Tutorial/">Tutorial</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../about/">About</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../introduction/">Introduction</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">MkLorum</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Assets</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="assets">Assets</h1>
+<p>Os assets (ou ativos do Blockchain) representam as informações que serão utilizadas pelo ledger do Blockchain (<strong>Hyperledger Fabric Channel</strong>)</p>
+<p>A grosso modo, um asset pode ser comparado a uma tabela de um banco de dados relacional.</p>
+<p>E tal como nos bancos dados, os assets são formados por propriedades, sendo que algumas delas podem fazer parte de um conjunto de chaves desse ativo. Cada propriedade pode ter um tipo de dado específico, como string, number, boolean, etc.</p>
+<p>Um asset também pode ser um <strong>Hyperledger Fabric Private Data</strong>, na qual o conteúdo das informações são gravados em um bases externas ao channel e apenas um subconjunto das organizações recebem esses dados, configurando capacidade de leitura.</p>
+<p>Para o repositório cc-tools-demo, 4 assets (sendo que um deles é um private data)</p>
+<ul>
+<li>Person</li>
+<li>Book</li>
+<li>Library</li>
+<li>Secret (private data)</li>
+</ul>
+<p>Para uso da biblioteca GoLedger CC-Tools, a definição dos assets é feito na pasta <strong>chaincode/assettypes</strong></p>
+<p>A seguir está lista de arquivos</p>
+<pre><code>chaincode/
+    assettypes/     # asset foldgers
+        person.go   # definition of a person
+        book.go     # definition of a book
+        library.go  # definition of a library
+        secret.go   # definitions of secret (private data)
+assetTypeList.go    # list of assets instantiated
+</code></pre>
+<h2 id="asset-definition">Asset definition</h2>
+<p>A construção e definição de um asset se faz com a criação de um arquivo dentro da pasta <strong>chaincode/assettypes</strong></p>
+<p>Um asset possui os seguintes campos</p>
+<ul>
+<li><code>Tag</code>: campo string para definir o nome do asset referenciado internamento pelo código e pela Rest Api. Não pode ter espaços ou caracteres especiais.</li>
+<li><code>Label</code>: campo string para definir o rótulo para ser utilizado nas aplicações externas. Texto livre.</li>
+<li><code>Description</code>: campo string de descrição do asset para ser utilizado nas aplicações externas. Texto livre.</li>
+<li><code>Props</code>: propriedades do asset. Possui campos proprios.</li>
+<li><code>Readers</code>: utilizado para definir as organizações do private data (precisa de configuração adicional no arquivo <strong>collections.json</strong>)</li>
+</ul>
+<h2 id="property-definition">Property definition</h2>
+<p>Um asset possui um conjunto de propriedades (Props) para arquitetar o ativo. </p>
+<p>Uma propriedade possui os seguintes campos:</p>
+<ul>
+<li><code>IsKey</code>: idenfitica se a propriedade faz parte das chaves do asset. Campo booleano.</li>
+<li><code>Required</code>: identifica se a propriedade é obrigatória. Campo booleano.</li>
+<li><code>ReadOnly</code>: identifica se a propriedade não pode mais ser modificada depois de criadas. Campo booleano.</li>
+<li><code>DefaultValue</code>: valor padrão para a propriedade.</li>
+<li><code>Writers</code>: utilizado para quais organizações podem criar ou alterar essa propriedade. Se a propriedade for chave (campo isKey: true) então todo o asset só pode ser criado ou alterado pela organização. Lista de strings.</li>
+<li><code>DataType</code>: tipo da propriedade. CC-Tools possui os seguintes tipos padrão: <strong>string, number, datetime e boolean</strong>. Tipos customizados podem ser definidos na pasta <strong>chaincode/datatypes</strong>.</li>
+<li><code>Validade</code>: função de validade da propriedade. Sugere-se utilizar apenas para validações simples, funções mais complexas deve-se utilizar os datatypes customizados.</li>
+</ul>
+<h2 id="asset-examples">Asset examples</h2>
+<p>O repositório cc-tools-demo traz alguns exemplos:</p>
+<pre><code>chaincode/
+    assettypes/     # asset foldgers
+        person.go   # definition of a person
+        book.go     # definition of a book
+        library.go  # definition of a library
+        secret.go   # definitions of secret (private data)
+assetTypeList.go    # list of assets instantiated
+</code></pre>
+<p>Além dos arquivos de cada asset, deve-se cadastrar os assets que podem ser utilizado pela biblioteca Goledger CC-Tools no arquivo <strong>assetTypeList.go</strong></p>
+<p>A definição do asset <strong>Person</strong> é a seguinte:</p>
+<pre><code>var Person = assets.AssetType{
+    Tag:         "person",
+    Label:       "Person",
+    Description: "Personal data of someone",
+
+    Props: []assets.AssetProp{
+        {
+            // Primary key
+            Required: true,
+            IsKey:    true,
+            Tag:      "id",
+            Label:    "CPF (Brazilian ID)",
+            DataType: "cpf",               // Datatypes are identified at datatypes folder
+            Writers:  []string{`org1MSP`}, // This means only org1 can create the asset (others can edit)
+        },
+        {
+            // Mandatory property
+            Required: true,
+            Tag:      "name",
+            Label:    "Asset Name",
+            DataType: "string",
+            // Validate funcion
+            Validate: func(name interface{}) error {
+                nameStr := name.(string)
+                if nameStr == "" {
+                    return fmt.Errorf("name must be non-empty")
+                }
+                return nil
+            },
+        },
+        {
+            // Optional property
+            Tag:      "dateOfBirth",
+            Label:    "Date of Birth",
+            DataType: "datetime",
+        },
+        {
+            // Property with default value
+            Tag:          "heigth",
+            Label:        "Person's heigth",
+            DefaultValue: 0,
+            DataType:     "number",
+        },
+    },
+}
+</code></pre>
+<p>De acordo com a descrição, o ativo <strong>Person</strong> tem as seguintes caracteríticas:</p>
+<ul>
+<li>Chave primária <strong>cpf</strong> (datatype customizado)</li>
+<li>Apenas a <strong>org1</strong> pode criar ou alterar a propriedade <strong>cpf</strong> e o asset <strong>Person</strong> (porque essa é uma chave)</li>
+<li>Propriedade <strong>name</strong> de tipo <strong>string</strong> é obrigatória, e possui validação automática para impedir strings vazias ("")</li>
+<li>Propriedade <strong>dateofBirth</strong> de tipo <strong>datetime</strong> opcional.</li>
+<li>Propriedade <strong>heigth</strong> de tipo <strong>number</strong>, com valor padrão 0</li>
+</ul>
+<p>A definição do asset <strong>Book</strong> é a seguinte:</p>
+<pre><code>var Book = assets.AssetType{
+    Tag:         "book",
+    Label:       "Book",
+    Description: "",
+
+    Props: []assets.AssetProp{
+        {
+            // Composite Key
+            Required: true,
+            IsKey:    true,
+            Tag:      "title",
+            Label:    "Book Title",
+            DataType: "string",
+            Writers:  []string{`org2MSP`}, // This means only org2 can create the asset (others can edit)
+        },
+        {
+            // Composite Key
+            Required: true,
+            IsKey:    true,
+            Tag:      "author",
+            Label:    "Book Author",
+            DataType: "string",
+            Writers:  []string{`org2MSP`}, // This means only org2 can create the asset (others can edit)
+        },
+        {
+            /// Reference to another asset
+            Tag:      "currentTenant",
+            Label:    "Current Tenant",
+            DataType: "-&gt;person",
+        },
+        {
+            // String list
+            Tag:      "genres",
+            Label:    "Genres",
+            DataType: "[]string",
+        },
+        {
+            // Date property
+            Tag:      "published",
+            Label:    "Publishment Date",
+            DataType: "datetime",
+        },
+    },
+}
+</code></pre>
+<p>De acordo com a descrição, o ativo <strong>Book</strong> tem as seguintes caracteríticas:</p>
+<ul>
+<li>Chave composta  <strong>title</strong> e <strong>author</strong>, ambas com tipo <strong>string</strong></li>
+<li>Apenas a <strong>org2</strong> pode criar ou alterar as propriedades <strong>title</strong> e <strong>author</strong> e o asset <strong>Book</strong> (porque são chaves)</li>
+<li>Propriedade <strong>currentTenant</strong> de tipo <strong>-&gt;person</strong> o que representa a referência a um asset <strong>Person</strong></li>
+<li>Propriedade <strong>genres</strong> de tipo <strong>[]string</strong> que representa um array de strings</li>
+<li>Propriedade <strong>published</strong> de tipo <strong>datetime</strong></li>
+</ul>
+<p>A definição do asset <strong>Library</strong> é a seguinte:</p>
+<pre><code>var Library = assets.AssetType{
+    Tag:         "library",
+    Label:       "Library",
+    Description: "Library as a collection of books",
+
+    Props: []assets.AssetProp{
+        {
+            // Primary Key
+            Required: true,
+            IsKey:    true,
+            Tag:      "name",
+            Label:    "Library Name",
+            DataType: "string",
+            Writers:  []string{`org3MSP`}, // This means only org3 can create the asset (others can edit)
+        },
+        {
+            // Asset reference list
+            Tag:      "books",
+            Label:    "Book Collection",
+            DataType: "[]-&gt;book",
+        },
+        {
+            // Asset reference list
+            Tag:      "entranceCode",
+            Label:    "Entrance Code for the Library",
+            DataType: "-&gt;secret",
+        },
+    },
+}
+</code></pre>
+<p>De acordo com a descrição, o ativo <strong>Library</strong> tem as seguintes caracteríticas:</p>
+<ul>
+<li>Chave primária <strong>name</strong> de tipo <strong>string</strong></li>
+<li>Apenas a <strong>org3</strong> pode criar ou alterar a propriedade <strong>name</strong> e o asset <strong>Library</strong> (porque é chave)</li>
+<li>Propriedade <strong>books</strong> de tipo <strong>[]-&gt;book</strong> o que representa um array de referências ao asset <strong>Book</strong></li>
+<li>Propriedade <strong>entranceCode</strong> de tipo <strong>-&gt;secret</strong> que representa a referência a um tipo private data</li>
+</ul>
+<p>A definição do asset <strong>Secret</strong> é a seguinte:
+    var Secret = assets.AssetType{
+        Tag:         "secret",
+        Label:       "Secret",
+        Description: "Secret between Org2 and Org3",</p>
+<pre><code>    Readers: []string{"org2MSP", "org3MSP"},
+    Props: []assets.AssetProp{
+        {
+            // Primary Key
+            IsKey:    true,
+            Tag:      "secretName",
+            Label:    "Secret Name",
+            DataType: "string",
+            Writers:  []string{`org2MSP`}, // This means only org2 can create the asset (org3 can edit)
+        },
+        {
+            // Mandatory Property
+            Required: true,
+            Tag:      "secret",
+            Label:    "Secret",
+            DataType: "string",
+        },
+    },
+}
+</code></pre>
+<p>De acordo com a descrição, o ativo <strong>Secret</strong> tem as características de privacidade (<strong>Hyperledger Fabric Private Data</strong>). Para esse ativo funcionar corretamenta, deve-se configurar o arquivo <strong>collections.json</strong></p>
+<p>Não iremos descrever os conceitos do <strong>private data</strong> do framework <strong>Hyperledger Fabric</strong>, seu funcionamento, regras de <strong>policy</strong>, etc. Mas para contextualizar de forma simplória, quando um ativo é definido como private, apenas o hash do seu conteúdo fica gravado no <strong>channel</strong>, o conteúdo do asset (suas propriedades) apenas são acessados em um conjunto limitado de organizações, sendo essas informaçãos registradas em bases de dados base de dados transientes em cada peer.</p>
+<ul>
+<li>O conteúdo do ativo apenas pode ser lido pela <strong>org2</strong> e <strong>org3</strong></li>
+<li>Chave primária <strong>secretName</strong> de tipo <strong>string</strong></li>
+<li>Apenas a <strong>org2</strong> pode criar ou alterar a propriedade <strong>secretName</strong> e o asset <strong>Secret</strong> (porque é chave)</li>
+<li>Propriedade <strong>secret</strong> de tipo <strong>string</strong> é obrigatória para o asset</li>
+<li>Tanto a <strong>org2</strong> quanto a <strong>org3</strong> pode criar ou alterar a propridade <strong>secret</strong></li>
+</ul>
+<p>O arquivo <strong>collections.json</strong> precisa ser configurado de acordo com os assets que possuem o campo <strong>Readers</strong></p>
+<pre><code>[
+        {
+        "name": "secret",
+        "policy": {
+        "identities": [
+            {
+            "role": {
+                "name": "member",
+                "mspId": "org2MSP"
+            }
+            },
+            {
+            "role": {
+                "name": "member",
+                "mspId": "org3MSP"
+            }
+            }
+        ],
+        "policy": {
+            "1-of": [
+            {
+                "signed-by": 0
+            },
+            {
+                "signed-by": 1
+            }
+            ]
+        }
+        },
+        "requiredPeerCount": 0,
+        "maxPeerCount": 3,
+        "blockToLive": 1000000,
+        "memberOnlyRead": true
+    }
+]
+</code></pre>
+<h2 id="asset-list-definition">Asset list definition</h2>
+<p>O cadastro dos assets que serão usados pela biblioteca <strong>GoLedger CC-Tools</strong> deve ser realizado no arquivo <strong>chaincode/assetTypeList.go</strong></p>
+<pre><code>var assetTypeList = []assets.AssetType{
+    assettypes.Person,
+    assettypes.Book,
+    assettypes.Library,
+    assettypes.Secret,
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Getting Started/" class="btn btn-neutral float-right" title="Getting Started"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Getting Started/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
