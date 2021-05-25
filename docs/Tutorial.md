@@ -208,3 +208,32 @@ cd ..
 ```
 
 ---
+
+## Updating your chaincode
+
+A atualização de um contrato inteligente pode ser feita de forma facilitada nos chaincodes que utilizam a biblioteca **GoLedger CC-Tools**.
+
+Primeramente, deve-se verificar a sintaxe do código modificado.
+
+```sh
+cd chaincode \
+go vet \
+cd ..
+```
+
+Após a validação, a atualização do chaincode é feito com o script **upgradeCC.sh**, que recebe como argumento a versão do chaincode. 
+
+---
+
+**<span style="color:blue">NOTE</span>**
+
+Um chaincode sempre deve ser atualizado com uma versão diferente de todas as versões anteriores.
+
+--- 
+
+Exemplo:
+
+```sh
+./upgradeCC.sh 0.2
+``` 
+

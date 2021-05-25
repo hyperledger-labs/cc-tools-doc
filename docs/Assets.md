@@ -20,7 +20,7 @@ Para uso da biblioteca GoLedger CC-Tools, a definição dos assets é feito na p
 A seguir está lista de arquivos
 
     chaincode/
-        assettypes/     # asset foldgers
+        assettypes/     # asset folders
             person.go   # definition of a person
             book.go     # definition of a book
             library.go  # definition of a library
@@ -66,7 +66,7 @@ O repositório cc-tools-demo traz alguns exemplos:
             secret.go   # definitions of secret (private data)
     assetTypeList.go    # list of assets instantiated
 
-Além dos arquivos de cada asset, deve-se cadastrar os assets que podem ser utilizado pela biblioteca Goledger CC-Tools no arquivo **assetTypeList.go**
+Além dos arquivos de cada asset, deve-se cadastrar os assets que podem ser utilizadas pela biblioteca **Goledger CC-Tools** no arquivo **assetTypeList.go**
 
 A definição do asset **Person** é a seguinte:
 

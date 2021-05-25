@@ -1,4 +1,4 @@
-site_name: MkLorum
+site_name: GoLedger CC-Tools
 nav:
     - Home: index.md
     - Getting Started: Getting Started.md
