@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Testing - GoLedger CC-Tools</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Testing";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> GoLedger CC-Tools</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Assets/">Assets</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../External Tools/">External Tools</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Getting Started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Testing</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#testing">Testing</a></li>
+                
+                    <li><a class="toctree-l4" href="#using-cc-webclient">Using cc-webclient</a></li>
+                
+                    <li><a class="toctree-l4" href="#configuring-rest-server-and-cc-webclient">Configuring rest-server and cc-webclient</a></li>
+                
+                    <li><a class="toctree-l4" href="#endpoint-usage">Endpoint usage</a></li>
+                
+                    <li><a class="toctree-l4" href="#list-create-edit-delete-or-history-an-asset">List, create, edit, delete or history an asset</a></li>
+                
+                    <li><a class="toctree-l4" href="#executing-an-transaction">Executing an transaction</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Transactions/">Transactions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Tutorial/">Tutorial</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../about/">About</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">GoLedger CC-Tools</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Testing</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="testing">Testing</h1>
+<p><strong>GoLedger CC-Tools</strong> possui diferente formas de testar o código-fonte em desenvolvimento.</p>
+<p>Para verificação de sintaxe da linguagem de programação <strong>GoLang</strong> sugere o uso do seguinte comando:</p>
+<pre><code class="sh">cd chaincode \
+go vet
+</code></pre>
+
+<p>Após o código corretamente instanciado ou atualizado, pode-se verificar os logs diretamentes nos containers de execução do <strong>chaincode</strong> nos <strong>peers</strong>. Esses containers podems ser identificados por começarem com <code>dev</code>. </p>
+<pre><code class="sh">docker logs dev-peer0.org1.example.com-cc-tools-demo-0.1
+</code></pre>
+
+<h2 id="using-cc-webclient">Using cc-webclient</h2>
+<p>Para realizar os testes e integrações de forma satisfatório, sugere-se utilizar a ferramenta <strong>cc-webclient</strong>. Terminanda as etapas sugere realizar os seguintes comandos para a criação de 3 aplicações para conectarem com as <strong>org1, org2 e org3</strong>.</p>
+<pre><code class="sh">./run-cc-web.sh 8080 &amp; \
+./run-cc-web.sh 8090 &amp; \
+./run-cc-web.sh 8100 &amp;
+</code></pre>
+
+<h2 id="configuring-rest-server-and-cc-webclient">Configuring rest-server and cc-webclient</h2>
+<p>Após a execução dos containers <strong>cc-webclient</strong>, as aplicações podem ser acessadas diretamente pelas portas definidas no script. Ex: 8080, 8090, 8100</p>
+<p>Após o acesso ao cc-webclient pelo browser, a configuração para acesso ao Rest server, pode ser feito clicando no ícone de ferramenta.</p>
+<p><img alt="Config" src="../img/header-cc-webclient.png" /></p>
+<p>Os acessos são feitos com as seguintes configurações:</p>
+<ul>
+<li><code>org1</code>: <strong>http://localhost:80</strong></li>
+<li><code>org2</code>: <strong>http://localhost:980</strong></li>
+<li><code>org3</code>: <strong>http://localhost:1080</strong></li>
+</ul>
+<p><img alt="Config" src="../img/config-cc-webclient.png" /></p>
+<p>A aplicação <strong>cc-webclient</strong> possui uma barra lateral para mostrar os <strong>assets</strong> disponíveis assim como as <strong>transactions</strong> cadastradas no chaincode.</p>
+<p><img alt="Bar" src="../img/bar-cc-webclient.png" /></p>
+<h2 id="endpoint-usage">Endpoint usage</h2>
+<p>A utilização do Rest server é descrita através os botões <strong>CURL</strong>. </p>
+<p><img alt="CURL" src="../img/curl-cc-webclient.png" /></p>
+<p>Para cada tela, pode-se verificar uma chamada utilizando a aplicação <code>curl</code>. </p>
+<p>Por exemplo, na tela de criação de ativo:</p>
+<p><img alt="CURL" src="../img/curl-create-cc-webclient.png" /></p>
+<h2 id="list-create-edit-delete-or-history-an-asset">List, create, edit, delete or history an asset</h2>
+<p>Para <strong>listar</strong>, basta selecionar um asset na barra lateral</p>
+<p><img alt="List Asset" src="../img/list-cc-webclient.png" /></p>
+<p>Selecionando o botão <code>CREATE</code> na janela de listagem de um asset, uma tela de <strong>criação</strong> de ativo vai aparecer.</p>
+<p>Por exemplo, para o asset <strong>Person</strong></p>
+<p><img alt="Create Asset" src="../img/create-asset-cc-webclient.png" /></p>
+<p>A tela de <strong>edição</strong> é acessada selecionando o ícone de editar na janela de listagem de um asset.</p>
+<p>A <strong>deleção</strong> de um asset é requisitada selecionando o ícone de apagar na janela de listagem de um asset.</p>
+<p>O <strong>histórico</strong> de um asset (todas as modificações registradas no ledger) pode ser visualizada selecionando o ícone de histórico na janela de um asset.</p>
+<h2 id="executing-an-transaction">Executing an transaction</h2>
+<p>A execução de uma <strong>transação</strong> pode ser realizada selecionando a transação na aba lateral.</p>
+<p>Por exemplo, para a transação <strong>UpdateBookTenant</strong></p>
+<p><img alt="Transaction" src="../img/transaction-cc-webclient.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Transactions/" class="btn btn-neutral float-right" title="Transactions"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Getting Started/" class="btn btn-neutral" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Getting Started/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Transactions/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
