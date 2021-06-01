@@ -31,7 +31,7 @@ Após a execução dos containers **cc-webclient**, as aplicações podem ser ac
 
 Após o acesso ao cc-webclient pelo browser, a configuração para acesso ao Rest server, pode ser feito clicando no ícone de ferramenta.
 
-![Config](/img/header-cc-webclient.png)
+![Config](img/header-cc-webclient.png)
 
 Os acessos são feitos com as seguintes configurações:
 
@@ -39,35 +39,35 @@ Os acessos são feitos com as seguintes configurações:
 - `org2`: **http://localhost:980**
 - `org3`: **http://localhost:1080**
 
-![Config](/img/config-cc-webclient.png)
+![Config](img/config-cc-webclient.png)
 
 A aplicação **cc-webclient** possui uma barra lateral para mostrar os **assets** disponíveis assim como as **transactions** cadastradas no chaincode.
 
-![Bar](/img/bar-cc-webclient.png)
+![Bar](img/bar-cc-webclient.png)
 
 ## Endpoint usage
 
 A utilização do Rest server é descrita através os botões **CURL**. 
 
-![CURL](/img/curl-cc-webclient.png)
+![CURL](img/curl-cc-webclient.png)
 
 Para cada tela, pode-se verificar uma chamada utilizando a aplicação `curl`. 
 
 Por exemplo, na tela de criação de ativo:
 
-![CURL](/img/curl-create-cc-webclient.png)
+![CURL](img/curl-create-cc-webclient.png)
 
 ## List, create, edit, delete or history an asset
 
 Para **listar**, basta selecionar um asset na barra lateral
 
-![List Asset](/img/list-cc-webclient.png)
+![List Asset](img/list-cc-webclient.png)
 
 Selecionando o botão `CREATE` na janela de listagem de um asset, uma tela de **criação** de ativo vai aparecer.
 
 Por exemplo, para o asset **Person**
 
-![Create Asset](/img/create-asset-cc-webclient.png)
+![Create Asset](img/create-asset-cc-webclient.png)
 
 A tela de **edição** é acessada selecionando o ícone de editar na janela de listagem de um asset.
 
@@ -81,7 +81,7 @@ A execução de uma **transação** pode ser realizada selecionando a transaçã
 
 Por exemplo, para a transação **UpdateBookTenant**
 
-![Transaction](/img/transaction-cc-webclient.png)
+![Transaction](img/transaction-cc-webclient.png)
 
 
 
