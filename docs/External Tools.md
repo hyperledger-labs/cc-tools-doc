@@ -41,5 +41,5 @@ A plataforma pode ser acessada no seguinte link: [https://gofabric.io](https://g
 - Instanciar ou atualizar **Rest Servers**
 - Geração automática de código **GoLedger Templates**
 
-![Config](/img/gofabric.png)
+![Config](img/gofabric.png)
 
