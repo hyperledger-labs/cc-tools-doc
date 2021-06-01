@@ -2,6 +2,9 @@ site_name: GoLedger CC-Tools
 nav:
     - Home: index.md
     - Getting Started: Getting Started.md
+    - External Tools: External Tools.md
     - Tutorial: Tutorial.md
+    - Testing: Testing.md
     - Assets: Assets.md
+    - Transactions: Transactions.md
 theme: readthedocs

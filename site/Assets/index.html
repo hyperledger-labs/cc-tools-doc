@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Assets - MkLorum</title>
+  <title>Assets - GoLedger CC-Tools</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -38,7 +38,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> MkLorum</a>
+        <a href=".." class="icon icon-home"> GoLedger CC-Tools</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -80,7 +80,28 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../External Tools/">External Tools</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../Getting Started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Testing/">Testing</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Transactions/">Transactions</a>
         
     </li>
 <li>
@@ -99,13 +120,6 @@
     </li>
 <li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../introduction/">Introduction</a>
-        
-    </li>
-<li>
-          
         </ul>
       </div>
       &nbsp;
@@ -116,7 +130,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">MkLorum</a>
+        <a href="..">GoLedger CC-Tools</a>
       </nav>
 
       
@@ -153,7 +167,7 @@
 <p>Para uso da biblioteca GoLedger CC-Tools, a definição dos assets é feito na pasta <strong>chaincode/assettypes</strong></p>
 <p>A seguir está lista de arquivos</p>
 <pre><code>chaincode/
-    assettypes/     # asset foldgers
+    assettypes/     # asset folders
         person.go   # definition of a person
         book.go     # definition of a book
         library.go  # definition of a library
@@ -192,7 +206,7 @@ assetTypeList.go    # list of assets instantiated
         secret.go   # definitions of secret (private data)
 assetTypeList.go    # list of assets instantiated
 </code></pre>
-<p>Além dos arquivos de cada asset, deve-se cadastrar os assets que podem ser utilizado pela biblioteca Goledger CC-Tools no arquivo <strong>assetTypeList.go</strong></p>
+<p>Além dos arquivos de cada asset, deve-se cadastrar os assets que podem ser utilizadas pela biblioteca <strong>Goledger CC-Tools</strong> no arquivo <strong>assetTypeList.go</strong></p>
 <p>A definição do asset <strong>Person</strong> é a seguinte:</p>
 <pre><code>var Person = assets.AssetType{
     Tag:         "person",
@@ -427,7 +441,7 @@ assetTypeList.go    # list of assets instantiated
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Getting Started/" class="btn btn-neutral float-right" title="Getting Started"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../External Tools/" class="btn btn-neutral float-right" title="External Tools"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -459,7 +473,7 @@ assetTypeList.go    # list of assets instantiated
         <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../Getting Started/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../External Tools/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

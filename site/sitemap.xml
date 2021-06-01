@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2021-05-23</lastmod>
+     <lastmod>2021-06-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,15 @@
     
     <url>
      <loc>None/Assets/</loc>
-     <lastmod>2021-05-23</lastmod>
+     <lastmod>2021-06-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/External Tools/</loc>
+     <lastmod>2021-06-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +28,23 @@
     
     <url>
      <loc>None/Getting Started/</loc>
-     <lastmod>2021-05-23</lastmod>
+     <lastmod>2021-06-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/Testing/</loc>
+     <lastmod>2021-06-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/Transactions/</loc>
+     <lastmod>2021-06-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +52,7 @@
     
     <url>
      <loc>None/Tutorial/</loc>
-     <lastmod>2021-05-23</lastmod>
+     <lastmod>2021-06-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,15 +60,7 @@
     
     <url>
      <loc>None/about/</loc>
-     <lastmod>2021-05-23</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>None/introduction/</loc>
-     <lastmod>2021-05-23</lastmod>
+     <lastmod>2021-06-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

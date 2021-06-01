@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorial - MkLorum</title>
+  <title>Tutorial - GoLedger CC-Tools</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -38,7 +38,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> MkLorum</a>
+        <a href=".." class="icon icon-home"> GoLedger CC-Tools</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -65,7 +65,28 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../External Tools/">External Tools</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../Getting Started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Testing/">Testing</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Transactions/">Transactions</a>
         
     </li>
 <li>
@@ -88,6 +109,8 @@
                 
                     <li><a class="toctree-l4" href="#building-your-goledger-cc-tools-network">Building your GoLedger CC-Tools network</a></li>
                 
+                    <li><a class="toctree-l4" href="#updating-your-chaincode">Updating your chaincode</a></li>
+                
             
             </ul>
         
@@ -97,13 +120,6 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../about/">About</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../introduction/">Introduction</a>
         
     </li>
 <li>
@@ -118,7 +134,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">MkLorum</a>
+        <a href="..">GoLedger CC-Tools</a>
       </nav>
 
       
@@ -308,6 +324,22 @@ cd ..
 </code></pre>
 
 <hr />
+<h2 id="updating-your-chaincode">Updating your chaincode</h2>
+<p>A atualização de um contrato inteligente pode ser feita de forma facilitada nos chaincodes que utilizam a biblioteca <strong>GoLedger CC-Tools</strong>.</p>
+<p>Primeramente, deve-se verificar a sintaxe do código modificado.</p>
+<pre><code class="sh">cd chaincode \
+go vet \
+cd ..
+</code></pre>
+
+<p>Após a validação, a atualização do chaincode é feito com o script <strong>upgradeCC.sh</strong>, que recebe como argumento a versão do chaincode. </p>
+<hr />
+<p><strong><span style="color:blue">NOTE</span></strong></p>
+<p>Um chaincode sempre deve ser atualizado com uma versão diferente de todas as versões anteriores.</p>
+<hr />
+<p>Exemplo:</p>
+<pre><code class="sh">./upgradeCC.sh 0.2
+</code></pre>
               
             </div>
           </div>
@@ -318,7 +350,7 @@ cd ..
         <a href="../about/" class="btn btn-neutral float-right" title="About"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../Getting Started/" class="btn btn-neutral" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Transactions/" class="btn btn-neutral" title="Transactions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -344,7 +376,7 @@ cd ..
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../Getting Started/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../Transactions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
