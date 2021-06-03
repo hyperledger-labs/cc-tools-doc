@@ -1,16 +1,16 @@
 # External Tools
 
-A biblioteca **GoLedger CC-Tools** possui uma gama de ferramentas externas que ajudam imensamente na jornada de desenvolvimento de um Blockchain permissionado baseado em **Hyperledger Fabric**
+**GoLedger CC-Tools** library has a range of external tools that help immensely in the journey of developing a permissioned Blockchain based on **Hyperledger Fabric**
 
-- `cc-tools-demo` - repositório público com exemplo de ativos e transações utilizando a biblioteca **GoLedger CC-Tools**
-- `cc-webclient` - imagem docker com aplicação Web para interconexão com a Rest Api.
-- `GoFabric` - plataforma de orquestração de redes para ambientes de produção. [https://gofabric.io](https://gofabric.io)
+- `cc-tools-demo` - public repository with example assets and transactions using **GoLedger CC-Tools** library
+- `cc-webclient` - docker image with web application to interconnect with Rest Api.
+- `GoFabric` - network orchestration platform for production environments. [https://gofabric.io](https://gofabric.io)
 
 ## cc-tools-demo
 
-Repositório aberto com exemplos e transações.
+Open repository with examples and transactions.
 
-O repositório pode ser acessado da seguinte forma:
+The repository can be accessed as follows:
 
 ```sh
 git clone https://github.com/goledgerdev/cc-tools-demo.git
@@ -18,9 +18,9 @@ git clone https://github.com/goledgerdev/cc-tools-demo.git
 
 ## cc-web-client
 
-Imagem docker com aplicação web para testes e auxílio de integrações com sistemas legados.
+Docker image providing web application for testing.
 
-O container pode ser instanciado da seguinte forma:
+The container can be instantiated as follows:
 
 ```sh
 docker run -p 0.0.0.0:8080:80/tcp --name cc-webclient goledger/cc-webclient:latest
@@ -28,18 +28,18 @@ docker run -p 0.0.0.0:8080:80/tcp --name cc-webclient goledger/cc-webclient:late
 
 ## GoFabric
 
-**GoFabric** é uma plataforma de orquestração de redes **Hyperledger Fabric** totalmente compatível com a biblioteca **GoLedger CC-Tools**
+**GoFabric** is a **Hyperledger Fabric** Blockchain orchestration platform fully compatible with **GoLedger CC-Tools** library
 
-A plataforma pode ser acessada no seguinte link: [https://gofabric.io](https://gofabric.io) e possui as seguintes funções:
+The platform can be accessed at the following link: [https://gofabric.io](https://gofabric.io) and has the following features:
 
-- Deployment de redes ambiente de nuvem (**AWS, IBM, Azure, etc**) ou **on-premise**
-- Instanciar chaincodes (**compatibilidade com CC-Tools**)
-- Atualizar chaincodes
-- Adicionar ou remover **peers**
-- Adicionar **orderers**
-- Adicionar **orgs**
-- Instanciar ou atualizar **Rest Servers**
-- Geração automática de código **GoLedger Templates**
+- Deployment of cloud environment networks (**AWS, IBM, Azure, etc**) or **on-premise**
+- Instantiate chaincodes (**compatibility with CC-Tools**)
+- Update chaincodes
+- Add or remove **peers**
+- Add **orderers**
+- Add **orgs**
+- Instantiate or update **Rest Servers**
+- Automatic code generation **GoLedger Templates**
 
 ![Config](img/gofabric.png)
 

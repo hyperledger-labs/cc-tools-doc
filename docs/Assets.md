@@ -1,23 +1,23 @@
 # Assets
 
-Os assets (ou ativos do Blockchain) representam as informações que serão utilizadas pelo ledger do Blockchain (**Hyperledger Fabric Channel**)
+Blockchain assets represent the information that will be used by the Blockchain ledger (**Hyperledger Fabric Channel**)
 
-A grosso modo, um asset pode ser comparado a uma tabela de um banco de dados relacional.
+Roughly speaking, an asset can be compared to a table in a relational database.
 
-E tal como nos bancos dados, os assets são formados por propriedades, sendo que algumas delas podem fazer parte de um conjunto de chaves desse ativo. Cada propriedade pode ter um tipo de dado específico, como string, number, boolean, etc.
+And just like in databases, assets are formed by properties, some of which can be part of a set of keys for that asset. Each property can have a specific data type, such as string, number, boolean, etc.
 
-Um asset também pode ser um **Hyperledger Fabric Private Data**, na qual o conteúdo das informações são gravados em um bases externas ao channel e apenas um subconjunto das organizações recebem esses dados, configurando capacidade de leitura.
+An asset can also be a **Hyperledger Fabric Private Data**, in which the information content is recorded in a transient database outside the ledger and only a subset of organizations receive this data, configuring readability.
 
-Para o repositório cc-tools-demo, 4 assets (sendo que um deles é um private data)
+For the cc-tools-demo repository, there are 4 assets (one of which is a private data)
 
 - Person
 - Book
 - Library
 - Secret (private data)
 
-Para uso da biblioteca GoLedger CC-Tools, a definição dos assets é feito na pasta **chaincode/assettypes**
+In order to use **GoLedger CC-Tools** library, the assets definition is done in the **chaincode/assettypes** folder
 
-A seguir está lista de arquivos
+Here follow the list of files:
 
     chaincode/
         assettypes/     # asset folders
@@ -29,34 +29,34 @@ A seguir está lista de arquivos
 
 ## Asset definition
 
-A construção e definição de um asset se faz com a criação de um arquivo dentro da pasta **chaincode/assettypes**
+The construction and definition of an asset is done by creating a file at **chaincode/assettypes** folder
 
-Um asset possui os seguintes campos
+An asset has the following fields
 
-- `Tag`: campo string para definir o nome do asset referenciado internamento pelo código e pela Rest Api. Não pode ter espaços ou caracteres especiais.
-- `Label`: campo string para definir o rótulo para ser utilizado nas aplicações externas. Texto livre.
-- `Description`: campo string de descrição do asset para ser utilizado nas aplicações externas. Texto livre.
-- `Props`: propriedades do asset. Possui campos proprios.
-- `Readers`: utilizado para definir as organizações do private data (precisa de configuração adicional no arquivo **collections.json**)
+- `Tag`: string field used to define the name of the asset referenced internally by the code and by the Rest Api endpoints. No space or special characters allowed.
+- `Label`: string field to define the label to be used by external applications. Free text.
+- `Description`: asset description string field to be used by external applications. Free text.
+- `Props`: asset properties. It has its own fields (description next)
+- `Readers`: used to define private data organizations (needs additional configuration in **collections.json** file)
 
 
 ## Property definition
 
-Um asset possui um conjunto de propriedades (Props) para arquitetar o ativo. 
+An asset has a set of properties (Props) to structure the asset.
 
-Uma propriedade possui os seguintes campos:
+A property has the following fields:
 
-- `IsKey`: idenfitica se a propriedade faz parte das chaves do asset. Campo booleano.
-- `Required`: identifica se a propriedade é obrigatória. Campo booleano.
-- `ReadOnly`: identifica se a propriedade não pode mais ser modificada depois de criadas. Campo booleano.
-- `DefaultValue`: valor padrão para a propriedade.
-- `Writers`: utilizado para quais organizações podem criar ou alterar essa propriedade. Se a propriedade for chave (campo isKey: true) então todo o asset só pode ser criado ou alterado pela organização. Lista de strings.
-- `DataType`: tipo da propriedade. CC-Tools possui os seguintes tipos padrão: **string, number, datetime e boolean**. Tipos customizados podem ser definidos na pasta **chaincode/datatypes**.
-- `Validade`: função de validade da propriedade. Sugere-se utilizar apenas para validações simples, funções mais complexas deve-se utilizar os datatypes customizados.
+- `IsKey`: identifies if the property is part of the asset's keys. Boolean field.
+- `Required`: identifies if the property is mandatory. Boolean field.
+- `ReadOnly`: identifies if the property can no longer be modified once created. Boolean field.
+- `DefaultValue`: property default value.
+- `Writers`: define the organizations that can create or change this property. If the property is key (isKey field: true) then the entire asset can only be created by the organization. List of strings.
+- `DataType`: property type. CC-Tools has the following default types: **string, number, datetime and boolean**. Custom types can be defined in the **chaincode/datatypes** folder.
+- `Validity`: property validity function. It is suggested only for simple validations, more complex functions should use custom datatypes.
 
 ## Asset examples
 
-O repositório cc-tools-demo traz alguns exemplos:
+The **cc-tools-demo** repository has the following examples:
 
     chaincode/
         assettypes/     # asset foldgers
@@ -66,9 +66,9 @@ O repositório cc-tools-demo traz alguns exemplos:
             secret.go   # definitions of secret (private data)
     assetTypeList.go    # list of assets instantiated
 
-Além dos arquivos de cada asset, deve-se cadastrar os assets que podem ser utilizadas pela biblioteca **Goledger CC-Tools** no arquivo **assetTypeList.go**
+Besides the files of each asset, you must register the assets that can be used by the **Goledger CC-Tools** library in the **assetTypeList.go** file
 
-A definição do asset **Person** é a seguinte:
+The definition of the **Person** asset is as follows:
 
     var Person = assets.AssetType{
     	Tag:         "person",
@@ -108,23 +108,23 @@ A definição do asset **Person** é a seguinte:
 		    },
 		    {
 			    // Property with default value
-			    Tag:          "heigth",
-			    Label:        "Person's heigth",
+			    Tag:          "height",
+			    Label:        "Person's height",
 			    DefaultValue: 0,
 			    DataType:     "number",
 		    },
 	    },
     }
 
-De acordo com a descrição, o ativo **Person** tem as seguintes caracteríticas:
+According to the description above, the asset **Person** has the following characteristics:
 
-- Chave primária **cpf** (datatype customizado)
-- Apenas a **org1** pode criar ou alterar a propriedade **cpf** e o asset **Person** (porque essa é uma chave)
-- Propriedade **name** de tipo **string** é obrigatória, e possui validação automática para impedir strings vazias ("")
-- Propriedade **dateofBirth** de tipo **datetime** opcional.
-- Propriedade **heigth** de tipo **number**, com valor padrão 0
+- Primary key **cpf** (custom datatype)
+- Only **org1** can create or change the **cpf** property and the **Person** asset (because this is a key)
+- Property **name** of type **string** is mandatory, and has automatic validation to prevent empty strings ("")
+- **dateofBirth** property of type **datetime** optional.
+- **height** property of type **number**, with default value 0
 
-A definição do asset **Book** é a seguinte:
+The definition of the **Book** asset is as follows:
 
     var Book = assets.AssetType{
     	Tag:         "book",
@@ -171,15 +171,15 @@ A definição do asset **Book** é a seguinte:
 	    },
     }
 
-De acordo com a descrição, o ativo **Book** tem as seguintes caracteríticas:
+According to the description above, the **Book** asset has the following characteristics:
 
-- Chave composta  **title** e **author**, ambas com tipo **string**
-- Apenas a **org2** pode criar ou alterar as propriedades **title** e **author** e o asset **Book** (porque são chaves)
-- Propriedade **currentTenant** de tipo **->person** o que representa a referência a um asset **Person**
-- Propriedade **genres** de tipo **[]string** que representa um array de strings
-- Propriedade **published** de tipo **datetime**
+- Composite key **title** and **author**, both with type **string**
+- Only **org2** can create or change the **title** and **author** properties and the **Book** asset (because they are keys)
+- **currentTenant** property of type **->person** which represents the reference to a **Person** asset
+- **genres** property of type **[]string** which represents an array of strings
+- **published** property of type **datetime**
 
-A definição do asset **Library** é a seguinte:
+The definition of the **Library** asset is as follows:
 
     var Library = assets.AssetType{
     	Tag:         "library",
@@ -210,14 +210,15 @@ A definição do asset **Library** é a seguinte:
     		},
     	},
     }
-De acordo com a descrição, o ativo **Library** tem as seguintes caracteríticas:
+According to the description above, the **Library** asset has the following characteristics:
 
-- Chave primária **name** de tipo **string**
-- Apenas a **org3** pode criar ou alterar a propriedade **name** e o asset **Library** (porque é chave)
-- Propriedade **books** de tipo **[]->book** o que representa um array de referências ao asset **Book**
-- Propriedade **entranceCode** de tipo **->secret** que representa a referência a um tipo private data
+- Primary key **name** of type **string**
+- Only **org3** can create or change the **name** property and the **Library** asset (because it's key)
+- **books** property of type **[]->book** which represents an array of references to the **Book** asset
+- **entranceCode** property of type **->secret** which represents the reference to a private data type
 
-A definição do asset **Secret** é a seguinte:
+The definition of the **Secret** asset is as follows:
+
     var Secret = assets.AssetType{
 	    Tag:         "secret",
     	Label:       "Secret",
@@ -242,18 +243,18 @@ A definição do asset **Secret** é a seguinte:
 	    	},
 	    },
     }
-De acordo com a descrição, o ativo **Secret** tem as características de privacidade (**Hyperledger Fabric Private Data**). Para esse ativo funcionar corretamenta, deve-se configurar o arquivo **collections.json**
 
-Não iremos descrever os conceitos do **private data** do framework **Hyperledger Fabric**, seu funcionamento, regras de **policy**, etc. Mas para contextualizar de forma simplória, quando um ativo é definido como private, apenas o hash do seu conteúdo fica gravado no **channel**, o conteúdo do asset (suas propriedades) apenas são acessados em um conjunto limitado de organizações, sendo essas informaçãos registradas em bases de dados base de dados transientes em cada peer.
+According to the description above, **Secret** asset has privacy features (**Hyperledger Fabric Private Data**). For this asset to work correctly, the **collections.json** file must be configured
 
+We will not describe  **Hyperledger Fabric Private Data** concepts, its operation, **policy** rules, etc. But to put it simply, when an asset is defined as private, only its content hash is recorded in **channel**, the asset's content (its properties) are only accessed by a limited set of organizations, the content recorded in transient databases in each peer.
 
-- O conteúdo do ativo apenas pode ser lido pela **org2** e **org3**
-- Chave primária **secretName** de tipo **string**
-- Apenas a **org2** pode criar ou alterar a propriedade **secretName** e o asset **Secret** (porque é chave)
-- Propriedade **secret** de tipo **string** é obrigatória para o asset
-- Tanto a **org2** quanto a **org3** pode criar ou alterar a propridade **secret**
+- Asset content can only be read by **org2** and **org3**
+- Primary key **secretName** of type **string**
+- Only **org2** can create or change the **secretName** property and the **Secret** asset (because it is key)
+- **secret** property of type **string** is mandatory for the asset
+- Both **org2** and **org3** can create or change the **secret** property
 
-O arquivo **collections.json** precisa ser configurado de acordo com os assets que possuem o campo **Readers**
+The **collections.json** file needs to be configured according to the assets that have the **Readers** field
 
     [
             {
@@ -294,7 +295,7 @@ O arquivo **collections.json** precisa ser configurado de acordo com os assets q
 
 ## Asset list definition
 
-O cadastro dos assets que serão usados pela biblioteca **GoLedger CC-Tools** deve ser realizado no arquivo **chaincode/assetTypeList.go**
+**GoLedger CC-Tools** assets registration must be defined in the **chaincode/assetTypeList.go** file**
 
     var assetTypeList = []assets.AssetType{
         assettypes.Person,

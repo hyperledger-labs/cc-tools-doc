@@ -1,12 +1,12 @@
 # Getting Started
 
-O biblioteca GoLedger CC-Tools foi desenvolvida para ser utilizando em sistema operacional Linux.
+**GoLedger CC-Tools** library was developed to be used in Linux operating system.
 
-Em geral utilizamos a distribuiçã Ubuntu 18+, porém a biblioteca é compatível com outros ambientes, mas alguns ajustes podem ser necessários.
+In general we use the Ubuntu 18+ distribution, however the library is compatible with other environments, but some adjustments may be necessary.
 
 ## Download demo code
 
-Para aprender a utilizar a biblioteca GoLedger CC-Tools baixe o respositório do código de demonstração disponível no Github.
+To learn how to use **GoLedger CC-Tools library**, download the demo code repository available on **Github**.
 
 ```sh
 cd $HOME \
@@ -29,12 +29,11 @@ cd cc-tools-demo
 ├── fabric { Hyperledger Fabric artifacts }
 ```
 
-
-Esse repositório possui os elementos necessários para utilizar as principais funções a biblioteca.
+This repository has the necessary elements to use the main functions of the library.
 
 ## Enviroment configuration
 
-Os seguintes sistemas, plataformas e linguagens devem estar instaladas:
+The following systems, platforms and languages ​​must be installed:
 
 - Docker 19+
 - GCC
@@ -42,15 +41,15 @@ Os seguintes sistemas, plataformas e linguagens devem estar instaladas:
 - NodeJs 10+
 - Hyperledger Fabric 1.4 (Hyperledger Fabric 2.x ainda em roadmap)
 
-Para Linux Ubuntu, o execute o seguinte comando, que fará o download e instalação dos sistemas acima antes de iniciar o desenvolvimento.
+If you are using **Linux Ubuntu**, run the following command, which will download and install the systems above before starting development.
 
-O repositório possui um script de configuração.
+The repository has a configuration script.
 
 ```sh
 ./installPreReqUbuntu.sh
 ```
+At the end, the following success message should appear.
 
-Ao final da execução, deve aparecer a seguinte mensagem de sucesso.
 ```sh
 Enviroment configured
 ```

@@ -1,29 +1,29 @@
 # Writing Your First Application
 
-Neste tutorial, iremos instalar e utilizar um contrato inteligente (chaincode).
+This tutorial will show how to install and use a smart contract (chaincode).
 
-É necessário estar com o ambiente configurado para poder realizar esse tutorial. Detalhes em [Getting Started](get%20Started)
+You must already have configured the environment to be able to perform this tutorial. Details on [Getting Started](get%20Started)
 
-Veremos como a biblioteca GoLedger CC-Tools funciona, utilizando os artefatos disponibilizados pela GoLedger
+We'll see how the GoLedger CC-Tools library works, using the artifacts provided by GoLedger
 
-- Rest-server integrada
-- Api de atualização Hyperledger Fabric
-- Aplicação Web de desenvolvimento (cc-web)
+- Rest-server integration
+- Hyperledger Fabric Update API
+- Development web application (cc-web)
 
-O contrato inteligente do respositório cc-tool-demo é ideal para os iniciantes ao desenvolvimento na tecnologia Hyperledger Fabric. É um ótimo ponto de partida para entender uma blockchain do Hyperledger Fabric e facilitar a jornada para o deenvolvimento de aplicações utilizando esse framework. 
+The **cc-tool-demo** repository smart contract is ideal for beginners to Hyperledger Fabric technology development. It's a great starting point to understand a Hyperledger Fabric blockchain and ease the journey to application development using this framework.
 
-Você aprenderá como escrever um aplicativo e um contrato inteligente (chaincode) para consultar e atualizar um livro razão, e como se conectar com o Blockchain através de uma API pronta para uso.
+You'll learn how to write an application and a smart contract (chaincode) to query and update a ledger, and how to connect to the Blockchain through a ready-to-use API.
 
 ---
 **<span style="color:blue">NOTE</span>**
 
-É necessário conhecer a linguagem de programação *GoLang* para realizar esse tutorial.
+You need to know *GoLang* programming language in order to complete this tutorial.
 
 ---
 
 ## Network Details
 
-A rede a ser criada terá a seguinte configuração:
+The network to be created will have the following configuration:
 
 - 1 chaincode (cc-tools-demo)
 - 3 orgs (org1, org2, org3)
@@ -31,27 +31,28 @@ A rede a ser criada terá a seguinte configuração:
 
 ## Chaincode Details
 
-O chaincode disponibilizado possui as seguintes caraterísticas:
+The chaincode provided in **cc-tools-demo** has the following characteristics:
 
 - 3 assets
 - 1 private data
-- 3 transações
+- 3 transactions
 
 ## MSP Configuration
 
-As redes Hyperledger Fabric necessitam de correta configuração dos certificados digitais x.509 agrupados em elementos demoninado **Membership Service Provider** ou simplesmente chamados **<span style="color:blue">MSP</span>**
+Hyperledger Fabric networks require the correct configuration of x.509 digital certificates grouped in elements called **Membership Service Provider** or simply called **<span style="color:blue">MSP</span>**
 
-Os certificados são gerados e adminstrados por autoridades certificadora (**CA**) utilizando a plataforma **Hyperledger Fabric CA**. Cada organização (org1, org2 e org3) será representada por uma **CA**
+Certificates are generated and managed by certification authorities (**CA**) using the **Hyperledger Fabric CA** platform. Each organization **(org1, org2 and org3)** will be represented by a unique **CA**
 
 ---
 
 **<span style="color:blue">NOTE</span>**
 
-Não é objetivo desse tutorial ensinar os conceitos de MSP ou do **Hyperledger Fabric CA**
+It is not the purpose of this tutorial to teach the concepts of MSP or **Hyperledger Fabric CA**
 
 ---
 
-A geração dos certificados e MSP necessários para geração da rede é realizado através do script abaixo a ser executado na pasta fabric:
+The generation of certificates and MSP necessary for network generation is performed through the script below to be executed in the **./fabric** folder:
+
 
 ```sh
 cd fabric \
@@ -65,7 +66,7 @@ Esse script ira subir 3 containers do **Hyperledger Fabric CA**
 - ca.org2.example.com
 - ca.org3.example.com
 
-Ao final 3 pastas serão criadas com os artefatos criptográficos necessários para a geração da rede
+After the script finishes, 3 folders will be created with the cryptographic artifacts needed to generate the network:
 
 ```
 .
@@ -77,9 +78,9 @@ Ao final 3 pastas serão criadas com os artefatos criptográficos necessários p
 
 ## Vendoring
 
-Tanto o chaincode em GoLang quanto a rest-server em NodeJs precisam ser vendorados (baixar os pacotes de dependências) para poderem funcionar.
+Both the **chaincode** in GoLang and the **rest-server** in NodeJs need to be vendored (dependency packages download) in order to work.
 
-Para baixar as dependências do chaincode deve ser executado o seguinte script:
+To download chaincode dependencies, run the following script:
 
 ```sh
 cd chaincode && \
@@ -87,7 +88,7 @@ go mod vendor && \
 cd ..
 ```
 
-Para baixar as dependências do rest-server deve ser executado o seguinte script
+To download the rest-server dependencies, run the following script:
 
 ```sh
 cd rest-server && \
@@ -97,25 +98,25 @@ cd ..
 
 ## Building your GoLedger CC-Tools network
 
-Depois da instalacão do ambiente, geração dos certificados e vendoração dos pacotes, a rede está pronta para ser instanciada.
+After installing the environment, generating the certificates and vendoring the packages, the network is ready to be instantiated.
 
-Esse processo se dá com o seguinte script
+This process takes place with the following script
 
 ```sh
 ./startDev.sh
 ```
 
-Esse script irá executar as seguintes tarefas:
+This script will perform the following tasks:
 
-- Criar os containers para o nós do Blockchain (peers e ordereres no **Hyperledger Fabric**) para as 3 orgs (org1, org2, org3) com a correta configuração criptográfica para cada um deles.
-- Criar o ledger para registro e permissionamento - **Hyperledger Fabric Channel**
-- Entrada das organizações no channel (processo de Join no **Hyperledger Fabric**)
-- Instalação do chaincode nos endorsing peers
-- Instalação da api de gerenciamento da rede **Hyperledger Fabric**
-- Instanciar o chaincode no channel
-- Criar os containers para as Rest servers com a correta configuração criptográfica para respresentarem um **Hyperledger Fabric Client** para cada organização.
+- Create the Blockchain node containers (**Hyperledger Fabric** peers and orderers) for 3 orgs (org1, org2, org3) with the correct cryptographic configuration for each one of them.
+- Create the ledger for registration and permission - **Hyperledger Fabric Channel**
+- Organizations entries in the channel (Join process in **Hyperledger Fabric**)
+- Chaincode installation inside endorsing peers
+- Installation of network management api **Hyperledger Fabric**
+- Chaincode instantiation on the channel
+- Rest servers containers deployment with the correct cryptographic configuration, representing a **Hyperledger Fabric Client** for each organization.
 
-Ao final do processo, deve ser apresentado as seguintes mensagens
+At the end of the process, the following messages should be displayed:
 
 ```sh
 Create channel - mainchannel
@@ -166,9 +167,9 @@ Creating ccapi.org2.example.com ... done
 Creating ccapi.org3.example.com ... done
 ```
 
-Os containers **ccapi** representam os servidores rest para cada organização. Eles podem levar alguns minutos para ficarem online.
+The **ccapi** containers represent the rest servers for each organization. They may take a few minutes to come online.
 
-Ao final, a seguinte mensagem deve aparecer:
+At the end, the following message should appear:
 
 ```sh
 docker logs ccapi.org1.example.com 
@@ -193,13 +194,13 @@ Listening on port 80
 
 **<span style="color:blue">NOTE</span>**
 
-Em alguns equipamentos pode aparecer a seguinte mensagem de erro:
+The following error message may appear on some equipments:
 
 Error: Failed to load gRPC binary module because it was not installed for the current system
 Expected directory: node-v57-linux-x64-glibc
 Found: [node-v64-linux-x64-glibc]
 
-Nesse caso deve-se rodar o seguinte script
+In this case, run the following script:
 
 ```sh
 cd rest-server
@@ -211,9 +212,9 @@ cd ..
 
 ## Updating your chaincode
 
-A atualização de um contrato inteligente pode ser feita de forma facilitada nos chaincodes que utilizam a biblioteca **GoLedger CC-Tools**.
+Updating a smart contract can be done easily in chaincodes that use the **GoLedger CC-Tools** library.
 
-Primeramente, deve-se verificar a sintaxe do código modificado.
+First, you must check the syntax of the modified code.
 
 ```sh
 cd chaincode \
@@ -221,17 +222,17 @@ go vet \
 cd ..
 ```
 
-Após a validação, a atualização do chaincode é feito com o script **upgradeCC.sh**, que recebe como argumento a versão do chaincode. 
+After validation, the chaincode update is done with the **upgradeCC.sh** script, which takes the chaincode version as argument.
 
 ---
 
 **<span style="color:blue">NOTE</span>**
 
-Um chaincode sempre deve ser atualizado com uma versão diferente de todas as versões anteriores.
+A chaincode must always be updated with a version different from all previous versions.
 
---- 
+---
 
-Exemplo:
+Example:
 
 ```sh
 ./upgradeCC.sh 0.2

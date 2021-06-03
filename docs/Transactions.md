@@ -1,29 +1,29 @@
 # Transactions
 
-As transações dentro da biblioteca **GoLedger CC-Tools** representam os métodos em **GoLang** que podem modificar os ativos dentro do ledger do Blockchain (**Hyperledger Fabric Channel**)
+**GoLedger CC-Tools** transactions represent the **GoLang** methods that can modify the assets within the Blockchain ledger (**Hyperledger Fabric Channel**)
 
-No **Hyperledger Fabric** os assets apenas podems ser criados ou modificados através da execução de transações dos **chaincode**
+**Hyperledger Fabric** assets can only be created or modified by executing **chaincode** transactions inside endorsing peers.
 
-A biblioteca **Goledger CC-Tools** possui um gama de transações pré-definidas:
+**Goledger CC-Tools** library has a range of pre-defined transactions:
 
-- `CreateAsset`- criação de um novo asset
-- `UpdateAsset` - atualização de um asset existente
-- `DeleteAsset` - remoção de um asset do estado atual do ledger
-- `ReadAsset` - leitura do asset no seu último estado no ledger
-- `ReadAssetHistory` - histórico dos estados de um asset no ledger
-- `Search` - listagem de assets
+- `CreateAsset` - creation of a new asset
+- `UpdateAsset` - update an existing asset
+- `DeleteAsset` - removing an asset from the current ledger state
+- `ReadAsset` - read the asset in its last ledger status
+- `ReadAssetHistory` - history of an asset's ledger status
+- `Search` - asset listing
 
-A biblioteca **GoLedger CC-Tools** possibilita a criação de transações customizadas.
+**GoLedger CC-Tools** library enables the creation of custom transactions.
 
-No repositório **cc-tools-demo** existem 3 transações de exemplo:
+**cc-tools-demo** repository provides 3 example transactions:
 
-- `CreateNewLibrary` - criar um novo asset do tipo **Library**
-- `GetNumberOfBooksFromLibrary` - retorna o número de assets **Book** 
-- `UpdateBookTenant` - atualizar o campo **currentTenant** no asset **Book**
+- `CreateNewLibrary` - create a new asset of type **Library**
+- `GetNumberOfBooksFromLibrary` - returns the number of assets **Book** inside asset **Library**
+- `UpdateBookTenant` - update field **currentTenant** inside asset **Book**
 
-Para uso da biblioteca GoLedger CC-Tools, a definição dos assets é feito na pasta **chaincode/txdefs**
+The definition of assets is done in the **chaincode/txdefs** folder for **GoLedger CC-Tools** library.
 
-A seguir está lista de arquivos da pasta **txdefs**:
+The of files from the **txdefs** folder is shown below:
 
     chaincode/
         txdefs/                             # transations folder
@@ -34,33 +34,33 @@ A seguir está lista de arquivos da pasta **txdefs**:
 
 ## Transaction definition
 
-A construção e definição de uma transação customizada se faz com a criação de um arquivo dentro da pasta **chaincode/txdefs**
+A custom transaction construction is done by creating a file inside the **chaincode/txdefs** folder
 
-Um asset possui os seguintes campos:
+An asset has the following fields:
 
-- `Tag`: campo string para definir o nome da transação referenciado internamente pelo código e pela Rest Api. Não pode ter espaços ou caracteres especiais. Caso tenha o mesmo nome de alguma transação pré-definida (**createAsset**, **updateAsset**, **deleteAsset**, **readAsset**, **readAssetHistory** ou **search**), essa transação será substituída pela presente no diretóro **txdefs**.
-- `Label`: campo string para definir o rótulo para ser utilizado nas aplicações externas. Texto livre.
-- `Description`: campo string de descrição do asset para ser utilizado nas aplicações externas. Texto livre.
-- `Method`: tipo de método da Rest Api. Pode ser **POST**, **GET**.
-- `Callers`: utilizado para definir quais as organizações podem chamar essa transação.
-- `Args`: argumentos. Possui campos proprios.
-- `Routine`: codigo-fonte da transação.
+- `Tag`: string field to define the transaction name internally referenced by the code and by the Rest Api endpoints. It cannot have spaces or special characters. If it has the same name as a predefined transaction (**createAsset**, **updateAsset**, **deleteAsset**, **readAsset**, **readAssetHistory** or **search**), this transaction will be replaced by the one in the **txdefs** directory.
+- `Label`: string field to define the label to be used by external applications. Free text.
+- `Description`: asset description string field to be used by external applications. Free text.
+- `Method`: Rest API method type. It can be **POST**, **GET**, **PUT** or **DELETE**.
+- `Callers`: used to define which organizations can call this transaction.
+- `Args`: arguments. It has its own fields.
+- `Routine`: transaction source code.
 
 ## Transaction argument definition
 
-Uma transação possui um conjunto de arguments de entrada customizáveis.
+A transaction has a set of customizable input arguments.
 
-Um argumento possui os seguintes campos:
+An argument has the following fields:
 
-- `Tag`: campo string para definir o nome do argumento referenciado internamente pelo código e pela Rest Api. Não pode ter espaços ou caracteres especiais. 
-- `Label`: campo string para definir o rótulo para ser utilizado nas aplicações externas. Texto livre.
-- `Description`: campo string de descrição do asset para ser utilizado nas aplicações externas. Texto livre.
-- `Required`: identifica se o argumento é obrigatório. Campo booleano.
-- `DataType`: tipo da propriedade. CC-Tools possui os seguintes tipos padrão: **string, number, datetime e boolean**.
+- `Tag`: string field to define the argument name internally referenced by the code and by the Rest Api endpoints. It cannot have spaces or special characters.
+- `Label`: string field to define the label to be used by external applications. Free text.
+- `Description`: asset description string field to be used by external applications. Free text.
+- `Required`: identifies if the argument is required. Boolean field.
+- `DataType`: property type. CC-Tools has the following default types: **string, number, datetime and boolean**.
 
 ## Transaction examples
 
-O repositório **cc-tools-demo** traz a seguinte configuração de transações customizadas:
+**cc-tools-demo** repository has the following custom transaction configuration:
 
     chaincode/
         txdefs/                             # transations folder
@@ -69,9 +69,9 @@ O repositório **cc-tools-demo** traz a seguinte configuração de transações 
             updateBookTenant.go             # changes de tenant of book
     txList.go                               # list of custom transactions
 
-Além dos arquivos de cada transação, deve-se cadastrar as transações que podem ser utilizadas pela biblioteca **Goledger CC-Tools** no arquivo **txList.go**
+In addition to the files for each transaction that can be used by the **Goledger CC-Tools** library they also must be registered inside **txList.go** file
 
-A definição da transação **CreateNewLibrary** é a seguinte:
+The definition of the **CreateNewLibrary** transaction is as follows:
 
     var CreateNewLibrary = tx.Transaction{
         Tag:         "createNewLibrary",
@@ -120,14 +120,14 @@ A definição da transação **CreateNewLibrary** é a seguinte:
         },
     }
 
-De acordo com a descrição, a transação **CreateNewLibrary** tem as seguintes caracteríticas:
+According to the description above, **CreateNewLibrary** transaction has the following characteristics:
 
-- Apenas a **org3** pode chamar esse método
-- Método **POST** para a Rest Api
-- Argumento **name** de tipo **string** obrigatório.
-- A transação utiliza a função **NewAsset** para prepara um novo asset (chaves, etc) e a função **PutNew** para criar o asset no **channel**.
+- Only **org3** can call this method
+- **POST** method for Rest Api
+- Argument **name** of type **string** is required.
+- The transaction uses the **NewAsset** function to prepare a new asset (keys, etc) and the **PutNew** function to create the asset in the **channel**.
 
-A definição da transação **UpdateBookTenant** é a seguinte:
+The definition of the **UpdateBookTenant** transaction is as follows:
 
     var UpdateBookTenant = tx.Transaction{
         Tag:         "updateBookTenant",
@@ -199,14 +199,14 @@ A definição da transação **UpdateBookTenant** é a seguinte:
         },
     }
 
-- Qualquer organização que comece com **"org"** seguida de um número (org1, org2, org3, org4, etc) pode chamar esse método.
-- Método **PUT** para a Rest Api
-- Argumento **book** de tipo **Book** obrigatório.
-- Argumento **person** de tipo **Person** obrigatório.
-- A transação utiliza a função **Get** para ler as informações dos assets **Book** e **Person** do ledger
-- A transação utiliza a função **Update** atualiza as informação do asset **Book** no ledger
+- Any organization that starts with **"org"** followed by a number (org1, org2, org3, org4, etc) can call this method.
+- **PUT** method for Rest Api
+- Argument **book** of type **Book** is mandatory.
+- Argument **person** of type **Person** required.
+- The transaction uses the **Get** function to read the the assets **Book** and **Person** information from the ledger
+- The transaction uses the **Update** function to updates the asset information **Book** inside the ledger
 
-A definição da transação **GetNumberOfBooksFromLibrary** é a seguinte:
+The definition of the **GetNumberOfBooksFromLibrary** transaction is as follows:
 
     var GetNumberOfBooksFromLibrary = tx.Transaction{
         Tag:         "getNumberOfBooksFromLibrary",
@@ -259,14 +259,14 @@ A definição da transação **GetNumberOfBooksFromLibrary** é a seguinte:
         },
     }
 
-- Apenas a **org2** pode chamar esse método.
-- Método **GET** para a Rest Api
-- Argumento **library** de tipo **Library** obrigatório.
-- A transação utiliza a função **Get** para ler as informações do asset **Library** do ledger
+- Only **org2** can call this method.
+- **GET** method for Rest Api
+- Argument **library** of type **Library** is required.
+- The transaction uses the **Get** function to read **Library** asset information from the ledger
 
 ## Transaction list definition
 
-O cadastro das transações que serão usados pela biblioteca **GoLedger CC-Tools** deve ser realizado no arquivo **chaincode/txList.go**
+The registration of the transactions that will be used by **GoLedger CC-Tools** library must be also done inside **chaincode/txList.go** file
 
     var txList = []tx.Transaction{
         txdefs.GetHeader,
