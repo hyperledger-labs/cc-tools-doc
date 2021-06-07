@@ -15,7 +15,7 @@
 
 **GoLedger CC-Tools** library enables the creation of custom transactions.
 
-**cc-tools-demo** repository provides 3 example transactions:
+`cc-tools-demo` repository provides 3 example transactions:
 
 - `CreateNewLibrary` - create a new asset of type **Library**
 - `GetNumberOfBooksFromLibrary` - returns the number of assets **Book** inside asset **Library**
@@ -60,7 +60,7 @@ An argument has the following fields:
 
 ## Transaction examples
 
-**cc-tools-demo** repository has the following custom transaction configuration:
+`cc-tools-demo` repository has the following custom transaction configuration:
 
     chaincode/
         txdefs/                             # transations folder

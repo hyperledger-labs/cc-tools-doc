@@ -56,7 +56,7 @@ A property has the following fields:
 
 ## Asset examples
 
-The **cc-tools-demo** repository has the following examples:
+The `cc-tools-demo` repository has the following examples:
 
     chaincode/
         assettypes/     # asset foldgers

@@ -1,8 +1,10 @@
-# Writing Your First Application
+# Tutorials
+
+## Writing Your First Application
 
 This tutorial will show how to install and use a smart contract (chaincode).
 
-You must already have configured the environment to be able to perform this tutorial. Details on [Getting Started](get%20Started)
+You must already have configured the environment to be able to perform this tutorial. Details on [Getting Started](getting-started.md)
 
 We'll see how the GoLedger CC-Tools library works, using the artifacts provided by GoLedger
 
@@ -10,7 +12,7 @@ We'll see how the GoLedger CC-Tools library works, using the artifacts provided 
 - Hyperledger Fabric Update API
 - Development web application (cc-web)
 
-The **cc-tool-demo** repository smart contract is ideal for beginners to Hyperledger Fabric technology development. It's a great starting point to understand a Hyperledger Fabric blockchain and ease the journey to application development using this framework.
+The `cc-tools-demo` repository smart contract is ideal for beginners to Hyperledger Fabric technology development. It's a great starting point to understand a Hyperledger Fabric blockchain and ease the journey of application development using this framework.
 
 You'll learn how to write an application and a smart contract (chaincode) to query and update a ledger, and how to connect to the Blockchain through a ready-to-use API.
 
@@ -21,7 +23,7 @@ You need to know *GoLang* programming language in order to complete this tutoria
 
 ---
 
-## Network Details
+### Network Details
 
 The network to be created will have the following configuration:
 
@@ -29,15 +31,15 @@ The network to be created will have the following configuration:
 - 3 orgs (org1, org2, org3)
 - 3 clients (rest-server para as org1, org2 e org3)
 
-## Chaincode Details
+### Chaincode Details
 
-The chaincode provided in **cc-tools-demo** has the following characteristics:
+The chaincode provided in `cc-tools-demo` has the following characteristics:
 
 - 3 assets
 - 1 private data
 - 3 transactions
 
-## MSP Configuration
+### MSP Configuration
 
 Hyperledger Fabric networks require the correct configuration of x.509 digital certificates grouped in elements called **Membership Service Provider** or simply called **<span style="color:blue">MSP</span>**
 
@@ -47,11 +49,11 @@ Certificates are generated and managed by certification authorities (**CA**) usi
 
 **<span style="color:blue">NOTE</span>**
 
-It is not the purpose of this tutorial to teach the concepts of MSP or **Hyperledger Fabric CA**
+It is not the purpose of this tutorial to teach the concepts of MSP or **Hyperledger Fabric CA**, for that check the official [HF Docs](https://hyperledger-fabric.readthedocs.io/).
 
 ---
 
-The generation of certificates and MSP necessary for network generation is performed through the script below to be executed in the **./fabric** folder:
+The generation of certificates and MSP necessary for network generation is performed through the script below to be executed in the `./fabric` folder:
 
 
 ```sh
@@ -61,12 +63,13 @@ rm -rf crypto-config channel-artifacts ca && \
 cd ..
 ```
 
-Esse script ira subir 3 containers do **Hyperledger Fabric CA**
+This will deploy 3 containers of **Hyperledger Fabric CA**
+
 - ca.org1.example.com
 - ca.org2.example.com
 - ca.org3.example.com
 
-After the script finishes, 3 folders will be created with the cryptographic artifacts needed to generate the network:
+After the script finishes, 3 folders will be created with the cryptographic artifacts necessary to generate the network:
 
 ```
 .
@@ -76,9 +79,9 @@ After the script finishes, 3 folders will be created with the cryptographic arti
     └── channel-artifacts
 ```
 
-## Vendoring
+### Vendoring
 
-Both the **chaincode** in GoLang and the **rest-server** in NodeJs need to be vendored (dependency packages download) in order to work.
+Both the **chaincode** in GoLang and the **rest-server** in Node.js need to be vendored (dependency packages download) in order to work.
 
 To download chaincode dependencies, run the following script:
 
@@ -96,7 +99,7 @@ npm install && \
 cd ..
 ```
 
-## Building your GoLedger CC-Tools network
+### Building your GoLedger CC-Tools network
 
 After installing the environment, generating the certificates and vendoring the packages, the network is ready to be instantiated.
 
@@ -190,7 +193,7 @@ docker logs ccapi.org1.example.com
 [23:13:41] [nodemon] starting `node dist/`
 Listening on port 80
 ```
----
+<!-- ---
 
 **<span style="color:blue">NOTE</span>**
 
@@ -208,9 +211,9 @@ npm rebuild --target=8.1.0 --target_platform=linux --target_arch=x64 --target_li
 cd ..
 ```
 
----
+--- -->
 
-## Updating your chaincode
+### Updating your chaincode
 
 Updating a smart contract can be done easily in chaincodes that use the **GoLedger CC-Tools** library.
 
@@ -222,7 +225,7 @@ go vet \
 cd ..
 ```
 
-After validation, the chaincode update is done with the **upgradeCC.sh** script, which takes the chaincode version as argument.
+After validation, the chaincode update is done with the `upgradeCC.sh` script, which takes the chaincode version as argument.
 
 ---
 

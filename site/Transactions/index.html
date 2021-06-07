@@ -3,31 +3,30 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Transactions - GoLedger CC-Tools</title>
   
-
+  
   <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Transactions - GoLedger CC-Tools</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../css/highlight.css">
-
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
     var mkdocs_page_name = "Transactions";
+    var mkdocs_page_input_path = "transactions.md";
+    var mkdocs_page_url = null;
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script> 
-
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
 
@@ -37,92 +36,57 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> GoLedger CC-Tools</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="..">Home</a>
-        
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tutorials/">Tutorials</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../assets/">Assets</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Transactions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#transaction-definition">Transaction definition</a>
     </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../Assets/">Assets</a>
-        
+    <li class="toctree-l2"><a class="reference internal" href="#transaction-argument-definition">Transaction argument definition</a>
     </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../External Tools/">External Tools</a>
-        
+    <li class="toctree-l2"><a class="reference internal" href="#transaction-examples">Transaction examples</a>
     </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../Getting Started/">Getting Started</a>
-        
+    <li class="toctree-l2"><a class="reference internal" href="#transaction-list-definition">Transaction list definition</a>
     </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../Testing/">Testing</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Transactions</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#transactions">Transactions</a></li>
-                
-                    <li><a class="toctree-l4" href="#transaction-definition">Transaction definition</a></li>
-                
-                    <li><a class="toctree-l4" href="#transaction-argument-definition">Transaction argument definition</a></li>
-                
-                    <li><a class="toctree-l4" href="#transaction-examples">Transaction examples</a></li>
-                
-                    <li><a class="toctree-l4" href="#transaction-list-definition">Transaction list definition</a></li>
-                
-            
-            </ul>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../Tutorial/">Tutorial</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../about/">About</a>
-        
-    </li>
-<li>
-          
-        </ul>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../external-tools/">External Tools</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -147,32 +111,33 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
             <div class="section">
               
                 <h1 id="transactions">Transactions</h1>
-<p>As transações dentro da biblioteca <strong>GoLedger CC-Tools</strong> representam os métodos em <strong>GoLang</strong> que podem modificar os ativos dentro do ledger do Blockchain (<strong>Hyperledger Fabric Channel</strong>)</p>
-<p>No <strong>Hyperledger Fabric</strong> os assets apenas podems ser criados ou modificados através da execução de transações dos <strong>chaincode</strong></p>
-<p>A biblioteca <strong>Goledger CC-Tools</strong> possui um gama de transações pré-definidas:</p>
+<p><strong>GoLedger CC-Tools</strong> transactions represent the <strong>GoLang</strong> methods that can modify the assets within the Blockchain ledger (<strong>Hyperledger Fabric Channel</strong>)</p>
+<p><strong>Hyperledger Fabric</strong> assets can only be created or modified by executing <strong>chaincode</strong> transactions inside endorsing peers.</p>
+<p><strong>Goledger CC-Tools</strong> library has a range of pre-defined transactions:</p>
 <ul>
-<li><code>CreateAsset</code>- criação de um novo asset</li>
-<li><code>UpdateAsset</code> - atualização de um asset existente</li>
-<li><code>DeleteAsset</code> - remoção de um asset do estado atual do ledger</li>
-<li><code>ReadAsset</code> - leitura do asset no seu último estado no ledger</li>
-<li><code>ReadAssetHistory</code> - histórico dos estados de um asset no ledger</li>
-<li><code>Search</code> - listagem de assets</li>
+<li><code>CreateAsset</code> - creation of a new asset</li>
+<li><code>UpdateAsset</code> - update an existing asset</li>
+<li><code>DeleteAsset</code> - removing an asset from the current ledger state</li>
+<li><code>ReadAsset</code> - read the asset in its last ledger status</li>
+<li><code>ReadAssetHistory</code> - history of an asset's ledger status</li>
+<li><code>Search</code> - asset listing</li>
 </ul>
-<p>A biblioteca <strong>GoLedger CC-Tools</strong> possibilita a criação de transações customizadas.</p>
-<p>No repositório <strong>cc-tools-demo</strong> existem 3 transações de exemplo:</p>
+<p><strong>GoLedger CC-Tools</strong> library enables the creation of custom transactions.</p>
+<p><code>cc-tools-demo</code> repository provides 3 example transactions:</p>
 <ul>
-<li><code>CreateNewLibrary</code> - criar um novo asset do tipo <strong>Library</strong></li>
-<li><code>GetNumberOfBooksFromLibrary</code> - retorna o número de assets <strong>Book</strong> </li>
-<li><code>UpdateBookTenant</code> - atualizar o campo <strong>currentTenant</strong> no asset <strong>Book</strong></li>
+<li><code>CreateNewLibrary</code> - create a new asset of type <strong>Library</strong></li>
+<li><code>GetNumberOfBooksFromLibrary</code> - returns the number of assets <strong>Book</strong> inside asset <strong>Library</strong></li>
+<li><code>UpdateBookTenant</code> - update field <strong>currentTenant</strong> inside asset <strong>Book</strong></li>
 </ul>
-<p>Para uso da biblioteca GoLedger CC-Tools, a definição dos assets é feito na pasta <strong>chaincode/txdefs</strong></p>
-<p>A seguir está lista de arquivos da pasta <strong>txdefs</strong>:</p>
+<p>The definition of assets is done in the <strong>chaincode/txdefs</strong> folder for <strong>GoLedger CC-Tools</strong> library.</p>
+<p>The of files from the <strong>txdefs</strong> folder is shown below:</p>
 <pre><code>chaincode/
     txdefs/                             # transations folder
         createNewLibrary.go             # library creation
@@ -181,29 +146,29 @@
 txList.go                               # list of custom transactions
 </code></pre>
 <h2 id="transaction-definition">Transaction definition</h2>
-<p>A construção e definição de uma transação customizada se faz com a criação de um arquivo dentro da pasta <strong>chaincode/txdefs</strong></p>
-<p>Um asset possui os seguintes campos:</p>
+<p>A custom transaction construction is done by creating a file inside the <strong>chaincode/txdefs</strong> folder</p>
+<p>An asset has the following fields:</p>
 <ul>
-<li><code>Tag</code>: campo string para definir o nome da transação referenciado internamente pelo código e pela Rest Api. Não pode ter espaços ou caracteres especiais. Caso tenha o mesmo nome de alguma transação pré-definida (<strong>createAsset</strong>, <strong>updateAsset</strong>, <strong>deleteAsset</strong>, <strong>readAsset</strong>, <strong>readAssetHistory</strong> ou <strong>search</strong>), essa transação será substituída pela presente no diretóro <strong>txdefs</strong>.</li>
-<li><code>Label</code>: campo string para definir o rótulo para ser utilizado nas aplicações externas. Texto livre.</li>
-<li><code>Description</code>: campo string de descrição do asset para ser utilizado nas aplicações externas. Texto livre.</li>
-<li><code>Method</code>: tipo de método da Rest Api. Pode ser <strong>POST</strong>, <strong>GET</strong>.</li>
-<li><code>Callers</code>: utilizado para definir quais as organizações podem chamar essa transação.</li>
-<li><code>Args</code>: argumentos. Possui campos proprios.</li>
-<li><code>Routine</code>: codigo-fonte da transação.</li>
+<li><code>Tag</code>: string field to define the transaction name internally referenced by the code and by the Rest Api endpoints. It cannot have spaces or special characters. If it has the same name as a predefined transaction (<strong>createAsset</strong>, <strong>updateAsset</strong>, <strong>deleteAsset</strong>, <strong>readAsset</strong>, <strong>readAssetHistory</strong> or <strong>search</strong>), this transaction will be replaced by the one in the <strong>txdefs</strong> directory.</li>
+<li><code>Label</code>: string field to define the label to be used by external applications. Free text.</li>
+<li><code>Description</code>: asset description string field to be used by external applications. Free text.</li>
+<li><code>Method</code>: Rest API method type. It can be <strong>POST</strong>, <strong>GET</strong>, <strong>PUT</strong> or <strong>DELETE</strong>.</li>
+<li><code>Callers</code>: used to define which organizations can call this transaction.</li>
+<li><code>Args</code>: arguments. It has its own fields.</li>
+<li><code>Routine</code>: transaction source code.</li>
 </ul>
 <h2 id="transaction-argument-definition">Transaction argument definition</h2>
-<p>Uma transação possui um conjunto de arguments de entrada customizáveis.</p>
-<p>Um argumento possui os seguintes campos:</p>
+<p>A transaction has a set of customizable input arguments.</p>
+<p>An argument has the following fields:</p>
 <ul>
-<li><code>Tag</code>: campo string para definir o nome do argumento referenciado internamente pelo código e pela Rest Api. Não pode ter espaços ou caracteres especiais. </li>
-<li><code>Label</code>: campo string para definir o rótulo para ser utilizado nas aplicações externas. Texto livre.</li>
-<li><code>Description</code>: campo string de descrição do asset para ser utilizado nas aplicações externas. Texto livre.</li>
-<li><code>Required</code>: identifica se o argumento é obrigatório. Campo booleano.</li>
-<li><code>DataType</code>: tipo da propriedade. CC-Tools possui os seguintes tipos padrão: <strong>string, number, datetime e boolean</strong>.</li>
+<li><code>Tag</code>: string field to define the argument name internally referenced by the code and by the Rest Api endpoints. It cannot have spaces or special characters.</li>
+<li><code>Label</code>: string field to define the label to be used by external applications. Free text.</li>
+<li><code>Description</code>: asset description string field to be used by external applications. Free text.</li>
+<li><code>Required</code>: identifies if the argument is required. Boolean field.</li>
+<li><code>DataType</code>: property type. CC-Tools has the following default types: <strong>string, number, datetime and boolean</strong>.</li>
 </ul>
 <h2 id="transaction-examples">Transaction examples</h2>
-<p>O repositório <strong>cc-tools-demo</strong> traz a seguinte configuração de transações customizadas:</p>
+<p><code>cc-tools-demo</code> repository has the following custom transaction configuration:</p>
 <pre><code>chaincode/
     txdefs/                             # transations folder
         createNewLibrary.go             # library creation
@@ -211,8 +176,8 @@ txList.go                               # list of custom transactions
         updateBookTenant.go             # changes de tenant of book
 txList.go                               # list of custom transactions
 </code></pre>
-<p>Além dos arquivos de cada transação, deve-se cadastrar as transações que podem ser utilizadas pela biblioteca <strong>Goledger CC-Tools</strong> no arquivo <strong>txList.go</strong></p>
-<p>A definição da transação <strong>CreateNewLibrary</strong> é a seguinte:</p>
+<p>In addition to the files for each transaction that can be used by the <strong>Goledger CC-Tools</strong> library they also must be registered inside <strong>txList.go</strong> file</p>
+<p>The definition of the <strong>CreateNewLibrary</strong> transaction is as follows:</p>
 <pre><code>var CreateNewLibrary = tx.Transaction{
     Tag:         "createNewLibrary",
     Label:       "Create New Library",
@@ -260,14 +225,14 @@ txList.go                               # list of custom transactions
     },
 }
 </code></pre>
-<p>De acordo com a descrição, a transação <strong>CreateNewLibrary</strong> tem as seguintes caracteríticas:</p>
+<p>According to the description above, <strong>CreateNewLibrary</strong> transaction has the following characteristics:</p>
 <ul>
-<li>Apenas a <strong>org3</strong> pode chamar esse método</li>
-<li>Método <strong>POST</strong> para a Rest Api</li>
-<li>Argumento <strong>name</strong> de tipo <strong>string</strong> obrigatório.</li>
-<li>A transação utiliza a função <strong>NewAsset</strong> para prepara um novo asset (chaves, etc) e a função <strong>PutNew</strong> para criar o asset no <strong>channel</strong>.</li>
+<li>Only <strong>org3</strong> can call this method</li>
+<li><strong>POST</strong> method for Rest Api</li>
+<li>Argument <strong>name</strong> of type <strong>string</strong> is required.</li>
+<li>The transaction uses the <strong>NewAsset</strong> function to prepare a new asset (keys, etc) and the <strong>PutNew</strong> function to create the asset in the <strong>channel</strong>.</li>
 </ul>
-<p>A definição da transação <strong>UpdateBookTenant</strong> é a seguinte:</p>
+<p>The definition of the <strong>UpdateBookTenant</strong> transaction is as follows:</p>
 <pre><code>var UpdateBookTenant = tx.Transaction{
     Tag:         "updateBookTenant",
     Label:       "Update Book Tenant",
@@ -339,14 +304,14 @@ txList.go                               # list of custom transactions
 }
 </code></pre>
 <ul>
-<li>Qualquer organização que comece com <strong>"org"</strong> seguida de um número (org1, org2, org3, org4, etc) pode chamar esse método.</li>
-<li>Método <strong>PUT</strong> para a Rest Api</li>
-<li>Argumento <strong>book</strong> de tipo <strong>Book</strong> obrigatório.</li>
-<li>Argumento <strong>person</strong> de tipo <strong>Person</strong> obrigatório.</li>
-<li>A transação utiliza a função <strong>Get</strong> para ler as informações dos assets <strong>Book</strong> e <strong>Person</strong> do ledger</li>
-<li>A transação utiliza a função <strong>Update</strong> atualiza as informação do asset <strong>Book</strong> no ledger</li>
+<li>Any organization that starts with <strong>"org"</strong> followed by a number (org1, org2, org3, org4, etc) can call this method.</li>
+<li><strong>PUT</strong> method for Rest Api</li>
+<li>Argument <strong>book</strong> of type <strong>Book</strong> is mandatory.</li>
+<li>Argument <strong>person</strong> of type <strong>Person</strong> required.</li>
+<li>The transaction uses the <strong>Get</strong> function to read the the assets <strong>Book</strong> and <strong>Person</strong> information from the ledger</li>
+<li>The transaction uses the <strong>Update</strong> function to updates the asset information <strong>Book</strong> inside the ledger</li>
 </ul>
-<p>A definição da transação <strong>GetNumberOfBooksFromLibrary</strong> é a seguinte:</p>
+<p>The definition of the <strong>GetNumberOfBooksFromLibrary</strong> transaction is as follows:</p>
 <pre><code>var GetNumberOfBooksFromLibrary = tx.Transaction{
     Tag:         "getNumberOfBooksFromLibrary",
     Label:       "Get Number Of Books From Library",
@@ -399,13 +364,13 @@ txList.go                               # list of custom transactions
 }
 </code></pre>
 <ul>
-<li>Apenas a <strong>org2</strong> pode chamar esse método.</li>
-<li>Método <strong>GET</strong> para a Rest Api</li>
-<li>Argumento <strong>library</strong> de tipo <strong>Library</strong> obrigatório.</li>
-<li>A transação utiliza a função <strong>Get</strong> para ler as informações do asset <strong>Library</strong> do ledger</li>
+<li>Only <strong>org2</strong> can call this method.</li>
+<li><strong>GET</strong> method for Rest Api</li>
+<li>Argument <strong>library</strong> of type <strong>Library</strong> is required.</li>
+<li>The transaction uses the <strong>Get</strong> function to read <strong>Library</strong> asset information from the ledger</li>
 </ul>
 <h2 id="transaction-list-definition">Transaction list definition</h2>
-<p>O cadastro das transações que serão usados pela biblioteca <strong>GoLedger CC-Tools</strong> deve ser realizado no arquivo <strong>chaincode/txList.go</strong></p>
+<p>The registration of the transactions that will be used by <strong>GoLedger CC-Tools</strong> library must be also done inside <strong>chaincode/txList.go</strong> file</p>
 <pre><code>var txList = []tx.Transaction{
     txdefs.GetHeader,
     txdefs.CreateNewLibrary,
@@ -420,10 +385,10 @@ txList.go                               # list of custom transactions
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Tutorial/" class="btn btn-neutral float-right" title="Tutorial"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../external-tools/" class="btn btn-neutral float-right" title="External Tools">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../Testing/" class="btn btn-neutral" title="Testing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../assets/" class="btn btn-neutral" title="Assets"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -435,9 +400,9 @@ txList.go                               # list of custom transactions
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
@@ -445,17 +410,25 @@ txList.go                               # list of custom transactions
 
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../Testing/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../assets/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../Tutorial/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../external-tools/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>
