@@ -43,3 +43,8 @@ The platform can be accessed at the following link: [https://gofabric.io](https:
 
 ![Config](img/gofabric.png)
 
+## Community
+
+Subscribe to our community at **Discord**
+
+[Discord Subscription Link](https://discord.gg/GndkYHxNyQ)
