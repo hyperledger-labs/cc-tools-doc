@@ -1,5 +1,7 @@
 # Welcome to CC-Tools documentation 👋
 
+
+
 The **GoLedger CC-Tools** library is a collaborative effort from GoLedger to provide developers a powerful and easy-to-use library for creating Hyperledger Fabric chaincodes.
 
 Developed using GoLang,  the **GoLedger CC-Tools** library has several features that facilitate the journey of learning, development and deployment in production of a chaincode.
@@ -14,6 +16,10 @@ Here's where you can start:
     - [Assets](assets.md)
     - [Transactions](transactions.md)
 - [Reference guides](reference-guides.md)
+
+*This documentation page is in constant development...*
+
+Join our [Discord](https://discord.gg/GndkYHxNyQ)!
 
 ## Features
 
