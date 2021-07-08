@@ -47,4 +47,4 @@ The platform can be accessed at the following link: [https://gofabric.io](https:
 
 Join our community at **Discord**
 
-[Discord Invite Link](https://discord.gg/GndkYHxNyQ)
+[Discord Invite Link](https://discord.gg/TUdcbP72Ma)
