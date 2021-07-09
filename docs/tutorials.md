@@ -95,7 +95,7 @@ To download the rest-server dependencies, run the following script:
 
 ```sh
 cd rest-server && \
-npm install && \
+./npmInstall.sh && \
 cd ..
 ```
 
@@ -193,25 +193,6 @@ docker logs ccapi.org1.example.com
 [23:13:41] [nodemon] starting `node dist/`
 Listening on port 80
 ```
-<!-- ---
-
-**<span style="color:blue">NOTE</span>**
-
-The following error message may appear on some equipments:
-
-Error: Failed to load gRPC binary module because it was not installed for the current system
-Expected directory: node-v57-linux-x64-glibc
-Found: [node-v64-linux-x64-glibc]
-
-In this case, run the following script:
-
-```sh
-cd rest-server
-npm rebuild --target=8.1.0 --target_platform=linux --target_arch=x64 --target_libc=glibc --update-binary
-cd ..
-```
-
---- -->
 
 ### Updating your chaincode
 
