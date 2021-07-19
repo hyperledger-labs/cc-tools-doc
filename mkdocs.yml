@@ -3,10 +3,10 @@ nav:
     - Home: index.md
     - Getting Started: getting-started.md
     - Tutorials: tutorials.md
-    - Assets: assets.md
-    - Transactions: transactions.md
+    - Assets: Assets.md
+    - Transactions: Transactions.md
     - External Tools: external-tools.md
-    - Testing: testing.md
+    - Testing: Testing.md
 theme: readthedocs
 
 
