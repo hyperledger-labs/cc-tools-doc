@@ -7,6 +7,7 @@ nav:
     - Transactions: transactions.md
     - External Tools: external-tools.md
     - Testing: testing.md
+    - Functions: functions.md
 theme: readthedocs
 
 
