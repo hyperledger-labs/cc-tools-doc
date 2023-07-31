@@ -310,3 +310,114 @@ For development networks started with only 1 organization **org**, the **collect
     }
 
 ## Dynamic Asset Types
+
+The previous sections of this page described statcally created assets, by manually programming into the code. But CC-Tools also allows for dynamically definition and creation of assets during runtime, through invokes for the chaincode.
+
+### Configuration
+
+The configuration for the dynamic asset types are stored on the `dyanmicAssetTypes.go` file on CC-Tools-Demo. The configuration has the following options:
+
+- `Enabled`: defines whether dynamic assets types are enabled or disabled during runtime 
+- `Readers`: used to specify which organizations are allowed to dynamically create and manage asset type
+
+
+### Managing asset types dynamically
+
+CC-Tools offers three built-in transactions to manage asset types dynamically, `createAssetType`, `updateAssetType` and `deleteAssetType`. Using the standard CC-Tools-Demo API for org1, these transactions can be accessed using a POST request to `http://<HOST-IP>:80/api/invoke/<TRANSACTION-TAG>`, with the information about the modified assets being sent in the JSON body of the request. These transactions can also be access using the `GoInitus` interface.
+
+#### Creating asset types
+
+The asset type to be created should be sent on the `assetTypes` array on the request body. Each object on the array should contain the fields definig the type to be created, as seen on the [asset definition](#asset-definition), with the exception of the `Validate` field, which is not supported by the dynamic asset types.
+
+Alongside the asset field, the `props` array should be used to define the asset type properties. Each object on the array should contain the property fields, as seen on the [property definition](#property-definition). Once again, the `Validate` option is not available for the properties.
+
+An example payload to create a new type can be seen below:
+
+```json
+{
+	"assetTypes": [ 
+		{
+				"tag": "collection",
+				"label": "Collection",
+				"description": "A collection of books",
+				"props":	[
+					{
+						"tag": "name",
+						"label": "Name",
+						"description": "Name",
+						"dataType": "string",
+						"required": true,
+						"isKey": true
+					},
+					{
+						"tag": "rating",
+						"label": "Rating",
+						"description": "Rating",
+						"dataType": "number",
+						"defaultValue": 10,
+					},
+					{
+						"tag": "books",
+						"label": "Books",
+						"dataType": "[]->book",
+						"writers": ["org2MSP"]
+					}
+				]
+		}
+	]
+}
+```
+
+#### Updating asset types
+
+CC-Tools allows the update of asset types in the same manner used in the creation process. Note that only types created dynamically or those coded with the `Dynamic` option set as true can be updated dynamically.
+
+> When updating a statically coded asset, be careful when upgrading the chaincode version, since the coded type will be used when rebuilding the asset type list
+
+To update the asset, only the properties and fields that will be modified can be sent. The only required field for all types and properties to be modified is the `tag`, as means of identification. It's also impossible to modify the `Tag` for a type or property dynamically.
+
+It's also possible to delete an existing property of a type by setting the `delete` field as true, as long as the property in question is not a key.
+
+An example payload to update a new type can be seen below:
+
+```json
+{
+	"assetTypes": [ 
+		{
+				"tag": "collection",
+				"description": "A book collection series",
+				"props":	[
+					{
+						"tag": "rating",
+						"delete": true
+					},
+					{
+						"tag": "name",
+						"description": "The collection name"
+					}
+				]
+		}
+	]
+}
+```
+
+#### Deleting asset types
+
+CC-Tools also allows the deletion of asset types. Just like when updating, only types created dynamically or those coded with the `Dynamic` option set as true can be deleted dynamically.
+
+The `assetTypes` array objects for the deletion request only requires the tag of the type to be deleted. By default, if any asset of the type exists in the blockchain, the deletion of the asset will not be allowed. To force the deletion, the `force` option can be sent alongside the tag.
+
+Also note that, if any other type reference the type being deleted, the deletion process will fail.
+
+An example payload to update a new type can be seen below:
+
+```json
+{
+	"assetTypes": [ 
+		{
+			"tag": "collection", 
+			"force": true
+		}
+	]
+}
+```
