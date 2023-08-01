@@ -189,9 +189,9 @@ Or if you are using the minimal network:
 
 ### Renaming your project
 
-After testing CC-Tools-Demo and instantiating your first fabric network, you are ready to start developing your first chaincode.
+After testing cc-tools-demo and instantiating your first fabric network, you are ready to start developing your first chaincode.
 
-To use your own project name, instead of `CC-Tools-Demo`, the `renameProject.sh` script is availiable to rename all mentions to it on the project folder. The script takes the new name as an argument.
+To use your own project name, instead of `cc-tools-demo`, the `renameProject.sh` script is availiable to rename all mentions to it on the project folder. The script takes the new name as an argument.
 
 Example: 
 

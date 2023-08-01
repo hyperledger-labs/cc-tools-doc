@@ -22,7 +22,7 @@ In order to use **GoLedger CC-Tools** library, the assets definition is done in 
 Here follow the list of files:
 
     chaincode/
-        assettypes/     		  # asset folders
+        assettypes/     		  # assets folder
             person.go   		  # definition of a person
             book.go     		  # definition of a book
             library.go  		  # definition of a library
@@ -68,7 +68,7 @@ A property has the following fields:
 The `cc-tools-demo` repository has the following examples:
 
     chaincode/
-        assettypes/     		  # asset foldgers
+        assettypes/     		  # assets folder
             person.go   		  # definition of a person
             book.go     		  # definition of a book
             library.go  		  # definition of a library
@@ -315,7 +315,7 @@ The previous sections of this page described statcally created assets, by manual
 
 ### Configuration
 
-The configuration for the dynamic asset types are stored on the `dyanmicAssetTypes.go` file on CC-Tools-Demo. The configuration has the following options:
+The configuration for the dynamic asset types are stored on the `dyanmicAssetTypes.go` file on cc-tools-demo. The configuration has the following options:
 
 - `Enabled`: defines whether dynamic assets types are enabled or disabled during runtime 
 - `Readers`: used to specify which organizations are allowed to dynamically create and manage asset type
@@ -323,7 +323,7 @@ The configuration for the dynamic asset types are stored on the `dyanmicAssetTyp
 
 ### Managing asset types dynamically
 
-CC-Tools offers three built-in transactions to manage asset types dynamically, `createAssetType`, `updateAssetType` and `deleteAssetType`. Using the standard CC-Tools-Demo API for org1, these transactions can be accessed using a POST request to `http://<HOST-IP>:80/api/invoke/<TRANSACTION-TAG>`, with the information about the modified assets being sent in the JSON body of the request. These transactions can also be access using the `GoInitus` interface.
+CC-Tools offers three built-in transactions to manage asset types dynamically, `createAssetType`, `updateAssetType` and `deleteAssetType`. Using the standard cc-tools-demo API for org1, these transactions can be accessed using a POST request to `http://<HOST-IP>:80/api/invoke/<TRANSACTION-TAG>`, with the information about the modified assets being sent in the JSON body of the request. These transactions can also be access using the `GoInitus` interface.
 
 #### Creating asset types
 
