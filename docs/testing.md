@@ -112,7 +112,7 @@ See more on  [Godog/Cucumber](https://github.com/cucumber/godog).
 
 The definition of **Create New Library** feature is as follows:
 
-```
+```gherkin
 Feature: Create New Library
   In order to create a new library
   As an API client
@@ -158,7 +158,7 @@ This feature tests the ability to create a new library using the  `createNewLibr
 
 The definition of  **Get Books By Author**  feature is as follows:
 
-```
+```gherkin
 Feature: Get Books By Author
   In order to get all the books by an author
   As an API client
@@ -211,7 +211,7 @@ This feature tests the ability to retrieve books written by a specific author us
 
 The definition of  **Get Number Of Books From Library**  feature is as follows:
 
-```
+```gherkin
 Feature: Get Number Of Books From Library
   In order to create the number of books from library
   As an API client
@@ -285,7 +285,7 @@ This feature tests the ability to retrieve the number of books from a library th
 
 The definition of  **Update Book Tentant**  feature is as follows:
 
-```
+```gherkin
 Feature: Update Book Tentant
   In order to update book tentant
   As an API client
@@ -371,7 +371,7 @@ Each step is implemented in  `chaincode/tests/request_test.go`  file.
 
 For  `Given there is a running "" test network from scratch`  there is the following implementation:
 
-```
+```golang
 func thereIsARunningTestNetworkFromScratch(arg1 string) error {
 	// Start test network with 1 org only
 	cmd := exec.Command("../../startDev.sh", "-n", "1")
@@ -399,7 +399,7 @@ This function starts a test network from scratch with a single organization. It 
 
 For  `When I make a "[method]" request to "[endpoint]" on port [port] with "[body]"`  there is the following implementation:
 
-```
+```golang
 func iMakeARequestToOnPortWith(ctx context.Context, method, endpoint string, port int, reqBody *godog.DocString) (context.Context, error) {
 	var res *http.Response
 	var req *http.Request
@@ -452,7 +452,7 @@ This function makes an HTTP request to a specified endpoint on a given port. The
 
 For  `Then the response code should be [code]`  there is the following implementation:
 
-```
+```golang
 func theResponseCodeShouldBe(ctx context.Context, expectedCode int) (context.Context, error) {
 	// Get Status Code from context
 	statusCode, ok := ctx.Value(statusCtxKey{}).(int)
@@ -480,7 +480,7 @@ This function checks whether the received HTTP response status code matches the 
 
 For  `And the response should have`  there is the following implementation:
 
-```
+```golang
 func theResponseShouldHave(ctx context.Context, body *godog.DocString) error {
 	// Get 'ResponseBody' from context
 	respBody, ok := ctx.Value(bodyCtxKey{}).([]byte)
@@ -522,7 +522,7 @@ This function checks if the received HTTP response body matches the expected res
 
 For  `And the "[field]" field should have size [size]`  there is the following implementation:
 
-```
+```golang
 func theFieldShouldHaveSize(ctx context.Context, field string, expectedSize int) (context.Context, error) {
 	// Get 'ResponseBody' from context
 	respBody, ok := ctx.Value(bodyCtxKey{}).([]byte)
@@ -556,7 +556,7 @@ This function is used to check if a specific field in the received JSON response
 
 For  `And there are [number] books with prefix "[prefix]" by author "[name]"`  there is the following implementation:
 
-```
+```golang
 func thereAreBooksWithPrefixByAuthor(ctx context.Context, nBooks int, prefix string, author string) (context.Context, error) {
 	var res *http.Response
 	var err error
@@ -629,7 +629,7 @@ This function is used to ensure that there are a specific number of books with a
 
 For  `Given there is a library with name "[name]"`  there is the following implementation:
 
-```
+```golang
 func thereIsALibraryWithName(ctx context.Context, name string) (context.Context, error) {
 	var res *http.Response
 	var err error
@@ -697,7 +697,7 @@ This function is used to ensure that a library with a specific name exists in th
 
 It's required to initialize the scenario with the implementation of each step. The function below describes how to do it:
 
-```
+```golang
 func InitializeScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^I make a "([^"]*)" request to "([^"]*)" on port (\d+) with:$`, iMakeARequestToOnPortWith)
 	ctx.Step(`^the response code should be (\d+)$`, theResponseCodeShouldBe)
@@ -714,12 +714,12 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 
 Begin by installing godog using the following command:
 
-```
+```sh
 $ go install github.com/cucumber/godog/cmd/godog@latest
 ```
 
 Once godog is successfully installed, utilize the provided script to run tests effortlessly:
 
-```
+```sh
 $ ./godog.sh
 ```

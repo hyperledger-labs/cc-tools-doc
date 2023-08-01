@@ -81,51 +81,53 @@ Besides the files of each asset, you must register the assets that can be used b
 
 The definition of the **Person** asset is as follows:
 
-    var Person = assets.AssetType{
-    	Tag:         "person",
-    	Label:       "Person",
-    	Description: "Personal data of someone",
+```golang
+var Person = assets.AssetType{
+	Tag:         "person",
+	Label:       "Person",
+	Description: "Personal data of someone",
 
-    	Props: []assets.AssetProp{
-	    	{
-		    	// Primary key
-			    Required: true,
-			    IsKey:    true,
-			    Tag:      "id",
-			    Label:    "CPF (Brazilian ID)",
-			    DataType: "cpf",               // Datatypes are identified at datatypes folder
-			    Writers:  []string{`org1MSP`, "orgMSP"}, // This means only org1 and org can create the asset (others can edit)
-		    },
-		    {
-    			// Mandatory property
-			    Required: true,
-			    Tag:      "name",
-			    Label:    "Name of the person",
-			    DataType: "string",
-			    // Validate funcion
-			    Validate: func(name interface{}) error {
-    				nameStr := name.(string)
-				    if nameStr == "" {
-    					return fmt.Errorf("name must be non-empty")
-				    }
-				    return nil
-			    },
-		    },
-		    {
-    			// Optional property
-	    		Tag:      "dateOfBirth",
-		    	Label:    "Date of Birth",
-			    DataType: "datetime",
-		    },
-		    {
-			    // Property with default value
-			    Tag:          "height",
-			    Label:        "Person's height",
-			    DefaultValue: 0,
-			    DataType:     "number",
-		    },
-	    },
-    }
+	Props: []assets.AssetProp{
+		{
+			// Primary key
+			Required: true,
+			IsKey:    true,
+			Tag:      "id",
+			Label:    "CPF (Brazilian ID)",
+			DataType: "cpf",               // Datatypes are identified at datatypes folder
+			Writers:  []string{`org1MSP`, "orgMSP"}, // This means only org1 and org can create the asset (others can edit)
+		},
+		{
+			// Mandatory property
+			Required: true,
+			Tag:      "name",
+			Label:    "Name of the person",
+			DataType: "string",
+			// Validate funcion
+			Validate: func(name interface{}) error {
+				nameStr := name.(string)
+				if nameStr == "" {
+					return fmt.Errorf("name must be non-empty")
+				}
+				return nil
+			},
+		},
+		{
+			// Optional property
+			Tag:      "dateOfBirth",
+			Label:    "Date of Birth",
+			DataType: "datetime",
+		},
+		{
+			// Property with default value
+			Tag:          "height",
+			Label:        "Person's height",
+			DefaultValue: 0,
+			DataType:     "number",
+		},
+	},
+}
+```
 
 According to the description above, the asset **Person** has the following characteristics:
 
@@ -137,56 +139,58 @@ According to the description above, the asset **Person** has the following chara
 
 The definition of the **Book** asset is as follows:
 
-    var Book = assets.AssetType{
-    	Tag:         "book",
-    	Label:       "Book",
-    	Description: "Book",
+```golang
+var Book = assets.AssetType{
+	Tag:         "book",
+	Label:       "Book",
+	Description: "Book",
 
-    	Props: []assets.AssetProp{
-		    {
-			    // Composite Key
-			    Required: true,
-			    IsKey:    true,
-			    Tag:      "title",
-			    Label:    "Book Title",
-			    DataType: "string",
-			    Writers:  []string{`org2MSP`, "orgMSP"}, // This means only org2 and org can create the asset (others can edit)
-		    },
-		    {
-    			// Composite Key
-			    Required: true,
-			    IsKey:    true,
-			    Tag:      "author",
-			    Label:    "Book Author",
-			    DataType: "string",
-			    Writers:  []string{`org2MSP`, "orgMSP"}, // This means only org2 and org can create the asset (others can edit)
-		    },
-		    {
-    			/// Reference to another asset
-			    Tag:      "currentTenant",
-			    Label:    "Current Tenant",
-			    DataType: "->person",
-		    },
-		    {
-    			// String list
-			    Tag:      "genres",
-			    Label:    "Genres",
-			    DataType: "[]string",
-		    },
-		    {
-    			// Date property
-	    		Tag:      "published",
-		    	Label:    "Publishment Date",
-    			DataType: "datetime",
-	    	},
-			{
-				// Custom data type
-				Tag:      "bookType",
-				Label:    "Book Type",
-				DataType: "bookType",
-			},
-	    },
-    }
+	Props: []assets.AssetProp{
+		{
+			// Composite Key
+			Required: true,
+			IsKey:    true,
+			Tag:      "title",
+			Label:    "Book Title",
+			DataType: "string",
+			Writers:  []string{`org2MSP`, "orgMSP"}, // This means only org2 and org can create the asset (others can edit)
+		},
+		{
+			// Composite Key
+			Required: true,
+			IsKey:    true,
+			Tag:      "author",
+			Label:    "Book Author",
+			DataType: "string",
+			Writers:  []string{`org2MSP`, "orgMSP"}, // This means only org2 and org can create the asset (others can edit)
+		},
+		{
+			/// Reference to another asset
+			Tag:      "currentTenant",
+			Label:    "Current Tenant",
+			DataType: "->person",
+		},
+		{
+			// String list
+			Tag:      "genres",
+			Label:    "Genres",
+			DataType: "[]string",
+		},
+		{
+			// Date property
+			Tag:      "published",
+			Label:    "Publishment Date",
+			DataType: "datetime",
+		},
+		{
+			// Custom data type
+			Tag:      "bookType",
+			Label:    "Book Type",
+			DataType: "bookType",
+		},
+	},
+}
+```
 
 According to the description above, the **Book** asset has the following characteristics:
 
@@ -199,35 +203,38 @@ According to the description above, the **Book** asset has the following charact
 
 The definition of the **Library** asset is as follows:
 
-    var Library = assets.AssetType{
-    	Tag:         "library",
-	    Label:       "Library",
-	    Description: "Library as a collection of books",
+```golang
+var Library = assets.AssetType{
+	Tag:         "library",
+	Label:       "Library",
+	Description: "Library as a collection of books",
 
-	    Props: []assets.AssetProp{
-    		{
-	    		// Primary Key
-		    	Required: true,
-			    IsKey:    true,
-    			Tag:      "name",
-	    		Label:    "Library Name",
-		    	DataType: "string",
-			    Writers:  []string{`org3MSP`, "orgMSP"}, // This means only org3 and org can create the asset (others can edit)
-    		},
-	    	{
-		    	// Asset reference list
-    			Tag:      "books",
-	    		Label:    "Book Collection",
-		    	DataType: "[]->book",
-    		},
-	    	{
-		    	// Asset reference list
-			    Tag:      "entranceCode",
-    			Label:    "Entrance Code for the Library",
-	    		DataType: "->secret",
-    		},
-    	},
-    }
+	Props: []assets.AssetProp{
+		{
+			// Primary Key
+			Required: true,
+			IsKey:    true,
+			Tag:      "name",
+			Label:    "Library Name",
+			DataType: "string",
+			Writers:  []string{`org3MSP`, "orgMSP"}, // This means only org3 and org can create the asset (others can edit)
+		},
+		{
+			// Asset reference list
+			Tag:      "books",
+			Label:    "Book Collection",
+			DataType: "[]->book",
+		},
+		{
+			// Asset reference list
+			Tag:      "entranceCode",
+			Label:    "Entrance Code for the Library",
+			DataType: "->secret",
+		},
+	},
+}
+```
+
 According to the description above, the **Library** asset has the following characteristics:
 
 - Primary key **name** of type **string**
@@ -237,30 +244,32 @@ According to the description above, the **Library** asset has the following char
 
 The definition of the **Secret** asset is as follows:
 
-    var Secret = assets.AssetType{
-	    Tag:         "secret",
-    	Label:       "Secret",
-	    Description: "Secret between Org2 and Org3",
+```golang
+var Secret = assets.AssetType{
+	Tag:         "secret",
+	Label:       "Secret",
+	Description: "Secret between Org2 and Org3",
 
-    	Readers: []string{"org2MSP", "org3MSP", , "orgMSP"},
-	    Props: []assets.AssetProp{
-    		{
-	    		// Primary Key
-		    	IsKey:    true,
-			    Tag:      "secretName",
-			    Label:    "Secret Name",
-    			DataType: "string",
-			    Writers:  []string{`org2MSP`, , "orgMSP"}, // This means only org2 and org can create the asset (org3 can edit)
-		    },
-    		{
-	    		// Mandatory Property
-		    	Required: true,
-			    Tag:      "secret",
-			    Label:    "Secret",
-    			DataType: "string",
-	    	},
-	    },
-    }
+	Readers: []string{"org2MSP", "org3MSP", , "orgMSP"},
+	Props: []assets.AssetProp{
+		{
+			// Primary Key
+			IsKey:    true,
+			Tag:      "secretName",
+			Label:    "Secret Name",
+			DataType: "string",
+			Writers:  []string{`org2MSP`, , "orgMSP"}, // This means only org2 and org can create the asset (org3 can edit)
+		},
+		{
+			// Mandatory Property
+			Required: true,
+			Tag:      "secret",
+			Label:    "Secret",
+			DataType: "string",
+		},
+	},
+}
+```
 
 According to the description above, **Secret** asset has privacy features (**Hyperledger Fabric Private Data**). For this asset to work correctly, the **collections2.json** file must be configured
 
@@ -274,40 +283,46 @@ We will not describe  **Hyperledger Fabric Private Data** concepts, its operatio
 
 The **collections2.json** file needs to be configured according to the assets that have the **Readers** field
 
-    [
-        {
-            "name": "secret",
-            "requiredPeerCount": 0,
-            "maxPeerCount": 3,
-            "blockToLive": 1000000,
-            "memberOnlyRead": true,
-			"policy": "OR('org2MSP.member', 'org3MSP.member')"
-        }
-    ]
+```json
+[
+	{
+		"name": "secret",
+		"requiredPeerCount": 0,
+		"maxPeerCount": 3,
+		"blockToLive": 1000000,
+		"memberOnlyRead": true,
+		"policy": "OR('org2MSP.member', 'org3MSP.member')"
+	}
+]
+```
 
 For development networks started with only 1 organization **org**, the **collections2-org.json** is used instead.
 
-    [
-        {
-            "name": "secret",
-            "requiredPeerCount": 0,
-            "maxPeerCount": 3,
-            "blockToLive": 1000000,
-            "memberOnlyRead": true,
-			"policy": "OR('orgMSP.member')"
-        }
-    ]
+```json
+[
+	{
+		"name": "secret",
+		"requiredPeerCount": 0,
+		"maxPeerCount": 3,
+		"blockToLive": 1000000,
+		"memberOnlyRead": true,
+		"policy": "OR('orgMSP.member')"
+	}
+]
+```
 
 ## Asset list definition
 
 **GoLedger CC-Tools** assets registration must be defined in the **chaincode/assetTypeList.go** file**
 
-    var assetTypeList = []assets.AssetType{
-        assettypes.Person,
-        assettypes.Book,
-        assettypes.Library,
-        assettypes.Secret,
-    }
+```golang
+var assetTypeList = []assets.AssetType{
+	assettypes.Person,
+	assettypes.Book,
+	assettypes.Library,
+	assettypes.Secret,
+}
+```
 
 ## Dynamic Asset Types
 

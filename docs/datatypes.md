@@ -52,7 +52,7 @@ Besides the files of each datatype, you must register the datatypes that can be 
 
 The definition of the  **bookType**  datatype is as follows:
 
-```
+```golang
 type BookType float64
 
 const (
@@ -120,7 +120,7 @@ According to the description above, the datatype  **bookType**  has the followin
 
 The definition of the  **cpf**  datatype is as follows:
 
-```
+```golang
 var cpf = assets.DataType{
 	AcceptedFormats: []string{"string"},
 	Parse: func(data interface{}) (string, interface{}, errors.ICCError) {
@@ -183,7 +183,7 @@ According to the description above, the  **cpf**  datatype has the following cha
 
 **GoLedger CC-Tools**  custom datatypes registration must be defined in the  **chaincode/datatypes/datatypes.go**  file**
 
-```
+```golang
 var CustomDataTypes = map[string]assets.DataType{
 	"cpf":      cpf,
 	"bookType": bookType,
