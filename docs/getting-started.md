@@ -20,13 +20,14 @@ cd cc-tools-demo
 
 ```
 . // cc-tools-demo root folder 
+|          
+├── ccapi               // Rest API code (Golang Gin server) 
 |
 ├── chaincode           // Smart contract code (GoLang) 
-|   └── assettypes      // Asset definitions 
+|   └── assettypes      // Asset definitions
+|   └── eventtypes      // Asset definitions 
 |   └── txdefs          // Blockchain transactions 
 |   └── datatypes       // Custom property datatypes 
-|          
-├── rest-server         // Rest API code (NodeJs) 
 |
 ├── fabric              // Hyperledger Fabric artifacts 
 ```
@@ -41,12 +42,12 @@ The following systems, platforms and languages ​​must be installed:
 - GCC
 - GoLang 1.14+
 - NodeJs 10+
-- Hyperledger Fabric 1.4 (Hyperledger Fabric 2.x in roadmap)
+- Hyperledger Fabric 2.5
 
 If you are using **Linux Ubuntu**, run the following command from the root directory. This will download and install the systems above before starting development.
 
 ```sh
-./installPreReqUbuntu.sh
+./scripts/installPreReqUbuntu.sh
 ```
 
 At the end, the following success message should appear.
