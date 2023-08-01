@@ -75,3 +75,35 @@ var eventTypeList = []events.Event{
 	eventtypes.CreateLibraryLog,
 }
 ```
+
+## Calling the events
+
+CC-Tools event can be called from the transactions using the stub object provided and a `[]byte` can be sent alongside it.
+
+For `log` events, the payload is a marshalled string:
+
+```golang
+payload, ok := json.Marshal("the event payload")
+```
+
+For `transaction` events, the payload is a marshalled object containing the parameters for the called transaction:
+
+```golang
+payload, ok := json.Marshal(map[string]interface{}{
+	"library": libraryAsset,
+})
+```
+
+For `custom` events the payload can be anything on the `[]byte` format, to be handled accordingly by the custom function.
+
+It's possible to call events using the event object:
+
+```golang
+eventObj.CallEvent(stub, payload)
+```
+
+or using the event tag to trigger it:
+
+```golang
+events.CallEvent(stub, "createLibraryLog", payload)
+```

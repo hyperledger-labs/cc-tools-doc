@@ -124,6 +124,15 @@ var CreateNewLibrary = tx.Transaction{
             return nil, errors.WrapError(nil, "failed to encode asset to JSON format")
         }
 
+        // Marshall message to be logged
+		logMsg, ok := json.Marshal(fmt.Sprintf("New library name: %s", name))
+		if ok != nil {
+			return nil, errors.WrapError(nil, "failed to encode asset to JSON format")
+		}
+
+		// Call event to log the message
+		events.CallEvent(stub, "createLibraryLog", logMsg)
+
         return libraryJSON, nil
     },
 }
@@ -135,6 +144,7 @@ According to the description above, **CreateNewLibrary** transaction has the fol
 - **POST** method for Rest Api
 - Argument **name** of type **string** is required.
 - The transaction uses the **NewAsset** function to prepare a new asset (keys, etc) and the **PutNew** function to create the asset in the **channel**.
+- A log event for the type `createLibraryLog` is called with the created library name 
 
 The definition of the **GetBooksByAuthor** transaction is as follows:
 
