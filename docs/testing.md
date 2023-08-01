@@ -723,3 +723,324 @@ Once godog is successfully installed, utilize the provided script to run tests e
 ```sh
 $ ./godog.sh
 ```
+
+## Using Golang testing
+
+It's also possible to test the developed transactions using Golang testing library. In this type of testing you can simulate a transaction call and compare its results to an expected value.
+
+It's important to note that this type of testing does not work on transactions that reads the chaincode state database (such as using couchdb queries) nor transactions that reads an asset history.
+
+For the cc-tools-demo repository, there are tests for the `createNewLibrary`, `getNumberOfBooksFromLibrary` and `updateBookTenant` transactions.
+
+The tests are defined in the `chaincode/` folder.
+
+```
+chaincode/
+  main_test.go                                 // setup the test enviroment
+  txdefs_createNewLibrary_test.go              // tests the createNewLibrary transaction
+  txdefs_getNumberOfBooksFromLibrary_test.go   // tests the getNumberOfBooksFromLibrary transaction
+  txdefs_updateBookTenant_test.go              // tests the updateBookTenant transaction
+
+```
+
+### Test examples
+
+The definition of **Create New Library** test is as follows:
+
+```golang
+func TestCreateNewLibrary(t *testing.T) {
+	stub := mock.NewMockStub("org3MSP", new(cc.CCDemo))
+
+	expectedResponse := map[string]interface{}{
+		"@key":         "library:3cab201f-9e2b-579d-b7b2-72297ed17f49",
+		"@lastTouchBy": "org3MSP",
+		"@lastTx":      "createNewLibrary",
+		"@assetType":   "library",
+		"name":         "Maria's Library",
+	}
+	req := map[string]interface{}{
+		"name": "Maria's Library",
+	}
+	reqBytes, err := json.Marshal(req)
+	if err != nil {
+		t.FailNow()
+	}
+
+	res := stub.MockInvoke("createNewLibrary", [][]byte{
+		[]byte("createNewLibrary"),
+		reqBytes,
+	})
+
+	expectedResponse["@lastUpdated"] = stub.TxTimestamp.AsTime().Format(time.RFC3339)
+
+	if res.GetStatus() != 200 {
+		log.Println(res)
+		t.FailNow()
+	}
+
+	var resPayload map[string]interface{}
+	err = json.Unmarshal(res.GetPayload(), &resPayload)
+	if err != nil {
+		log.Println(err)
+		t.FailNow()
+	}
+
+	if !reflect.DeepEqual(resPayload, expectedResponse) {
+		log.Println("these should be equal")
+		log.Printf("%#v\n", resPayload)
+		log.Printf("%#v\n", expectedResponse)
+		t.FailNow()
+	}
+
+	var state map[string]interface{}
+	stateBytes := stub.State["library:3cab201f-9e2b-579d-b7b2-72297ed17f49"]
+	err = json.Unmarshal(stateBytes, &state)
+	if err != nil {
+		log.Println(err)
+		t.FailNow()
+	}
+
+	if !reflect.DeepEqual(state, expectedResponse) {
+		log.Println("these should be equal")
+		log.Printf("%#v\n", state)
+		log.Printf("%#v\n", expectedResponse)
+		t.FailNow()
+	}
+}
+```
+
+The following steps occur on this test:
+- A mock stub for `org3` is created
+- The objects with the expected response for the `createNewLibrary` transaction and the transaction request are created
+- The `createNewLibrary` transaction is invoked using the request defined on the previous step
+- The timestamp from the stub is added to the `expectedResponse` object
+- The status of the invoke is checked for the `200` code
+- A deep compare is made between the expected response object and the invoke response
+- The state for the key of the created object in the stub is also compared to the expected response
+
+The definition of **Get Number Of Books From Library** test is as follows:
+
+```golang
+func TestGetNumberOfBooksFromLibrary(t *testing.T) {
+	stub := mock.NewMockStub("org2MSP", new(CCDemo))
+
+	// Setup state
+	setupBook := map[string]interface{}{
+		"@key":         "book:a36a2920-c405-51c3-b584-dcd758338cb5",
+		"@lastTouchBy": "org2MSP",
+		"@lastTx":      "createAsset",
+		"@assetType":   "book",
+		"title":        "Meu Nome é Maria",
+		"author":       "Maria Viana",
+		"genres":       []interface{}{"biography", "non-fiction"},
+		"published":    "2019-05-06T22:12:41Z",
+	}
+	setupLibrary := map[string]interface{}{
+		"@key":         "library:3cab201f-9e2b-579d-b7b2-72297ed17f49",
+		"@lastTouchBy": "org3MSP",
+		"@lastTx":      "createNewLibrary",
+		"@assetType":   "library",
+		"name":         "Maria's Library",
+		"books": []map[string]interface{}{
+			{
+				"@assetType": "book",
+				"@key":       "book:a36a2920-c405-51c3-b584-dcd758338cb5",
+			},
+		},
+	}
+	setupBookJSON, _ := json.Marshal(setupBook)
+	setupLibraryJSON, _ := json.Marshal(setupLibrary)
+
+	stub.MockTransactionStart("setupGetNumberOfBooksFromLibrary")
+	stub.PutState("book:a36a2920-c405-51c3-b584-dcd758338cb5", setupBookJSON)
+	stub.PutState("library:3cab201f-9e2b-579d-b7b2-72297ed17f49", setupLibraryJSON)
+	refIdx, err := stub.CreateCompositeKey("book:a36a2920-c405-51c3-b584-dcd758338cb5", []string{"library:3cab201f-9e2b-579d-b7b2-72297ed17f49"})
+	if err != nil {
+		log.Println(err)
+		t.FailNow()
+	}
+	stub.PutState(refIdx, []byte{0x00})
+	stub.MockTransactionEnd("setupGetNumberOfBooksFromLibrary")
+
+	expectedResponse := map[string]interface{}{
+		"numberOfBooks": 1.0,
+	}
+	req := map[string]interface{}{
+		"library": map[string]interface{}{
+			"name": "Maria's Library",
+		},
+	}
+	reqBytes, err := json.Marshal(req)
+	if err != nil {
+		t.FailNow()
+	}
+
+	res := stub.MockInvoke("getNumberOfBooksFromLibrary", [][]byte{
+		[]byte("getNumberOfBooksFromLibrary"),
+		reqBytes,
+	})
+
+	if res.GetStatus() != 200 {
+		log.Println(res)
+		t.FailNow()
+	}
+
+	var resPayload map[string]interface{}
+	err = json.Unmarshal(res.GetPayload(), &resPayload)
+	if err != nil {
+		log.Println(err)
+		t.FailNow()
+	}
+
+	if !reflect.DeepEqual(resPayload, expectedResponse) {
+		log.Println("these should be equal")
+		log.Printf("%#v\n", resPayload)
+		log.Printf("%#v\n", expectedResponse)
+		t.FailNow()
+	}
+}
+```
+
+The following steps occur on this test:
+- A mock stub for `org2` is created
+- The state objects for the book and the library are defined and added to the mock state on the stub
+- The objects with the expected response for the `getNumberOfBooksFromLibrary` transaction and the transaction request are created
+- The `getNumberOfBooksFromLibrary` transaction is invoked using the request defined on the previous step
+- The status of the invoke is checked for the `200` code
+- A deep compare is made between the expected response object and the invoke response
+
+The definition of **Update Book Tenant** test is as follows:
+
+```golang
+func TestUpdateBookTenant(t *testing.T) {
+	stub := mock.NewMockStub("org1MSP", new(CCDemo))
+
+	// State setup
+	setupPerson := map[string]interface{}{
+		"@key":         "person:47061146-c642-51a1-844a-bf0b17cb5e19",
+		"@lastTouchBy": "org1MSP",
+		"@lastTx":      "createAsset",
+		"@assetType":   "person",
+		"name":         "Maria",
+		"id":           "31820792048",
+		"height":       0.0,
+	}
+	setupBook := map[string]interface{}{
+		"@key":         "book:a36a2920-c405-51c3-b584-dcd758338cb5",
+		"@lastTouchBy": "org2MSP",
+		"@lastTx":      "createAsset",
+		"@assetType":   "book",
+		"title":        "Meu Nome é Maria",
+		"author":       "Maria Viana",
+		// "currentTenant": map[string]interface{}{
+		// 	"@assetType": "person",
+		// 	"@key":       "person:47061146-c642-51a1-844a-bf0b17cb5e19",
+		// },
+		"genres":    []interface{}{"biography", "non-fiction"},
+		"published": "2019-05-06T22:12:41Z",
+	}
+	setupPersonJSON, _ := json.Marshal(setupPerson)
+	setupBookJSON, _ := json.Marshal(setupBook)
+
+	stub.MockTransactionStart("setupUpdateBookTenant")
+	stub.PutState("person:47061146-c642-51a1-844a-bf0b17cb5e19", setupPersonJSON)
+	stub.PutState("book:a36a2920-c405-51c3-b584-dcd758338cb5", setupBookJSON)
+	stub.MockTransactionEnd("setupUpdateBookTenant")
+
+	req := map[string]interface{}{
+		"book": map[string]interface{}{
+			"@key": "book:a36a2920-c405-51c3-b584-dcd758338cb5",
+		},
+		"tenant": map[string]interface{}{
+			"@key": "person:47061146-c642-51a1-844a-bf0b17cb5e19",
+		},
+	}
+	reqBytes, _ := json.Marshal(req)
+
+	res := stub.MockInvoke("updateBookTenant", [][]byte{
+		[]byte("updateBookTenant"),
+		reqBytes,
+	})
+
+	if res.GetStatus() != 200 {
+		log.Println(res)
+		t.FailNow()
+	}
+
+	var resPayload map[string]interface{}
+	err := json.Unmarshal(res.GetPayload(), &resPayload)
+	if err != nil {
+		log.Println(err)
+		t.FailNow()
+	}
+
+	expectedResponse := map[string]interface{}{
+		"@key":         "book:a36a2920-c405-51c3-b584-dcd758338cb5",
+		"@lastTouchBy": "org1MSP",
+		"@lastTx":      "updateBookTenant",
+		"@assetType":   "book",
+		"title":        "Meu Nome é Maria",
+		"author":       "Maria Viana",
+		"currentTenant": map[string]interface{}{
+			"@assetType": "person",
+			"@key":       "person:47061146-c642-51a1-844a-bf0b17cb5e19",
+		},
+		"genres":    []interface{}{"biography", "non-fiction"},
+		"published": "2019-05-06T22:12:41Z",
+	}
+
+	expectedResponse["@lastUpdated"] = stub.TxTimestamp.AsTime().Format(time.RFC3339)
+
+	if !reflect.DeepEqual(resPayload, expectedResponse) {
+		log.Println("these should be equal")
+		log.Printf("%#v\n", resPayload)
+		log.Printf("%#v\n", expectedResponse)
+		t.FailNow()
+	}
+
+	var state map[string]interface{}
+	stateBytes := stub.State["book:a36a2920-c405-51c3-b584-dcd758338cb5"]
+	err = json.Unmarshal(stateBytes, &state)
+	if err != nil {
+		log.Println(err)
+		t.FailNow()
+	}
+
+	if !reflect.DeepEqual(state, expectedResponse) {
+		log.Println("these should be equal")
+		log.Printf("%#v\n", state)
+		log.Printf("%#v\n", expectedResponse)
+		t.FailNow()
+	}
+}
+```
+
+The following steps occur on this test:
+- A mock stub for `org1` is created
+- The state objects for the book and the person are defined and added to the mock state on the stub
+- The object with the request for the `updateBookTenant` transaction is created
+- The status of the invoke is checked for the `200` code
+- The expected response object is created, with the stub timestamp added to the `@lastUpdated` value
+- A deep compare is made between the expected response object and the invoke response
+- The state for the key of the book in the stub is also compared to the expected response
+
+### Running the tests
+
+To run the tests, execute the following command:
+
+```sh
+cd chaincode && \
+go test && \
+cd ..
+```
+
+If the tests were succeseful, the following messages should appear on the terminal:
+
+```sh
+main.go:131: 200 init 40.796µs 
+main.go:131: 200 getNumberOfBooksFromLibrary 31.298µs 
+main.go:131: 200 updateBookTenant 136.09µs 
+main.go:131: 200 createNewLibrary 60.794µs 
+PASS
+ok      github.com/goledgerdev/cc-tools-demo/chaincode  0.006s
+```
