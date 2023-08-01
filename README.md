@@ -6,7 +6,7 @@
 - Update the `mkdocs.yml` file with the new pages added on the repository
 - Add all images used by the documentation on the `docs/img` folder
 
-## Run the dcoumentation locally
+## Run the documentation locally
 
 - Install `mkdocs` (requires python3 and pip installed on your system)
 
