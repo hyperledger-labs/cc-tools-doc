@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://goledger-cc-tools.readthedocs.io/testing/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Testing - GoLedger CC-Tools</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Testing";
+        var mkdocs_page_input_path = "testing.md";
+        var mkdocs_page_url = "/testing/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> GoLedger CC-Tools
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../tutorials/">Tutorials</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../assets/">Assets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../datatypes/">Datatypes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../events/">Events</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../transactions/">Transactions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../external-tools/">External Tools</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Testing</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#using-cc-webclient">Using cc-webclient</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-rest-server-and-cc-webclient">Configuring rest-server and cc-webclient</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#endpoint-usage">Endpoint usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#list-create-edit-delete-or-history-an-asset">List, create, edit, delete or history an asset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#executing-an-transaction">Executing an transaction</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-godog">Using Godog</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#feature-definition">Feature definition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#feature-examples">Feature examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementation-of-steps">Implementation of steps</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run-godog-tests">Run Godog tests</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-golang-testing">Using Golang testing</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#test-examples">Test examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#running-the-tests">Running the tests</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../functions/">Functions</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">GoLedger CC-Tools</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">Testing</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="testing">Testing</h1>
+<p><strong>GoLedger CC-Tools</strong> has different ways for testing the source code in development mode.</p>
+<p>For <strong>GoLang</strong> syntax checking, execute the following command:</p>
+<pre><code class="language-sh">cd chaincode \
+go vet
+</code></pre>
+<p>After the succesfull code instantiation or update, you can check the logs directly inside the <strong>chaincode</strong> execution <strong>peers</strong> containers. These containers can be identified by starting with <code>dev</code>.</p>
+<pre><code class="language-sh">docker logs dev-peer0.org1.example.com-cc-tools-demo-0.1
+</code></pre>
+<h2 id="using-cc-webclient">Using cc-webclient</h2>
+<p>To perform the tests and integrations satisfactorily, it is suggested the usage of <strong>cc-webclient</strong> tool. After finishing the steps, it is suggested to execute the following commands to create 3 applications in order to connect with <strong>org1, org2 and org3</strong>.</p>
+<pre><code class="language-sh">./run-cc-web.sh 8080 &amp; \
+./run-cc-web.sh 8090 &amp; \
+./run-cc-web.sh 8100 &amp;
+</code></pre>
+<h3 id="configuring-rest-server-and-cc-webclient">Configuring rest-server and cc-webclient</h3>
+<p>After executing <strong>cc-webclient</strong> containers, the applications can be accessed directly through the ports defined in the script. E.g.: 8080, 8090, 8100</p>
+<p>After accessing <strong>cc-webclient</strong> through the browser, the configuration of rest server address can be done by clicking on the tool icon.</p>
+<p><img alt="Config" src="../img/header-cc-webclient.png" /></p>
+<p>Accesses are can be made with the following settings:</p>
+<ul>
+<li><code>org1</code>: <strong>http://localhost:80</strong></li>
+<li><code>org2</code>: <strong>http://localhost:980</strong></li>
+<li><code>org3</code>: <strong>http://localhost:1080</strong></li>
+</ul>
+<p><img alt="Config" src="../img/config-cc-webclient.png" /></p>
+<p><strong>cc-webclient</strong> application has a sidebar that shows the available <strong>assets</strong> as well as the <strong>transactions</strong> registered in the chaincode.</p>
+<p><img alt="Bar" src="../img/bar-cc-webclient.png" /></p>
+<h3 id="endpoint-usage">Endpoint usage</h3>
+<p>The rest-server endpoint usage is shown using the <strong>CURL</strong> buttons.</p>
+<p><img alt="CURL" src="../img/curl-cc-webclient.png" /></p>
+<p>For each screen, you can check endpoint usage pressing the <code>curl</code> button.</p>
+<p>For example, on the asset creation screen:</p>
+<p><img alt="CURL" src="../img/curl-create-cc-webclient.png" /></p>
+<h3 id="list-create-edit-delete-or-history-an-asset">List, create, edit, delete or history an asset</h3>
+<p>To <strong>list</strong> each asset, just select an asset in the sidebar.</p>
+<p><img alt="List Asset" src="../img/list-cc-webclient.png" /></p>
+<p>Selecting the <code>CREATE</code> button at the asset list window, an asset <strong>creation</strong> screen will appear.</p>
+<p>For example, for the <strong>Person</strong> asset</p>
+<p><img alt="Create Asset" src="../img/create-asset-cc-webclient.png" /></p>
+<p>The <strong>edit</strong> screen is accessed by selecting the <strong>edit icon</strong> in an asset's list window.</p>
+<p>The <strong>removal</strong> of an asset is requested by selecting the <strong>delete icon</strong> in the asset's list window.</p>
+<p>The <strong>history</strong> of an asset (all changes recorded in the ledger) can be viewed by selecting the <strong>history icon</strong> in an asset's window.</p>
+<h3 id="executing-an-transaction">Executing an transaction</h3>
+<p>The <strong>transaction</strong> execution can be performed by selecting the transaction in the sidebar.</p>
+<p>For example, for transaction <strong>UpdateBookTenant</strong></p>
+<p><img alt="Transaction" src="../img/transaction-cc-webclient.png" /></p>
+<h2 id="using-godog">Using Godog</h2>
+<p><code>Godog</code>  is the official Cucumber BDD framework for Golang. It follows the principles of BDD, which emphasizes defining the desired behavior of the software through user-focused scenarios written in natural language. These scenarios are written in a Given-When-Then format, making it easier for non-technical team members to understand and contribute to the testing process.</p>
+<p>For the cc-tools-demo repository, there are godog tests for every transaction. Each transaction is represented as a feature and each feature has scenarios to be tested.</p>
+<p>Features are defined in  <code>chaincode/tests/features</code>  folder.</p>
+<pre><code>chaincode/
+  tests/
+    features/
+      createNewLibrary.feature              # definition of Create New Library feature
+      getBooksByAuthor.feature              # definition of Get Books By Author feature
+      getNumberOfBooksFromLibrary.feature   # definition of Get Number Of Books From Library feature
+      updateBookTenant.feature              # definition of Create New Library feature
+    request_test.go                         # implementation of steps for scenarios
+
+</code></pre>
+<h3 id="feature-definition">Feature definition</h3>
+<p>In the feature file, you start by defining the  <strong>feature</strong>  using the  <code>Feature</code>  keyword followed by a brief description. Each  <strong>scenario</strong>  within the feature is defined using the  <code>Scenario</code>  keyword, followed by a scenario title or description. Scenarios represent specific use cases or situations that you want to test. Inside each scenario, you define the  <strong>steps</strong>  of the test using  <code>Given</code>,  <code>When</code>, and  <code>Then</code>  keywords. These steps describe the preconditions (Given), actions (When), and expected outcomes (Then) of the scenario. Optionally, you can also use  <code>And</code>  and  <code>But</code>  to further clarify or add additional steps.</p>
+<p>See more on  <a href="https://github.com/cucumber/godog">Godog/Cucumber</a>.</p>
+<h3 id="feature-examples">Feature examples</h3>
+<p>The definition of <strong>Create New Library</strong> feature is as follows:</p>
+<pre><code class="language-gherkin">Feature: Create New Library
+  In order to create a new library
+  As an API client
+  I want to make a request with the name of the desired library
+
+  Scenario: Create a new library
+      Given there is a running &quot;&quot; test network from scratch
+      When I make a &quot;POST&quot; request to &quot;/api/invoke/createNewLibrary&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;name&quot;: &quot;Elizabeth's Library&quot;
+          }
+          &quot;&quot;&quot;
+      Then the response code should be 200
+      And the response should have:
+          &quot;&quot;&quot;
+          {
+              &quot;@key&quot;:         &quot;library:9cf6726a-a327-568a-baf1-5881393073bf&quot;,
+              &quot;@lastTouchBy&quot;: &quot;orgMSP&quot;,
+              &quot;@lastTx&quot;:      &quot;createNewLibrary&quot;,
+              &quot;@assetType&quot;:   &quot;library&quot;,
+              &quot;name&quot;:         &quot;Elizabeth's Library&quot;
+          }
+          &quot;&quot;&quot;
+
+  Scenario: Try to create a new library with a name that already exists
+      Given there is a running &quot;&quot; test network
+      Given there is a library with name &quot;John's Library&quot;
+      When I make a &quot;POST&quot; request to &quot;/api/invoke/createNewLibrary&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;name&quot;: &quot;John's Library&quot;
+          }
+          &quot;&quot;&quot;
+      Then the response code should be 409
+
+</code></pre>
+<p>This feature tests the ability to create a new library using the  <code>createNewLibrary</code>  tx through the API. It consists of two scenarios: one is a successful case, and the other tests when attempting to create a library with a name that already exists.</p>
+<ul>
+<li><strong>Scenario 1:</strong>  This scenario represents the successful creation of a new library. It verifies that the API can correctly handle the request with a new library name and returns the expected response.</li>
+<li><strong>Scenario 2:</strong>  This scenario tests the case when attempting to create a library with a name that already exists in the system. It checks whether the API responds with the appropriate status code (409) to indicate a conflict.</li>
+</ul>
+<p>The definition of  <strong>Get Books By Author</strong>  feature is as follows:</p>
+<pre><code class="language-gherkin">Feature: Get Books By Author
+  In order to get all the books by an author
+  As an API client
+  I want to make a request to the getBooksByAuthor transaction
+  And receive the appropriate books
+
+  Scenario: Request an author with multiple books
+      Given there is a running &quot;&quot; test network
+      And there are 3 books with prefix &quot;book&quot; by author &quot;Jack&quot;
+      When I make a &quot;GET&quot; request to &quot;/api/query/getBooksByAuthor&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;authorName&quot;: &quot;Jack&quot;
+          }
+          &quot;&quot;&quot;
+      Then the response code should be 200
+      And the &quot;result&quot; field should have size 3
+
+  Scenario: Request an author with no books
+      Given there is a running &quot;&quot; test network
+      When I make a &quot;GET&quot; request to &quot;/api/query/getBooksByAuthor&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;authorName&quot;: &quot;Mary&quot;
+          }
+          &quot;&quot;&quot;
+      Then the response code should be 200
+      And the &quot;result&quot; field should have size 0
+
+  Scenario: Request an author with 2 books while there are other authors with more books
+      Given there is a running &quot;&quot; test network
+      Given there are 1 books with prefix &quot;fantasy&quot; by author &quot;Missy&quot;
+      Given there are 2 books with prefix &quot;cook&quot; by author &quot;John&quot;
+      When I make a &quot;GET&quot; request to &quot;/api/query/getBooksByAuthor&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;authorName&quot;: &quot;John&quot;
+          }
+          &quot;&quot;&quot;
+      Then the response code should be 200
+      And the &quot;result&quot; field should have size 2
+
+</code></pre>
+<p>This feature tests the ability to retrieve books written by a specific author using the  <code>getBooksByAuthor</code>  transaction through the API. It consists of three scenarios that cover different cases based on the number of books by the requested author.</p>
+<ul>
+<li><strong>Scenario 1:</strong>  This scenario verifies that the API can successfully handle a request for an author who has multiple books in the system. It checks whether the API returns the correct response code (200) and that the "result" field in the response contains all the books by the author with a size of 3.</li>
+<li><strong>Scenario 2:</strong>  This scenario tests the case when requesting an author who has no books in the system. It checks whether the API returns the appropriate response code (200) and that the "result" field in the response is empty with a size of 0.</li>
+<li><strong>Scenario 3:</strong>  This scenario validates the API's response when requesting an author with two books, while other authors have more books in the system. It verifies whether the API returns the correct response code (200) and that the "result" field contains the two books by the requested author with a size of 2.</li>
+</ul>
+<p>The definition of  <strong>Get Number Of Books From Library</strong>  feature is as follows:</p>
+<pre><code class="language-gherkin">Feature: Get Number Of Books From Library
+  In order to create the number of books from library
+  As an API client
+  I want to make a request
+
+  Scenario: Query Get Number Of Books From Library that Exists
+      Given there is a running &quot;&quot; test network
+      And I make a &quot;POST&quot; request to &quot;/api/invoke/createAsset&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;asset&quot;: [
+                  {
+                      &quot;@assetType&quot;: &quot;book&quot;,
+                      &quot;title&quot;:      &quot;Meu Nome é Maria&quot;,
+                      &quot;author&quot;:     &quot;Maria Viana&quot;
+                  }
+              ]
+          }
+          &quot;&quot;&quot;
+      And I make a &quot;POST&quot; request to &quot;/api/invoke/createAsset&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;asset&quot;: [{
+                  &quot;@assetType&quot;: &quot;library&quot;,
+                  &quot;name&quot;: &quot;Maria's Library&quot;,
+                  &quot;books&quot;: [
+                      {
+                          &quot;@assetType&quot;: &quot;book&quot;,
+                          &quot;@key&quot;: &quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;
+                      }
+                  ]
+              }]
+        }
+          &quot;&quot;&quot;
+      When I make a &quot;GET&quot; request to &quot;/api/query/getNumberOfBooksFromLibrary&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;library&quot;: {
+                  &quot;@key&quot;: &quot;library:3cab201f-9e2b-579d-b7b2-72297ed17f49&quot;,
+                  &quot;@assetType&quot;: &quot;library&quot;
+          }
+          }
+          &quot;&quot;&quot;
+      Then the response code should be 200
+      And the response should have:
+          &quot;&quot;&quot;
+          {
+              &quot;numberOfBooks&quot;: 1.0
+          }
+          &quot;&quot;&quot;
+
+  Scenario: Query Get Number Of Books From Library that Does Not Exists
+      Given there is a running &quot;&quot; test network
+      When I make a &quot;GET&quot; request to &quot;/api/query/getNumberOfBooksFromLibrary&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;library&quot;: {
+                  &quot;@key&quot;: &quot;library:5c5b201f-9e4c-579d-b7b2-72297ed17f78&quot;,
+                  &quot;@assetType&quot;: &quot;library&quot;
+          }
+          }
+          &quot;&quot;&quot;
+      Then the response code should be 400
+
+</code></pre>
+<p>This feature tests the ability to retrieve the number of books from a library through the API. It consists of two scenarios: one scenario deals with querying a library that exists and has books, while the other scenario tests querying a library that does not exist.</p>
+<ul>
+<li><strong>Scenario 1:</strong>  This scenario verifies that the API can successfully retrieve the number of books from a library that exists in the system. It first creates a new book and a library with the book associated. Then it queries the number of books from the library and checks whether the API returns the correct response code (200) and whether the response contains the expected number of books (1).</li>
+<li><strong>Scenario 2:</strong>  This scenario tests the case when attempting to query the number of books from a library that does not exist in the system. It checks whether the API returns the appropriate response code (400) to indicate a bad request due to the non-existent library.</li>
+</ul>
+<p>The definition of  <strong>Update Book Tentant</strong>  feature is as follows:</p>
+<pre><code class="language-gherkin">Feature: Update Book Tentant
+  In order to update book tentant
+  As an API client
+  I want to make a request
+
+  Scenario: Update Book With A Existing Tentant 
+      # The first 3 statements will be used by all scenarios on this feature
+      Given there is a running &quot;&quot; test network
+      And I make a &quot;POST&quot; request to &quot;/api/invoke/createAsset&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;asset&quot;: [{
+                      &quot;@assetType&quot;: &quot;book&quot;,
+                      &quot;title&quot;:      &quot;Meu Nome é Maria&quot;,
+                      &quot;author&quot;:     &quot;Maria Viana&quot;
+                  }]
+          }
+          &quot;&quot;&quot;
+      And I make a &quot;POST&quot; request to &quot;/api/invoke/createAsset&quot; on port 880 with:
+          &quot;&quot;&quot;
+         {
+              &quot;asset&quot;: [{
+                  &quot;@assetType&quot;: &quot;person&quot;,
+                  &quot;name&quot;: &quot;Maria&quot;,
+                  &quot;id&quot;: &quot;31820792048&quot;
+              }]
+        }
+          &quot;&quot;&quot;
+      When I make a &quot;PUT&quot; request to &quot;/api/invoke/updateBookTenant&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;book&quot;: {
+                  &quot;@assetType&quot;: &quot;book&quot;,
+                  &quot;@key&quot;: &quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;
+          },
+              &quot;tenant&quot;: {
+                  &quot;@assetType&quot;: &quot;person&quot;,
+                  &quot;@key&quot;: &quot;person:47061146-c642-51a1-844a-bf0b17cb5e19&quot;
+              }
+          }
+          &quot;&quot;&quot;
+      Then the response code should be 200
+      And the response should have:
+          &quot;&quot;&quot;
+          {
+              &quot;@key&quot;: &quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;,
+              &quot;@lastTouchBy&quot;: &quot;orgMSP&quot;,
+              &quot;@lastTx&quot;: &quot;updateBookTenant&quot;,
+              &quot;currentTenant&quot;: {
+            &quot;@assetType&quot;: &quot;person&quot;,
+            &quot;@key&quot;: &quot;person:47061146-c642-51a1-844a-bf0b17cb5e19&quot;
+          }
+          }
+          &quot;&quot;&quot;
+
+  Scenario: Update Book With A Not Existing Tentant
+      Given there is a running &quot;&quot; test network
+      When I make a &quot;PUT&quot; request to &quot;/api/invoke/updateBookTenant&quot; on port 880 with:
+          &quot;&quot;&quot;
+          {
+              &quot;book&quot;: {
+                  &quot;@assetType&quot;: &quot;book&quot;,
+                  &quot;@key&quot;: &quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;
+          },
+              &quot;tenant&quot;: {
+                  &quot;@assetType&quot;: &quot;person&quot;,
+                  &quot;@key&quot;: &quot;person:56891146-c6866-51a1-844a-bf0b17cb5e19&quot;
+              }
+          }
+          &quot;&quot;&quot;
+      Then the response code should be 404
+
+</code></pre>
+<p>This feature tests the ability to update the tenant of a book using the API. It consists of two scenarios: one scenario deals with updating a book with an existing tenant, and the other scenario tests updating a book with a non-existent tenant.</p>
+<ul>
+<li><strong>Scenario 1:</strong>  This scenario verifies that the API can successfully update the tenant of a book with an existing tenant. It creates a new book and a new person (tenant), associates the person with the book, and then makes a PUT request to update the book's tenant. The scenario checks whether the API returns the correct response code (200) and whether the book's tenant is correctly updated in the response.</li>
+<li><strong>Scenario 2:</strong>  This scenario tests the case when attempting to update the tenant of a book with a tenant that does not exist in the system. It makes a PUT request to update the book's tenant with the non-existing tenant. The scenario checks whether the API returns the appropriate response code (404) to indicate that the tenant does not exist in the system.</li>
+</ul>
+<h3 id="implementation-of-steps">Implementation of steps</h3>
+<p>Each step is implemented in  <code>chaincode/tests/request_test.go</code>  file.</p>
+<p>For  <code>Given there is a running "" test network from scratch</code>  there is the following implementation:</p>
+<pre><code class="language-golang">func thereIsARunningTestNetworkFromScratch(arg1 string) error {
+    // Start test network with 1 org only
+    cmd := exec.Command(&quot;../../startDev.sh&quot;, &quot;-n&quot;, &quot;1&quot;)
+
+    _, err := cmd.Output()
+
+    if err != nil {
+        fmt.Println(err.Error())
+        return err
+    }
+
+    // Wait for ccapi
+    err = waitForNetwork(&quot;880&quot;)
+    if err != nil {
+        fmt.Println(err.Error())
+        return err
+    }
+
+    return nil
+}  
+
+</code></pre>
+<p>This function starts a test network from scratch with a single organization. It executes a shell command  <code>../../startDev.sh -n 1</code>  to start the test network. After starting the network, it waits for the ccapi to be available on port 880 using the  <code>waitForNetwork</code>  function.</p>
+<p>For  <code>When I make a "[method]" request to "[endpoint]" on port [port] with "[body]"</code>  there is the following implementation:</p>
+<pre><code class="language-golang">func iMakeARequestToOnPortWith(ctx context.Context, method, endpoint string, port int, reqBody *godog.DocString) (context.Context, error) {
+    var res *http.Response
+    var req *http.Request
+    var err error
+
+    // Initialize http client
+    client := &amp;http.Client{}
+
+    // Create request
+    if method == &quot;GET&quot; {
+        b64str := b64.StdEncoding.EncodeToString([]byte(reqBody.Content))
+        reqParam := &quot;?@request=&quot; + b64str
+        req, err = http.NewRequest(&quot;GET&quot;, &quot;http://localhost:&quot;+strconv.Itoa(port)+endpoint+reqParam, nil)
+        if err != nil {
+            return ctx, err
+        }
+    } else {
+        dataAsBytes := bytes.NewBuffer([]byte(reqBody.Content))
+
+        req, err = http.NewRequest(method, &quot;http://localhost:&quot;+strconv.Itoa(port)+endpoint, dataAsBytes)
+        if err != nil {
+            return ctx, err
+        }
+    }
+
+    // Set header and make request
+    req.Header.Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
+    res, err = client.Do(req)
+    if err != nil {
+        return ctx, err
+    }
+
+    // Get status code and response body
+    statusCode := res.StatusCode
+    resBody, err := ioutil.ReadAll(res.Body)
+
+    if err != nil {
+        return ctx, err
+    }
+    res.Body.Close()
+
+    // Append status code and response body to context
+    bodyCtx := context.WithValue(ctx, bodyCtxKey{}, resBody)
+    statusCtx := context.WithValue(bodyCtx, statusCtxKey{}, statusCode)
+    return statusCtx, nil
+}
+</code></pre>
+<p>This function makes an HTTP request to a specified endpoint on a given port. The function supports both  <code>GET</code>  and  <code>POST</code>  methods. If the method is  <code>GET</code>, the request body is base64 encoded and added as a query parameter. If the method is  <code>POST</code>, the request body is included in the request as JSON data.</p>
+<p>For  <code>Then the response code should be [code]</code>  there is the following implementation:</p>
+<pre><code class="language-golang">func theResponseCodeShouldBe(ctx context.Context, expectedCode int) (context.Context, error) {
+    // Get Status Code from context
+    statusCode, ok := ctx.Value(statusCtxKey{}).(int)
+    if !ok {
+        return ctx, errors.New(&quot;context unaveilable while retrieving status&quot;)
+    }
+
+    if statusCode != expectedCode {
+        // Get Response body from context
+        resBody, ok := ctx.Value(bodyCtxKey{}).([]byte)
+        if !ok {
+            return ctx, errors.New(&quot;unaveilable context while retrieving body&quot;)
+        }
+
+        // Test Failed
+        return ctx, fmt.Errorf(&quot;received wrong status response. Got %d Expected: %d\nResponse body: %s&quot;, statusCode, expectedCode, string(resBody))
+    }
+
+    return ctx, nil
+}
+
+</code></pre>
+<p>This function checks whether the received HTTP response status code matches the expected code.</p>
+<p>For  <code>And the response should have</code>  there is the following implementation:</p>
+<pre><code class="language-golang">func theResponseShouldHave(ctx context.Context, body *godog.DocString) error {
+    // Get 'ResponseBody' from context
+    respBody, ok := ctx.Value(bodyCtxKey{}).([]byte)
+    if !ok {
+        return errors.New(&quot;unavailable context&quot;)
+    }
+
+    var expected map[string]interface{}
+    var received map[string]interface{}
+
+    if err := json.Unmarshal([]byte(body.Content), &amp;expected); err != nil {
+        return err
+    }
+    if err := json.Unmarshal(respBody, &amp;received); err != nil {
+        return err
+    }
+
+    for key, value := range expected {
+        if !reflect.DeepEqual(value, received[key]) {
+            var expectedBytes []byte
+            var receivedBytes []byte
+            var err error
+            if expectedBytes, err = json.MarshalIndent(value, &quot;&quot;, &quot;  &quot;); err != nil {
+                return err
+            }
+            if receivedBytes, err = json.MarshalIndent(received[key], &quot;&quot;, &quot;  &quot;); err != nil {
+                return err
+            }
+
+            return fmt.Errorf(&quot;Expected %s to be equal %s, but received %s&quot;, key, expectedBytes, receivedBytes)
+        }
+    }
+
+    return nil
+}
+</code></pre>
+<p>This function checks if the received HTTP response body matches the expected response body defined in the Godog scenario step. It first retrieves the actual response body and the expected response body from the context. It unmarshals both JSON strings into corresponding map-like structures to facilitate comparison. The function performs a deep comparison between the value of each key in the expected and received response bodies using  <code>reflect.DeepEqual</code>  function.</p>
+<p>For  <code>And the "[field]" field should have size [size]</code>  there is the following implementation:</p>
+<pre><code class="language-golang">func theFieldShouldHaveSize(ctx context.Context, field string, expectedSize int) (context.Context, error) {
+    // Get 'ResponseBody' from context
+    respBody, ok := ctx.Value(bodyCtxKey{}).([]byte)
+    if !ok {
+        return ctx, errors.New(&quot;unavailable context&quot;)
+    }
+
+    var bodyMap map[string]interface{}
+
+    if err := json.Unmarshal(respBody, &amp;bodyMap); err != nil {
+        return ctx, err
+    }
+
+    resultField, ok := bodyMap[field]
+    if !ok {
+        return ctx, errors.New(&quot;unavailable filed on body response&quot;)
+    }
+
+    fieldLen := len(resultField.([]interface{}))
+    if fieldLen != expectedSize {
+        // Test Failed
+        return ctx, fmt.Errorf(&quot;received wrong filed size on response body. Got %d Expected: %d\nResponse body: %s&quot;, fieldLen, expectedSize, string(respBody))
+    }
+
+    return ctx, nil
+}
+
+</code></pre>
+<p>This function is used to check if a specific field in the received JSON response body has the expected size (number of elements). It is typically used in Godog scenarios to verify the size of an array or a list-like field in the response.</p>
+<p>For  <code>And there are [number] books with prefix "[prefix]" by author "[name]"</code>  there is the following implementation:</p>
+<pre><code class="language-golang">func thereAreBooksWithPrefixByAuthor(ctx context.Context, nBooks int, prefix string, author string) (context.Context, error) {
+    var res *http.Response
+    var err error
+
+    for i := 1; i &lt;= nBooks; i++ {
+        // Verify if book already exists
+        requestJSON := map[string]interface{}{
+            &quot;query&quot;: map[string]interface{}{
+                &quot;selector&quot;: map[string]interface{}{
+                    &quot;author&quot;:     author,
+                    &quot;title&quot;:      prefix + strconv.Itoa(i),
+                    &quot;@assetType&quot;: &quot;book&quot;,
+                },
+            },
+            &quot;resolve&quot;: true,
+        }
+        jsonStr, e := json.Marshal(requestJSON)
+        if e != nil {
+            return ctx, err
+        }
+        dataAsBytes := bytes.NewBuffer([]byte(jsonStr))
+
+        if res, err = http.Post(&quot;http://localhost/api/query/search&quot;, &quot;application/json&quot;, dataAsBytes); err != nil {
+            return ctx, err
+        }
+        resBody, err := ioutil.ReadAll(res.Body)
+        if err != nil {
+            return ctx, err
+        }
+        res.Body.Close()
+
+        var received map[string]interface{}
+        if err = json.Unmarshal(resBody, &amp;received); err != nil {
+            return ctx, err
+        }
+
+        // Create book if it doesnt exists
+        if len(received[&quot;result&quot;].([]interface{})) == 0 {
+            requestJSON := map[string]interface{}{
+                &quot;asset&quot;: []interface{}{
+                    map[string]interface{}{
+                        &quot;author&quot;:     author,
+                        &quot;title&quot;:      prefix + strconv.Itoa(i),
+                        &quot;@assetType&quot;: &quot;book&quot;,
+                    },
+                },
+            }
+            jsonStr, e := json.Marshal(requestJSON)
+            if e != nil {
+                return ctx, err
+            }
+            dataAsBytes := bytes.NewBuffer([]byte(jsonStr))
+
+            if res, err = http.Post(&quot;http://localhost:880/api/invoke/createAsset&quot;, &quot;application/json&quot;, dataAsBytes); err != nil {
+                return ctx, err
+            }
+
+            if res.StatusCode != 200 {
+                return ctx, errors.New(&quot;Failed to create book asset&quot;)
+            }
+        }
+    }
+
+    return ctx, nil
+}
+
+</code></pre>
+<p>This function is used to ensure that there are a specific number of books with a given prefix and author in the system. It is typically used in Godog scenarios to set up the required test data before running tests that involve books and authors.</p>
+<p>For  <code>Given there is a library with name "[name]"</code>  there is the following implementation:</p>
+<pre><code class="language-golang">func thereIsALibraryWithName(ctx context.Context, name string) (context.Context, error) {
+    var res *http.Response
+    var err error
+
+    // Verify if library already exists
+    requestJSON := map[string]interface{}{
+        &quot;query&quot;: map[string]interface{}{
+            &quot;selector&quot;: map[string]interface{}{
+                &quot;name&quot;:       name,
+                &quot;@assetType&quot;: &quot;library&quot;,
+            },
+        },
+        &quot;resolve&quot;: true,
+    }
+    jsonStr, e := json.Marshal(requestJSON)
+    if e != nil {
+        return ctx, err
+    }
+    dataAsBytes := bytes.NewBuffer([]byte(jsonStr))
+
+    if res, err = http.Post(&quot;http://localhost/api/query/search&quot;, &quot;application/json&quot;, dataAsBytes); err != nil {
+        return ctx, err
+    }
+    resBody, err := ioutil.ReadAll(res.Body)
+    if err != nil {
+        return ctx, err
+    }
+    res.Body.Close()
+
+    var received map[string]interface{}
+    if err = json.Unmarshal(resBody, &amp;received); err != nil {
+        return ctx, err
+    }
+
+    // Create library if it doesnt exists
+    if len(received[&quot;result&quot;].([]interface{})) == 0 {
+        requestJSON = map[string]interface{}{
+            &quot;asset&quot;: []interface{}{
+                map[string]interface{}{
+                    &quot;name&quot;:       name,
+                    &quot;@assetType&quot;: &quot;library&quot;,
+                },
+            },
+        }
+        jsonStr, e = json.Marshal(requestJSON)
+        if e != nil {
+            return ctx, err
+        }
+        dataAsBytes = bytes.NewBuffer([]byte(jsonStr))
+
+        if res, err = http.Post(&quot;http://localhost:880/api/invoke/createAsset&quot;, &quot;application/json&quot;, dataAsBytes); err != nil {
+            return ctx, err
+        }
+
+        if res.StatusCode != 200 {
+            return ctx, errors.New(&quot;Failed to create library asset&quot;)
+        }
+    }
+
+    return ctx, nil
+}
+</code></pre>
+<p>This function is used to ensure that a library with a specific name exists in the system. It is typically used in Godog scenarios to set up the required test data before running tests that involve libraries. If the library does not exist, it creates a new library asset.</p>
+<p>It's required to initialize the scenario with the implementation of each step. The function below describes how to do it:</p>
+<pre><code class="language-golang">func InitializeScenario(ctx *godog.ScenarioContext) {
+    ctx.Step(`^I make a &quot;([^&quot;]*)&quot; request to &quot;([^&quot;]*)&quot; on port (\d+) with:$`, iMakeARequestToOnPortWith)
+    ctx.Step(`^the response code should be (\d+)$`, theResponseCodeShouldBe)
+    ctx.Step(`^the response should have:$`, theResponseShouldHave)
+    ctx.Step(`^there is a running &quot;([^&quot;]*)&quot; test network$`, thereIsARunningTestNetwork)
+    ctx.Step(`^there is a running &quot;([^&quot;]*)&quot; test network from scratch$`, thereIsARunningTestNetworkFromScratch)
+    ctx.Step(`^there are (\d+) books with prefix &quot;([^&quot;]*)&quot; by author &quot;([^&quot;]*)&quot;$`, thereAreBooksWithPrefixByAuthor)
+    ctx.Step(`^the &quot;([^&quot;]*)&quot; field should have size (\d+)$`, theFieldShouldHaveSize)
+    ctx.Step(`^there is a library with name &quot;([^&quot;]*)&quot;$`, thereIsALibraryWithName)
+}
+</code></pre>
+<h3 id="run-godog-tests">Run Godog tests</h3>
+<p>Begin by installing godog using the following command:</p>
+<pre><code class="language-sh">$ go install github.com/cucumber/godog/cmd/godog@latest
+</code></pre>
+<p>Once godog is successfully installed, utilize the provided script to run tests effortlessly:</p>
+<pre><code class="language-sh">$ ./godog.sh
+</code></pre>
+<h2 id="using-golang-testing">Using Golang testing</h2>
+<p>It's also possible to test the developed transactions using Golang testing library. In this type of testing you can simulate a transaction call and compare its results to an expected value.</p>
+<p>It's important to note that this type of testing does not work on transactions that reads the chaincode state database (such as using couchdb queries) nor transactions that reads an asset history.</p>
+<p>For the cc-tools-demo repository, there are tests for the <code>createNewLibrary</code>, <code>getNumberOfBooksFromLibrary</code> and <code>updateBookTenant</code> transactions.</p>
+<p>The tests are defined in the <code>chaincode/</code> folder.</p>
+<pre><code>chaincode/
+  main_test.go                                 // setup the test enviroment
+  txdefs_createNewLibrary_test.go              // tests the createNewLibrary transaction
+  txdefs_getNumberOfBooksFromLibrary_test.go   // tests the getNumberOfBooksFromLibrary transaction
+  txdefs_updateBookTenant_test.go              // tests the updateBookTenant transaction
+
+</code></pre>
+<h3 id="test-examples">Test examples</h3>
+<p>The definition of <strong>Create New Library</strong> test is as follows:</p>
+<pre><code class="language-golang">func TestCreateNewLibrary(t *testing.T) {
+    stub := mock.NewMockStub(&quot;org3MSP&quot;, new(cc.CCDemo))
+
+    expectedResponse := map[string]interface{}{
+        &quot;@key&quot;:         &quot;library:3cab201f-9e2b-579d-b7b2-72297ed17f49&quot;,
+        &quot;@lastTouchBy&quot;: &quot;org3MSP&quot;,
+        &quot;@lastTx&quot;:      &quot;createNewLibrary&quot;,
+        &quot;@assetType&quot;:   &quot;library&quot;,
+        &quot;name&quot;:         &quot;Maria's Library&quot;,
+    }
+    req := map[string]interface{}{
+        &quot;name&quot;: &quot;Maria's Library&quot;,
+    }
+    reqBytes, err := json.Marshal(req)
+    if err != nil {
+        t.FailNow()
+    }
+
+    res := stub.MockInvoke(&quot;createNewLibrary&quot;, [][]byte{
+        []byte(&quot;createNewLibrary&quot;),
+        reqBytes,
+    })
+
+    expectedResponse[&quot;@lastUpdated&quot;] = stub.TxTimestamp.AsTime().Format(time.RFC3339)
+
+    if res.GetStatus() != 200 {
+        log.Println(res)
+        t.FailNow()
+    }
+
+    var resPayload map[string]interface{}
+    err = json.Unmarshal(res.GetPayload(), &amp;resPayload)
+    if err != nil {
+        log.Println(err)
+        t.FailNow()
+    }
+
+    if !reflect.DeepEqual(resPayload, expectedResponse) {
+        log.Println(&quot;these should be equal&quot;)
+        log.Printf(&quot;%#v\n&quot;, resPayload)
+        log.Printf(&quot;%#v\n&quot;, expectedResponse)
+        t.FailNow()
+    }
+
+    var state map[string]interface{}
+    stateBytes := stub.State[&quot;library:3cab201f-9e2b-579d-b7b2-72297ed17f49&quot;]
+    err = json.Unmarshal(stateBytes, &amp;state)
+    if err != nil {
+        log.Println(err)
+        t.FailNow()
+    }
+
+    if !reflect.DeepEqual(state, expectedResponse) {
+        log.Println(&quot;these should be equal&quot;)
+        log.Printf(&quot;%#v\n&quot;, state)
+        log.Printf(&quot;%#v\n&quot;, expectedResponse)
+        t.FailNow()
+    }
+}
+</code></pre>
+<p>The following steps occur on this test:
+- A mock stub for <code>org3</code> is created
+- The objects with the expected response for the <code>createNewLibrary</code> transaction and the transaction request are created
+- The <code>createNewLibrary</code> transaction is invoked using the request defined on the previous step
+- The timestamp from the stub is added to the <code>expectedResponse</code> object
+- The status of the invoke is checked for the <code>200</code> code
+- A deep compare is made between the expected response object and the invoke response
+- The state for the key of the created object in the stub is also compared to the expected response</p>
+<p>The definition of <strong>Get Number Of Books From Library</strong> test is as follows:</p>
+<pre><code class="language-golang">func TestGetNumberOfBooksFromLibrary(t *testing.T) {
+    stub := mock.NewMockStub(&quot;org2MSP&quot;, new(CCDemo))
+
+    // Setup state
+    setupBook := map[string]interface{}{
+        &quot;@key&quot;:         &quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;,
+        &quot;@lastTouchBy&quot;: &quot;org2MSP&quot;,
+        &quot;@lastTx&quot;:      &quot;createAsset&quot;,
+        &quot;@assetType&quot;:   &quot;book&quot;,
+        &quot;title&quot;:        &quot;Meu Nome é Maria&quot;,
+        &quot;author&quot;:       &quot;Maria Viana&quot;,
+        &quot;genres&quot;:       []interface{}{&quot;biography&quot;, &quot;non-fiction&quot;},
+        &quot;published&quot;:    &quot;2019-05-06T22:12:41Z&quot;,
+    }
+    setupLibrary := map[string]interface{}{
+        &quot;@key&quot;:         &quot;library:3cab201f-9e2b-579d-b7b2-72297ed17f49&quot;,
+        &quot;@lastTouchBy&quot;: &quot;org3MSP&quot;,
+        &quot;@lastTx&quot;:      &quot;createNewLibrary&quot;,
+        &quot;@assetType&quot;:   &quot;library&quot;,
+        &quot;name&quot;:         &quot;Maria's Library&quot;,
+        &quot;books&quot;: []map[string]interface{}{
+            {
+                &quot;@assetType&quot;: &quot;book&quot;,
+                &quot;@key&quot;:       &quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;,
+            },
+        },
+    }
+    setupBookJSON, _ := json.Marshal(setupBook)
+    setupLibraryJSON, _ := json.Marshal(setupLibrary)
+
+    stub.MockTransactionStart(&quot;setupGetNumberOfBooksFromLibrary&quot;)
+    stub.PutState(&quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;, setupBookJSON)
+    stub.PutState(&quot;library:3cab201f-9e2b-579d-b7b2-72297ed17f49&quot;, setupLibraryJSON)
+    refIdx, err := stub.CreateCompositeKey(&quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;, []string{&quot;library:3cab201f-9e2b-579d-b7b2-72297ed17f49&quot;})
+    if err != nil {
+        log.Println(err)
+        t.FailNow()
+    }
+    stub.PutState(refIdx, []byte{0x00})
+    stub.MockTransactionEnd(&quot;setupGetNumberOfBooksFromLibrary&quot;)
+
+    expectedResponse := map[string]interface{}{
+        &quot;numberOfBooks&quot;: 1.0,
+    }
+    req := map[string]interface{}{
+        &quot;library&quot;: map[string]interface{}{
+            &quot;name&quot;: &quot;Maria's Library&quot;,
+        },
+    }
+    reqBytes, err := json.Marshal(req)
+    if err != nil {
+        t.FailNow()
+    }
+
+    res := stub.MockInvoke(&quot;getNumberOfBooksFromLibrary&quot;, [][]byte{
+        []byte(&quot;getNumberOfBooksFromLibrary&quot;),
+        reqBytes,
+    })
+
+    if res.GetStatus() != 200 {
+        log.Println(res)
+        t.FailNow()
+    }
+
+    var resPayload map[string]interface{}
+    err = json.Unmarshal(res.GetPayload(), &amp;resPayload)
+    if err != nil {
+        log.Println(err)
+        t.FailNow()
+    }
+
+    if !reflect.DeepEqual(resPayload, expectedResponse) {
+        log.Println(&quot;these should be equal&quot;)
+        log.Printf(&quot;%#v\n&quot;, resPayload)
+        log.Printf(&quot;%#v\n&quot;, expectedResponse)
+        t.FailNow()
+    }
+}
+</code></pre>
+<p>The following steps occur on this test:
+- A mock stub for <code>org2</code> is created
+- The state objects for the book and the library are defined and added to the mock state on the stub
+- The objects with the expected response for the <code>getNumberOfBooksFromLibrary</code> transaction and the transaction request are created
+- The <code>getNumberOfBooksFromLibrary</code> transaction is invoked using the request defined on the previous step
+- The status of the invoke is checked for the <code>200</code> code
+- A deep compare is made between the expected response object and the invoke response</p>
+<p>The definition of <strong>Update Book Tenant</strong> test is as follows:</p>
+<pre><code class="language-golang">func TestUpdateBookTenant(t *testing.T) {
+    stub := mock.NewMockStub(&quot;org1MSP&quot;, new(CCDemo))
+
+    // State setup
+    setupPerson := map[string]interface{}{
+        &quot;@key&quot;:         &quot;person:47061146-c642-51a1-844a-bf0b17cb5e19&quot;,
+        &quot;@lastTouchBy&quot;: &quot;org1MSP&quot;,
+        &quot;@lastTx&quot;:      &quot;createAsset&quot;,
+        &quot;@assetType&quot;:   &quot;person&quot;,
+        &quot;name&quot;:         &quot;Maria&quot;,
+        &quot;id&quot;:           &quot;31820792048&quot;,
+        &quot;height&quot;:       0.0,
+    }
+    setupBook := map[string]interface{}{
+        &quot;@key&quot;:         &quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;,
+        &quot;@lastTouchBy&quot;: &quot;org2MSP&quot;,
+        &quot;@lastTx&quot;:      &quot;createAsset&quot;,
+        &quot;@assetType&quot;:   &quot;book&quot;,
+        &quot;title&quot;:        &quot;Meu Nome é Maria&quot;,
+        &quot;author&quot;:       &quot;Maria Viana&quot;,
+        // &quot;currentTenant&quot;: map[string]interface{}{
+        //  &quot;@assetType&quot;: &quot;person&quot;,
+        //  &quot;@key&quot;:       &quot;person:47061146-c642-51a1-844a-bf0b17cb5e19&quot;,
+        // },
+        &quot;genres&quot;:    []interface{}{&quot;biography&quot;, &quot;non-fiction&quot;},
+        &quot;published&quot;: &quot;2019-05-06T22:12:41Z&quot;,
+    }
+    setupPersonJSON, _ := json.Marshal(setupPerson)
+    setupBookJSON, _ := json.Marshal(setupBook)
+
+    stub.MockTransactionStart(&quot;setupUpdateBookTenant&quot;)
+    stub.PutState(&quot;person:47061146-c642-51a1-844a-bf0b17cb5e19&quot;, setupPersonJSON)
+    stub.PutState(&quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;, setupBookJSON)
+    stub.MockTransactionEnd(&quot;setupUpdateBookTenant&quot;)
+
+    req := map[string]interface{}{
+        &quot;book&quot;: map[string]interface{}{
+            &quot;@key&quot;: &quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;,
+        },
+        &quot;tenant&quot;: map[string]interface{}{
+            &quot;@key&quot;: &quot;person:47061146-c642-51a1-844a-bf0b17cb5e19&quot;,
+        },
+    }
+    reqBytes, _ := json.Marshal(req)
+
+    res := stub.MockInvoke(&quot;updateBookTenant&quot;, [][]byte{
+        []byte(&quot;updateBookTenant&quot;),
+        reqBytes,
+    })
+
+    if res.GetStatus() != 200 {
+        log.Println(res)
+        t.FailNow()
+    }
+
+    var resPayload map[string]interface{}
+    err := json.Unmarshal(res.GetPayload(), &amp;resPayload)
+    if err != nil {
+        log.Println(err)
+        t.FailNow()
+    }
+
+    expectedResponse := map[string]interface{}{
+        &quot;@key&quot;:         &quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;,
+        &quot;@lastTouchBy&quot;: &quot;org1MSP&quot;,
+        &quot;@lastTx&quot;:      &quot;updateBookTenant&quot;,
+        &quot;@assetType&quot;:   &quot;book&quot;,
+        &quot;title&quot;:        &quot;Meu Nome é Maria&quot;,
+        &quot;author&quot;:       &quot;Maria Viana&quot;,
+        &quot;currentTenant&quot;: map[string]interface{}{
+            &quot;@assetType&quot;: &quot;person&quot;,
+            &quot;@key&quot;:       &quot;person:47061146-c642-51a1-844a-bf0b17cb5e19&quot;,
+        },
+        &quot;genres&quot;:    []interface{}{&quot;biography&quot;, &quot;non-fiction&quot;},
+        &quot;published&quot;: &quot;2019-05-06T22:12:41Z&quot;,
+    }
+
+    expectedResponse[&quot;@lastUpdated&quot;] = stub.TxTimestamp.AsTime().Format(time.RFC3339)
+
+    if !reflect.DeepEqual(resPayload, expectedResponse) {
+        log.Println(&quot;these should be equal&quot;)
+        log.Printf(&quot;%#v\n&quot;, resPayload)
+        log.Printf(&quot;%#v\n&quot;, expectedResponse)
+        t.FailNow()
+    }
+
+    var state map[string]interface{}
+    stateBytes := stub.State[&quot;book:a36a2920-c405-51c3-b584-dcd758338cb5&quot;]
+    err = json.Unmarshal(stateBytes, &amp;state)
+    if err != nil {
+        log.Println(err)
+        t.FailNow()
+    }
+
+    if !reflect.DeepEqual(state, expectedResponse) {
+        log.Println(&quot;these should be equal&quot;)
+        log.Printf(&quot;%#v\n&quot;, state)
+        log.Printf(&quot;%#v\n&quot;, expectedResponse)
+        t.FailNow()
+    }
+}
+</code></pre>
+<p>The following steps occur on this test:
+- A mock stub for <code>org1</code> is created
+- The state objects for the book and the person are defined and added to the mock state on the stub
+- The object with the request for the <code>updateBookTenant</code> transaction is created
+- The status of the invoke is checked for the <code>200</code> code
+- The expected response object is created, with the stub timestamp added to the <code>@lastUpdated</code> value
+- A deep compare is made between the expected response object and the invoke response
+- The state for the key of the book in the stub is also compared to the expected response</p>
+<h3 id="running-the-tests">Running the tests</h3>
+<p>To run the tests, execute the following command:</p>
+<pre><code class="language-sh">cd chaincode &amp;&amp; \
+go test &amp;&amp; \
+cd ..
+</code></pre>
+<p>If the tests were succeseful, the following messages should appear on the terminal:</p>
+<pre><code class="language-sh">main.go:131: 200 init 40.796µs 
+main.go:131: 200 getNumberOfBooksFromLibrary 31.298µs 
+main.go:131: 200 updateBookTenant 136.09µs 
+main.go:131: 200 createNewLibrary 60.794µs 
+PASS
+ok      github.com/goledgerdev/cc-tools-demo/chaincode  0.006s
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../external-tools/" class="btn btn-neutral float-left" title="External Tools"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../functions/" class="btn btn-neutral float-right" title="Functions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../external-tools/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../functions/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

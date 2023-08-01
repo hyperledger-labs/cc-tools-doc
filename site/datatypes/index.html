@@ -1,70 +1,62 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Datatypes - GoLedger CC-Tools</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
-
-  <link rel="stylesheet" href="../css/theme.css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Datatypes";
-    var mkdocs_page_input_path = "datatypes.md";
-    var mkdocs_page_url = null;
-  </script>
-  
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://goledger-cc-tools.readthedocs.io/datatypes/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Datatypes - GoLedger CC-Tools</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Datatypes";
+        var mkdocs_page_input_path = "datatypes.md";
+        var mkdocs_page_url = "/datatypes/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> GoLedger CC-Tools</a>
-        <div role="search">
+          <a href=".." class="icon icon-home"> GoLedger CC-Tools
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../tutorials/">Tutorials</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../assets/">Assets</a>
-                    </li>
-                </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Datatypes</a>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../tutorials/">Tutorials</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../assets/">Assets</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Datatypes</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#datatype-definition">Datatype definition</a>
     </li>
@@ -73,75 +65,73 @@
     <li class="toctree-l2"><a class="reference internal" href="#datatype-list-definition">Datatype list definition</a>
     </li>
     </ul>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../transactions/">Transactions</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../external-tools/">External Tools</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a>
-                    </li>
-                </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../events/">Events</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../transactions/">Transactions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../external-tools/">External Tools</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../functions/">Functions</a>
+                </li>
+              </ul>
       </div>
     </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">GoLedger CC-Tools</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">GoLedger CC-Tools</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
-    
-      
-    
-    <li>Datatypes</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">Datatypes</li>
     <li class="wy-breadcrumbs-aside">
-      
     </li>
   </ul>
-  
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
                 <h1 id="datatypes">Datatypes</h1>
-<p><strong>GoLedger CC-Tools</strong> datatypes are a way to categorize and define the nature of a data that can be stored in an asset and manipulated in transactions. It's essential to validate that the data entered matches the expected data type.</p>
-
+<p><strong>GoLedger CC-Tools</strong>  datatypes are a way to categorize and define the nature of a data that can be stored in an asset and manipulated in transactions. It's essential to validate that the data entered matches the expected data type.</p>
 <p>CC-Tools provides some primitive datatypes. Here are them:</p>
 <ul>
-    <li><code>string</code>: represents a sequence of characters.</li>
-    <li><code>number</code>: represents a 64 bits floating-point.</li>
-    <li><code>integer</code>: represents whole numbers The size depends on the underlying architecture and can vary between 32 bits and 64 bits </li>
-    <li><code>boolean</code>: represents two possible values: true and false.</li>
-    <li><code>datetime</code>: represents a date in RFC3339 format, e.g. "2019-05-06T22:12:41Z".</li>
-    <li><code>@object</code>: represents a string in JSON format. It is typically used to define the structure and properties of a JSON object. It's made up of key-value pairs.</li>
+<li><code>string</code>: represents a sequence of characters.</li>
+<li><code>number</code>: represents a 64 bits floating-point.</li>
+<li><code>integer</code>: represents whole numbers The size depends on the underlying architecture and can vary between 32 bits and 64 bits</li>
+<li><code>boolean</code>: represents two possible values: true and false.</li>
+<li><code>datetime</code>: represents a date in RFC3339 format, e.g. "2019-05-06T22:12:41Z".</li>
+<li><code>@object</code>: represents a string in JSON format. It is typically used to define the structure and properties of a JSON object. It's made up of key-value pairs.</li>
 </ul>
-
-<p>It also allows developers to inject custom primitive data types. In order to use <strong>GoLedger CC-Tools</strong> library, the datatypes definition is done in the <strong>chaincode/datatypes</strong> folder</p>
+<p>It also allows developers to inject custom primitive data types. In order to use  <strong>GoLedger CC-Tools</strong>  library, the datatypes definition is done in the  <strong>chaincode/datatypes</strong>  folder</p>
 <p>Here follow the list of files:</p>
 <pre><code>chaincode/
     datatypes/        # custom datatype folders
         bookType.go   # definition of a book type
         cpf.go        # definition of a cpf
         datatypes.go  # list of datatypes instantiated
+
 </code></pre>
 <h2 id="datatype-definition">Datatype definition</h2>
-<p>The construction and definition of a custom datatype is done by creating a file at <strong>chaincode/datatypes</strong> folder</p>
+<p>The construction and definition of a custom datatype is done by creating a file at  <strong>chaincode/datatypes</strong>  folder</p>
 <p>An datatype has the following fields</p>
 <ul>
 <li><code>AcceptedFormats</code>: list of "core" types that can be accepted (string, number, integer, boolean, datetime).</li>
@@ -150,16 +140,17 @@
 <li><code>Parse</code>: function called to check if the input value is valid, make necessary conversions and return a string representation of the value.</li>
 </ul>
 <h2 id="datatype-examples">Datatype examples</h2>
-<p>The <code>cc-tools-demo</code> repository has the following examples:</p>
+<p>The  <code>cc-tools-demo</code>  repository has the following examples:</p>
 <pre><code>chaincode/
     datatypes/     # datatypes folders
         bookType.go   # definition of a book type
         cpf.go        # definition of a cpf
         datatypes.go  # list of datatypes instantiated
+
 </code></pre>
-<p>Besides the files of each datatype, you must register the datatypes that can be used by the <strong>Goledger CC-Tools</strong> library in the <strong>datatypes.go</strong> file</p>
-<p>The definition of the <strong>bookType</strong> datatype is as follows:</p>
-<pre><code>type BookType float64
+<p>Besides the files of each datatype, you must register the datatypes that can be used by the  <strong>Goledger CC-Tools</strong>  library in the  <strong>datatypes.go</strong>  file</p>
+<p>The definition of the  <strong>bookType</strong>  datatype is as follows:</p>
+<pre><code class="language-golang">type BookType float64
 
 const (
     BookTypeHardcover BookType = iota
@@ -177,17 +168,17 @@ func (b BookType) CheckType() errors.ICCError {
     case BookTypeEbook:
         return nil
     default:
-        return errors.NewCCError("invalid type", 400)
+        return errors.NewCCError(&quot;invalid type&quot;, 400)
     }
 
 }
 
 var bookType = assets.DataType{
-    AcceptedFormats: []string{"number"},
+    AcceptedFormats: []string{&quot;number&quot;},
     DropDownValues: map[string]interface{}{
-        "Hardcover": BookTypeHardcover,
-        "Paperback": BookTypePaperback,
-        "Ebook":     BookTypeEbook,
+        &quot;Hardcover&quot;: BookTypeHardcover,
+        &quot;Paperback&quot;: BookTypePaperback,
+        &quot;Ebook&quot;:     BookTypeEbook,
     },
     Description: ``,
 
@@ -204,10 +195,10 @@ var bookType = assets.DataType{
             var err error
             dataVal, err = strconv.ParseFloat(v, 64)
             if err != nil {
-                return "", nil, errors.WrapErrorWithStatus(err, "asset property must be an integer, is %t", 400)
+                return &quot;&quot;, nil, errors.WrapErrorWithStatus(err, &quot;asset property must be an integer, is %t&quot;, 400)
             }
         default:
-            return "", nil, errors.NewCCError("asset property must be an integer, is %t", 400)
+            return &quot;&quot;, nil, errors.NewCCError(&quot;asset property must be an integer, is %t&quot;, 400)
         }
 
         retVal := (BookType)(dataVal)
@@ -215,103 +206,96 @@ var bookType = assets.DataType{
         return fmt.Sprint(retVal), retVal, err
     },
 }
+
 </code></pre>
-<p>According to the description above, the datatype <strong>bookType</strong> has the following characteristics:</p>
+<p>According to the description above, the datatype  <strong>bookType</strong>  has the following characteristics:</p>
 <ul>
 <li>It represents an enumerated type</li>
-<li>Accepted values are the numbers 0, 1 and 2, which represent book types <strong>Hardcover</strong>, <strong>Paperback</strong> and <strong>Ebook</strong>, respectively</li>
-<li>Parse function receives the input value, parse it to <code>float64</code>and check number is valid in <code>CheckType</code> function</li>
+<li>Accepted values are the numbers 0, 1 and 2, which represent book types  <strong>Hardcover</strong>,  <strong>Paperback</strong>  and  <strong>Ebook</strong>, respectively</li>
+<li>Parse function receives the input value, parse it to  <code>float64</code>and check number is valid in  <code>CheckType</code>  function</li>
 </ul>
-<p>The definition of the <strong>cpf</strong> datatype is as follows:</p>
-<pre><code>var cpf = assets.DataType{
-	AcceptedFormats: []string{"string"},
-	Parse: func(data interface{}) (string, interface{}, errors.ICCError) {
-		cpf, ok := data.(string)
-		if !ok {
-			return "", nil, errors.NewCCError("property must be a string", 400)
-		}
+<p>The definition of the  <strong>cpf</strong>  datatype is as follows:</p>
+<pre><code class="language-golang">var cpf = assets.DataType{
+    AcceptedFormats: []string{&quot;string&quot;},
+    Parse: func(data interface{}) (string, interface{}, errors.ICCError) {
+        cpf, ok := data.(string)
+        if !ok {
+            return &quot;&quot;, nil, errors.NewCCError(&quot;property must be a string&quot;, 400)
+        }
 
-		cpf = strings.ReplaceAll(cpf, ".", "")
-		cpf = strings.ReplaceAll(cpf, "-", "")
+        cpf = strings.ReplaceAll(cpf, &quot;.&quot;, &quot;&quot;)
+        cpf = strings.ReplaceAll(cpf, &quot;-&quot;, &quot;&quot;)
 
-		if len(cpf) != 11 {
-			return "", nil, errors.NewCCError("CPF must have 11 digits", 400)
-		}
+        if len(cpf) != 11 {
+            return &quot;&quot;, nil, errors.NewCCError(&quot;CPF must have 11 digits&quot;, 400)
+        }
 
-		var vd0 int
-		for i, d := range cpf {
-			if i >= 9 {
-				break
-			}
-			dnum := int(d) - '0'
-			vd0 += (10 - i) * dnum
-		}
-		vd0 = 11 - vd0%11
-		if vd0 > 9 {
-			vd0 = 0
-		}
-		if int(cpf[9])-'0' != vd0 {
-			return "", nil, errors.NewCCError("Invalid CPF", 400)
-		}
+        var vd0 int
+        for i, d := range cpf {
+            if i &gt;= 9 {
+                break
+            }
+            dnum := int(d) - '0'
+            vd0 += (10 - i) * dnum
+        }
+        vd0 = 11 - vd0%11
+        if vd0 &gt; 9 {
+            vd0 = 0
+        }
+        if int(cpf[9])-'0' != vd0 {
+            return &quot;&quot;, nil, errors.NewCCError(&quot;Invalid CPF&quot;, 400)
+        }
 
-		var vd1 int
-		for i, d := range cpf {
-			if i >= 10 {
-				break
-			}
-			dnum := int(d) - '0'
-			vd1 += (11 - i) * dnum
-		}
-		vd1 = 11 - vd1%11
-		if vd1 > 9 {
-			vd1 = 0
-		}
-		if int(cpf[10])-'0' != vd1 {
-			return "", nil, errors.NewCCError("Invalid CPF", 400)
-		}
+        var vd1 int
+        for i, d := range cpf {
+            if i &gt;= 10 {
+                break
+            }
+            dnum := int(d) - '0'
+            vd1 += (11 - i) * dnum
+        }
+        vd1 = 11 - vd1%11
+        if vd1 &gt; 9 {
+            vd1 = 0
+        }
+        if int(cpf[10])-'0' != vd1 {
+            return &quot;&quot;, nil, errors.NewCCError(&quot;Invalid CPF&quot;, 400)
+        }
 
-		return cpf, cpf, nil
-	},
+        return cpf, cpf, nil
+    },
 }
+
 </code></pre>
-<p>According to the description above, the <strong>cpf</strong> datatype has the following characteristics:</p>
+<p>According to the description above, the  <strong>cpf</strong>  datatype has the following characteristics:</p>
 <ul>
 <li>It accepts a string as input in the CPF standard format, e.g. "861.232.710-59". Punctuation is not required.</li>
 <li>Parse function validates that the provided CPF numbers adhere to the correct structure, including the required digits and verification algorithm.</li>
 </ul>
-
 <h2 id="datatype-list-definition">Datatype list definition</h2>
-<p><strong>GoLedger CC-Tools</strong> custom datatypes registration must be defined in the <strong>chaincode/datatypes/datatypes.go</strong> file</p>
-<pre><code>var CustomDataTypes = map[string]assets.DataType{
-	"cpf":      cpf,
-	"bookType": bookType,
+<p><strong>GoLedger CC-Tools</strong>  custom datatypes registration must be defined in the  <strong>chaincode/datatypes/datatypes.go</strong>  file**</p>
+<pre><code class="language-golang">var CustomDataTypes = map[string]assets.DataType{
+    &quot;cpf&quot;:      cpf,
+    &quot;bookType&quot;: bookType,
 }
 </code></pre>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../transactions/" class="btn btn-neutral float-right" title="Transactions">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../tutorials/" class="btn btn-neutral" title="Tutorials"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../assets/" class="btn btn-neutral float-left" title="Assets"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../events/" class="btn btn-neutral float-right" title="Events">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -319,24 +303,26 @@ var bookType = assets.DataType{
 
   </div>
 
-  <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../tutorials/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../transactions/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../assets/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../events/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
-        };
+        });
     </script>
 
 </body>
