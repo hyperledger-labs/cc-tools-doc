@@ -4,6 +4,7 @@ nav:
     - Getting Started: getting-started.md
     - Tutorials: tutorials.md
     - Assets: assets.md
+    - Datatypes: datatypes.md
     - Transactions: transactions.md
     - External Tools: external-tools.md
     - Testing: testing.md
