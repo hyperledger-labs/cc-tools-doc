@@ -34,6 +34,7 @@ An event has the following fields
 - `Channel`: string field with the channel name of where the transaction to be called by an event of the `transaction` type is located. If empty, defaults to the same channel of the caller.
 - `Chaincode`: string field with the chaincode name of where the transaction to be called by an event of the `transaction` type is located. If empty, defaults to the same chaincode of the caller.
 - `CustomFunction`: a custom function to be executed by events of the `custom` type. It receives a stub of the type `*sw.StubWrapper` and a payload of type `[]byte`, sent alongside the event, and returns an error.
+- `ReadOnly`: a boolean which defines if the custom functions for events of type `custom` can alter the world state or not. If `true`, no assets will be able to be commited to the ledger by the custom function.
 
 
 ## Event example

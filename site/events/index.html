@@ -140,6 +140,7 @@ eventTypeList.go              # list of events instantiated
 <li><code>Channel</code>: string field with the channel name of where the transaction to be called by an event of the <code>transaction</code> type is located. If empty, defaults to the same channel of the caller.</li>
 <li><code>Chaincode</code>: string field with the chaincode name of where the transaction to be called by an event of the <code>transaction</code> type is located. If empty, defaults to the same chaincode of the caller.</li>
 <li><code>CustomFunction</code>: a custom function to be executed by events of the <code>custom</code> type. It receives a stub of the type <code>*sw.StubWrapper</code> and a payload of type <code>[]byte</code>, sent alongside the event, and returns an error.</li>
+<li><code>ReadOnly</code>: a boolean which defines if the custom functions for events of type <code>custom</code> can alter the world state or not. If <code>true</code>, no assets will be able to be commited to the ledger by the custom function.</li>
 </ul>
 <h2 id="event-example">Event example</h2>
 <p>The <code>cc-tools-demo</code> repository has the following example:</p>
