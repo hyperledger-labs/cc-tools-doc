@@ -13,8 +13,12 @@ Here's where you can start:
 - [Tutorials](tutorials.md)
 - Key concepts
     - [Assets](assets.md)
+    - [Datatypes](datatypes.md)
+    - [Events](events.md)
     - [Transactions](transactions.md)
-- [Reference guides](reference-guides.md)
+- [External Tools](external-tools.md)
+- [Testing](testing.md)
+- [Reference guides](functions.md)
 
 *This documentation page is in constant development...*
 
