@@ -41,7 +41,7 @@ An asset has the following fields
 - `Label`: string field to define the label to be used by external applications. Free text.
 - `Description`: asset description string field to be used by external applications. Free text.
 - `Props`: asset properties. It has its own fields (description next)
-- `Readers`: used to define private data organizations (needs additional configuration in **collections2.json** file)
+- `Readers`: used to define private data organizations. If not empty, only the organizations defined in the array will have the ability to read assets from the type.
 - `Validate`: asset validation function. Allows for a custom code to validate the asset as a whole.
 - `Dynamic`: boolean field to indicate that the asset type can be modified dynamically. For coded assets it is recommended to leave it as *false* and use the upgrade chaincode funcionality to update the asset definition.
 
@@ -271,7 +271,7 @@ var Secret = assets.AssetType{
 }
 ```
 
-According to the description above, **Secret** asset has privacy features (**Hyperledger Fabric Private Data**). For this asset to work correctly, the **collections2.json** file must be configured
+According to the description above, **Secret** asset has privacy features (**Hyperledger Fabric Private Data**).
 
 We will not describe  **Hyperledger Fabric Private Data** concepts, its operation, **policy** rules, etc. But to put it simply, when an asset is defined as private, only its content hash is recorded in **channel**, the asset's content (its properties) are only accessed by a limited set of organizations, the content recorded in transient databases in each peer.
 
@@ -280,36 +280,6 @@ We will not describe  **Hyperledger Fabric Private Data** concepts, its operatio
 - Only **org2** and **org** can create or change the **secretName** property and the **Secret** asset (because it is key)
 - **secret** property of type **string** is mandatory for the asset
 - Both **org**, **org2** and **org3** can create or change the **secret** property
-
-The **collections2.json** file needs to be configured according to the assets that have the **Readers** field
-
-```json
-[
-	{
-		"name": "secret",
-		"requiredPeerCount": 0,
-		"maxPeerCount": 3,
-		"blockToLive": 1000000,
-		"memberOnlyRead": true,
-		"policy": "OR('org2MSP.member', 'org3MSP.member')"
-	}
-]
-```
-
-For development networks started with only 1 organization **org**, the **collections2-org.json** is used instead.
-
-```json
-[
-	{
-		"name": "secret",
-		"requiredPeerCount": 0,
-		"maxPeerCount": 3,
-		"blockToLive": 1000000,
-		"memberOnlyRead": true,
-		"policy": "OR('orgMSP.member')"
-	}
-]
-```
 
 ## Asset list definition
 

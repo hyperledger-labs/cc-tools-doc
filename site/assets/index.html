@@ -161,7 +161,7 @@ assetTypeList.go              # list of assets instantiated
 <li><code>Label</code>: string field to define the label to be used by external applications. Free text.</li>
 <li><code>Description</code>: asset description string field to be used by external applications. Free text.</li>
 <li><code>Props</code>: asset properties. It has its own fields (description next)</li>
-<li><code>Readers</code>: used to define private data organizations (needs additional configuration in <strong>collections2.json</strong> file)</li>
+<li><code>Readers</code>: used to define private data organizations. If not empty, only the organizations defined in the array will have the ability to read assets from the type.</li>
 <li><code>Validate</code>: asset validation function. Allows for a custom code to validate the asset as a whole.</li>
 <li><code>Dynamic</code>: boolean field to indicate that the asset type can be modified dynamically. For coded assets it is recommended to leave it as <em>false</em> and use the upgrade chaincode funcionality to update the asset definition.</li>
 </ul>
@@ -373,7 +373,7 @@ assetTypeList.go              # list of assets instantiated
     },
 }
 </code></pre>
-<p>According to the description above, <strong>Secret</strong> asset has privacy features (<strong>Hyperledger Fabric Private Data</strong>). For this asset to work correctly, the <strong>collections2.json</strong> file must be configured</p>
+<p>According to the description above, <strong>Secret</strong> asset has privacy features (<strong>Hyperledger Fabric Private Data</strong>).</p>
 <p>We will not describe  <strong>Hyperledger Fabric Private Data</strong> concepts, its operation, <strong>policy</strong> rules, etc. But to put it simply, when an asset is defined as private, only its content hash is recorded in <strong>channel</strong>, the asset's content (its properties) are only accessed by a limited set of organizations, the content recorded in transient databases in each peer.</p>
 <ul>
 <li>Asset content can only be read by <strong>org</strong>, <strong>org2</strong> and <strong>org3</strong></li>
@@ -382,30 +382,6 @@ assetTypeList.go              # list of assets instantiated
 <li><strong>secret</strong> property of type <strong>string</strong> is mandatory for the asset</li>
 <li>Both <strong>org</strong>, <strong>org2</strong> and <strong>org3</strong> can create or change the <strong>secret</strong> property</li>
 </ul>
-<p>The <strong>collections2.json</strong> file needs to be configured according to the assets that have the <strong>Readers</strong> field</p>
-<pre><code class="language-json">[
-    {
-        &quot;name&quot;: &quot;secret&quot;,
-        &quot;requiredPeerCount&quot;: 0,
-        &quot;maxPeerCount&quot;: 3,
-        &quot;blockToLive&quot;: 1000000,
-        &quot;memberOnlyRead&quot;: true,
-        &quot;policy&quot;: &quot;OR('org2MSP.member', 'org3MSP.member')&quot;
-    }
-]
-</code></pre>
-<p>For development networks started with only 1 organization <strong>org</strong>, the <strong>collections2-org.json</strong> is used instead.</p>
-<pre><code class="language-json">[
-    {
-        &quot;name&quot;: &quot;secret&quot;,
-        &quot;requiredPeerCount&quot;: 0,
-        &quot;maxPeerCount&quot;: 3,
-        &quot;blockToLive&quot;: 1000000,
-        &quot;memberOnlyRead&quot;: true,
-        &quot;policy&quot;: &quot;OR('orgMSP.member')&quot;
-    }
-]
-</code></pre>
 <h2 id="asset-list-definition">Asset list definition</h2>
 <p><strong>GoLedger CC-Tools</strong> assets registration must be defined in the <strong>chaincode/assetTypeList.go</strong> file**</p>
 <pre><code class="language-golang">var assetTypeList = []assets.AssetType{
