@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://goledger-cc-tools.readthedocs.io/external-tools/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://goledger-cc-tools.readthedocs.io/functions/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>External Tools - GoLedger CC-Tools</title>
+    <title>Functions - GoLedger CC-Tools</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "External Tools";
-        var mkdocs_page_input_path = "external-tools.md";
-        var mkdocs_page_url = "/external-tools/";
+        var mkdocs_page_name = "Functions";
+        var mkdocs_page_input_path = "functions.md";
+        var mkdocs_page_url = "/functions/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -68,26 +68,24 @@
                 <li class="toctree-l1"><a class="reference internal" href="../transactions/">Transactions</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">External Tools</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#cc-tools-demo">cc-tools-demo</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#cc-web-client">cc-web-client</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#gofabric">GoFabric</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#community">Community</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../external-tools/">External Tools</a>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../functions/">Functions</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Functions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#package-description">Package description</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#asset-functions">Asset functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#types">Types</a>
+    </li>
+    </ul>
                 </li>
               </ul>
       </div>
@@ -104,7 +102,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>External Tools</li>
+      <li>Functions</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -113,46 +111,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="external-tools">External Tools</h1>
-<p><strong>GoLedger CC-Tools</strong> library has a range of external tools that help immensely in the journey of developing a permissioned Blockchain based on <strong>Hyperledger Fabric</strong></p>
-<ul>
-<li><code>cc-tools-demo</code> - public repository with example assets and transactions using <strong>GoLedger CC-Tools</strong> library</li>
-<li><code>cc-webclient</code> - docker image with web application to interconnect with Rest Api.</li>
-<li><code>GoFabric</code> - network orchestration platform for production environments. <a href="https://gofabric.io">https://gofabric.io</a></li>
-</ul>
-<h2 id="cc-tools-demo">cc-tools-demo</h2>
-<p>Open repository with examples and transactions.</p>
-<p>The repository can be accessed as follows:</p>
-<pre><code class="language-sh">git clone https://github.com/goledgerdev/cc-tools-demo.git
-</code></pre>
-<h2 id="cc-web-client">cc-web-client</h2>
-<p>Docker image providing web application for testing.</p>
-<p>The container can be instantiated as follows:</p>
-<pre><code class="language-sh">docker run -p 0.0.0.0:8080:80/tcp --name cc-webclient goledger/cc-webclient:latest
-</code></pre>
-<h2 id="gofabric">GoFabric</h2>
-<p><strong>GoFabric</strong> is a <strong>Hyperledger Fabric</strong> Blockchain orchestration platform fully compatible with <strong>GoLedger CC-Tools</strong> library</p>
-<p>The platform can be accessed at the following link: <a href="https://gofabric.io">https://gofabric.io</a> and has the following features:</p>
-<ul>
-<li>Deployment of cloud environment networks (<strong>AWS, IBM, Azure, etc</strong>) or <strong>on-premise</strong></li>
-<li>Instantiate chaincodes (<strong>compatibility with CC-Tools</strong>)</li>
-<li>Update chaincodes</li>
-<li>Add or remove <strong>peers</strong></li>
-<li>Add <strong>orderers</strong></li>
-<li>Add <strong>orgs</strong></li>
-<li>Instantiate or update <strong>Rest Servers</strong></li>
-<li>Automatic code generation <strong>GoLedger Templates</strong></li>
-</ul>
-<p><img alt="Config" src="../img/gofabric.png" /></p>
-<h2 id="community">Community</h2>
-<p>Join our community at <strong>Discord</strong></p>
-<p><a href="https://discord.gg/TUdcbP72Ma">Discord Invite Link</a></p>
+                <h1 id="functions">Functions</h1>
+<h2 id="package-description">Package description</h2>
+<p>A complete description of <strong>GoLedger CC-Tools</strong> can be accessed at the following link:</p>
+<p><a href="https://pkg.go.dev/github.com/goledgerdev/cc-tools@v0.7.1">CCTools Pkg Description</a></p>
+<h2 id="asset-functions">Asset functions</h2>
+<p>Asset function list of <strong>GoLedger CC-Tools</strong>:</p>
+<p><a href="https://pkg.go.dev/github.com/goledgerdev/cc-tools@v0.7.1/assets">CC-Tools Function List</a></p>
+<h2 id="types">Types</h2>
+<p>Types of <strong>GoLedger CC-Tools</strong>:</p>
+<p><a href="https://pkg.go.dev/github.com/goledgerdev/cc-tools@v0.7.1/assets#pkg-types">CC-Tools Types</a></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../transactions/" class="btn btn-neutral float-left" title="Transactions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../testing/" class="btn btn-neutral float-right" title="Testing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../testing/" class="btn btn-neutral float-left" title="Testing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -175,10 +148,8 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../transactions/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../testing/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../testing/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

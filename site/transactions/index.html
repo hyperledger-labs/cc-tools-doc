@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://goledger-cc-tools.readthedocs.io/transactions/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Transactions - GoLedger CC-Tools</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Transactions";
+        var mkdocs_page_input_path = "transactions.md";
+        var mkdocs_page_url = "/transactions/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> GoLedger CC-Tools
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../tutorials/">Tutorials</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../assets/">Assets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../datatypes/">Datatypes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../events/">Events</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Transactions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#transaction-definition">Transaction definition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transaction-argument-definition">Transaction argument definition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#stubwrapper">StubWrapper</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transaction-examples">Transaction examples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transaction-list-definition">Transaction list definition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#meta-inf">META-INF</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../external-tools/">External Tools</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../functions/">Functions</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">GoLedger CC-Tools</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Transactions</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="transactions">Transactions</h1>
+<p><strong>GoLedger CC-Tools</strong> transactions represent the <strong>GoLang</strong> methods that can modify the assets within the Blockchain ledger (<strong>Hyperledger Fabric Channel</strong>)</p>
+<p><strong>Hyperledger Fabric</strong> assets can only be created or modified by executing <strong>chaincode</strong> transactions inside endorsing peers.</p>
+<p><strong>Goledger CC-Tools</strong> library has a range of pre-defined transactions:</p>
+<ul>
+<li><code>CreateAsset</code> - creation of a new asset</li>
+<li><code>UpdateAsset</code> - update an existing asset</li>
+<li><code>DeleteAsset</code> - removing an asset from the current ledger state</li>
+<li><code>ReadAsset</code> - read the asset in its last ledger status</li>
+<li><code>ReadAssetHistory</code> - history of an asset's ledger status</li>
+<li><code>Search</code> - asset listing</li>
+</ul>
+<p><strong>GoLedger CC-Tools</strong> library enables the creation of custom transactions.</p>
+<p><code>cc-tools-demo</code> repository provides 3 example transactions:</p>
+<ul>
+<li><code>CreateNewLibrary</code> - create a new asset of type <strong>Library</strong></li>
+<li><code>GetBooksByAuthor</code> - returns assets <strong>Book</strong> given an Author name</li>
+<li><code>GetNumberOfBooksFromLibrary</code> - returns the number of assets <strong>Book</strong> inside asset <strong>Library</strong></li>
+<li><code>UpdateBookTenant</code> - update field <strong>currentTenant</strong> inside asset <strong>Book</strong></li>
+</ul>
+<p>The definition of assets is done in the <strong>chaincode/txdefs</strong> folder for <strong>GoLedger CC-Tools</strong> library.</p>
+<p>The of files from the <strong>txdefs</strong> folder is shown below:</p>
+<pre><code>chaincode/
+    txdefs/                             # transations folder
+        createNewLibrary.go             # library creation
+        getBooksByAuthor.go             # returns books by an author
+        getNumberOfBooksFromLibrary.go  # returns the number of books at the library asset
+        updateBookTenant.go             # changes de tenant of book
+txList.go                               # list of custom transactions
+</code></pre>
+<h2 id="transaction-definition">Transaction definition</h2>
+<p>A custom transaction construction is done by creating a file inside the <strong>chaincode/txdefs</strong> folder</p>
+<p>An asset has the following fields:</p>
+<ul>
+<li><code>Tag</code>: string field to define the transaction name internally referenced by the code and by the Rest Api endpoints. It cannot have spaces or special characters. If it has the same name as a predefined transaction (<strong>createAsset</strong>, <strong>updateAsset</strong>, <strong>deleteAsset</strong>, <strong>readAsset</strong>, <strong>readAssetHistory</strong> or <strong>search</strong>), this transaction will be replaced by the one in the <strong>txdefs</strong> directory.</li>
+<li><code>Label</code>: string field to define the label to be used by external applications. Free text.</li>
+<li><code>Description</code>: asset description string field to be used by external applications. Free text.</li>
+<li><code>Method</code>: Rest API method type. It can be <strong>POST</strong>, <strong>GET</strong>, <strong>PUT</strong> or <strong>DELETE</strong>.</li>
+<li><code>Callers</code>: used to define which organizations can call this transaction.</li>
+<li><code>Args</code>: arguments. It has its own fields.</li>
+<li><code>Routine</code>: transaction source code.</li>
+<li><code>ReadOnly</code>: boolean field to indicate that the tx does not alter the world state.</li>
+<li><code>MetaTx</code>: boolean field to indicate that the tx does not encode a business-specific rule, but an internal process of the chaincode e.g. listing available asset types.</li>
+</ul>
+<h2 id="transaction-argument-definition">Transaction argument definition</h2>
+<p>A transaction has a set of customizable input arguments.</p>
+<p>An argument has the following fields:</p>
+<ul>
+<li><code>Tag</code>: string field to define the argument name internally referenced by the code and by the Rest Api endpoints. It cannot have spaces or special characters.</li>
+<li><code>Label</code>: string field to define the label to be used by external applications. Free text.</li>
+<li><code>Description</code>: asset description string field to be used by external applications. Free text.</li>
+<li><code>Required</code>: identifies if the argument is required. Boolean field.</li>
+<li><code>DataType</code>: property type. CC-Tools has the following default types: <strong>string, number, datetime, boolean and @object</strong>.</li>
+<li><code>Private</code>: boolean field to indicate that argument will be used for private data.</li>
+</ul>
+<h2 id="stubwrapper">StubWrapper</h2>
+<p>The main purpose of the StubWrapper is to provide additional functionalities and simplify the development of chaincodes. The StubWrapper maintains a <strong>WriteSet</strong> to ensure that modifications made during the execution of a chaincode are properly reflected when querying the ledger state. Even if these changes have not been confirmed on the ledger yet, the StubWrapper records the pending modifications in the WriteSet. This allows subsequent queries to utilize the WriteSet to return the updated data, ensuring consistency and accuracy of information during the execution of the chaincode. The same applies to private data.</p>
+<h2 id="transaction-examples">Transaction examples</h2>
+<p><code>cc-tools-demo</code> repository has the following custom transaction configuration:</p>
+<pre><code>chaincode/
+    txdefs/                             # transations folder
+        createNewLibrary.go             # library creation
+        getBooksByAuthor.go             # returns books by an author
+        getNumberOfBooksFromLibrary.go  # returns the number of books at the library asset
+        updateBookTenant.go             # changes de tenant of book
+txList.go                               # list of custom transactions
+</code></pre>
+<p>In addition to the files for each transaction that can be used by the <strong>Goledger CC-Tools</strong> library they also must be registered inside <strong>txList.go</strong> file</p>
+<p>The definition of the <strong>CreateNewLibrary</strong> transaction is as follows:</p>
+<pre><code class="language-golang">var CreateNewLibrary = tx.Transaction{
+    Tag:         &quot;createNewLibrary&quot;,
+    Label:       &quot;Create New Library&quot;,
+    Description: &quot;Create a New Library&quot;,
+    Method:      &quot;POST&quot;,
+    Callers:     []string{&quot;$org3MSP&quot;}, // Only org3 can call this transaction
+
+    Args: []tx.Argument{
+        {
+            Tag:         &quot;name&quot;,
+            Label:       &quot;Name&quot;,
+            Description: &quot;Name of the library&quot;,
+            DataType:    &quot;string&quot;,
+            Required:    true,
+        },
+    },
+    Routine: func(stub *sw.StubWrapper, req map[string]interface{}) ([]byte, errors.ICCError) {
+        name, _ := req[&quot;name&quot;].(string)
+
+        libraryMap := make(map[string]interface{})
+        libraryMap[&quot;@assetType&quot;] = &quot;library&quot;
+        libraryMap[&quot;name&quot;] = name
+
+        libraryAsset, err := assets.NewAsset(libraryMap)
+        if err != nil {
+            return nil, errors.WrapError(err, &quot;Failed to create a new asset&quot;)
+        }
+
+        // Save the new library on channel
+        _, err = libraryAsset.PutNew(stub)
+        if err != nil {
+            return nil, errors.WrapError(err, &quot;Error saving asset on blockchain&quot;)
+        }
+
+        // Marshal asset back to JSON format
+        libraryJSON, nerr := json.Marshal(libraryAsset)
+        if nerr != nil {
+            return nil, errors.WrapError(nil, &quot;failed to encode asset to JSON format&quot;)
+        }
+
+        // Marshall message to be logged
+        logMsg, ok := json.Marshal(fmt.Sprintf(&quot;New library name: %s&quot;, name))
+        if ok != nil {
+            return nil, errors.WrapError(nil, &quot;failed to encode asset to JSON format&quot;)
+        }
+
+        // Call event to log the message
+        events.CallEvent(stub, &quot;createLibraryLog&quot;, logMsg)
+
+        return libraryJSON, nil
+    },
+}
+</code></pre>
+<p>According to the description above, <strong>CreateNewLibrary</strong> transaction has the following characteristics:</p>
+<ul>
+<li>Only <strong>org3</strong> can call this method</li>
+<li><strong>POST</strong> method for Rest Api</li>
+<li>Argument <strong>name</strong> of type <strong>string</strong> is required.</li>
+<li>The transaction uses the <strong>NewAsset</strong> function to prepare a new asset (keys, etc) and the <strong>PutNew</strong> function to create the asset in the <strong>channel</strong>.</li>
+<li>A log event for the type <code>createLibraryLog</code> is called with the created library name </li>
+</ul>
+<p>The definition of the <strong>GetBooksByAuthor</strong> transaction is as follows:</p>
+<pre><code class="language-golang">var GetBooksByAuthor = tx.Transaction{
+    Tag:         &quot;getBooksByAuthor&quot;,
+    Label:       &quot;Get Books by the Author Name&quot;,
+    Description: &quot;Return all the books from an author&quot;,
+    Method:      &quot;GET&quot;,
+    Callers:     []string{&quot;$org1MSP&quot;, &quot;$org2MSP&quot;, &quot;$orgMSP&quot;}, // Only org1 and org2 can call this transaction
+
+    Args: []tx.Argument{
+        {
+            Tag:         &quot;authorName&quot;,
+            Label:       &quot;Author Name&quot;,
+            Description: &quot;Author Name&quot;,
+            DataType:    &quot;string&quot;,
+            Required:    true,
+        },
+        {
+            Tag:         &quot;limit&quot;,
+            Label:       &quot;Limit&quot;,
+            Description: &quot;Limit&quot;,
+            DataType:    &quot;number&quot;,
+        },
+    },
+    Routine: func(stub *sw.StubWrapper, req map[string]interface{}) ([]byte, errors.ICCError) {
+        authorName, _ := req[&quot;authorName&quot;].(string)
+        limit, hasLimit := req[&quot;limit&quot;].(float64)
+
+        if hasLimit &amp;&amp; limit &lt;= 0 {
+            return nil, errors.NewCCError(&quot;limit must be greater than 0&quot;, 400)
+        }
+
+        // Prepare couchdb query
+        query := map[string]interface{}{
+            &quot;selector&quot;: map[string]interface{}{
+                &quot;@assetType&quot;: &quot;book&quot;,
+                &quot;author&quot;:     authorName,
+            },
+        }
+
+        if hasLimit {
+            query[&quot;limit&quot;] = limit
+        }
+
+        var err error
+        response, err := assets.Search(stub, query, &quot;&quot;, true)
+        if err != nil {
+            return nil, errors.WrapErrorWithStatus(err, &quot;error searching for book's author&quot;, 500)
+        }
+
+        responseJSON, err := json.Marshal(response)
+        if err != nil {
+            return nil, errors.WrapErrorWithStatus(err, &quot;error marshaling response&quot;, 500)
+        }
+
+        return responseJSON, nil
+    },
+}
+</code></pre>
+<ul>
+<li>Only <strong>org1</strong> and <strong>org2</strong> can call this method.</li>
+<li><strong>GET</strong> method for Rest Api.</li>
+<li>Argument <strong>authorName</strong> of type <strong>string</strong> is required.</li>
+<li>Argument <strong>limit</strong> of type <strong>number</strong> is optional.</li>
+<li>The transaction uses the <strong>Search</strong> function to query <strong>Book</strong> assets from the ledger, filtering by <strong>author</strong>.</li>
+</ul>
+<p>The definition of the <strong>UpdateBookTenant</strong> transaction is as follows:</p>
+<pre><code class="language-golang">var UpdateBookTenant = tx.Transaction{
+    Tag:         &quot;updateBookTenant&quot;,
+    Label:       &quot;Update Book Tenant&quot;,
+    Description: &quot;Change the tenant of a book&quot;,
+    Method:      &quot;PUT&quot;,
+    Callers:     []string{`$org\dMSP`}, // Any orgs can call this transaction
+
+    Args: []tx.Argument{
+        {
+            Tag:         &quot;book&quot;,
+            Label:       &quot;Book&quot;,
+            Description: &quot;Book&quot;,
+            DataType:    &quot;-&gt;book&quot;,
+            Required:    true,
+        },
+        {
+            Tag:         &quot;tenant&quot;,
+            Label:       &quot;tenant&quot;,
+            Description: &quot;New tenant of the book&quot;,
+            DataType:    &quot;-&gt;person&quot;,
+        },
+    },
+    Routine: func(stub *sw.StubWrapper, req map[string]interface{}) ([]byte, errors.ICCError) {
+        bookKey, ok := req[&quot;book&quot;].(assets.Key)
+        if !ok {
+            return nil, errors.WrapError(nil, &quot;Parameter book must be an asset&quot;)
+        }
+        tenantKey, ok := req[&quot;tenant&quot;].(assets.Key)
+        if !ok {
+            return nil, errors.WrapError(nil, &quot;Parameter tenant must be an asset&quot;)
+        }
+
+        // Returns Book from channel
+        bookAsset, err := bookKey.Get(stub)
+        if err != nil {
+            return nil, errors.WrapError(err, &quot;failed to get asset from the ledger&quot;)
+        }
+        bookMap := (map[string]interface{})(*bookAsset)
+
+        // Returns person from channel
+        tenantAsset, err := tenantKey.Get(stub)
+        if err != nil {
+            return nil, errors.WrapError(err, &quot;failed to get asset from the ledger&quot;)
+        }
+        tenantMap := (map[string]interface{})(*tenantAsset)
+
+        updatedTenantKey := make(map[string]interface{})
+        updatedTenantKey[&quot;@assetType&quot;] = &quot;person&quot;
+        updatedTenantKey[&quot;@key&quot;] = tenantMap[&quot;@key&quot;]
+
+        // Update data
+        bookMap[&quot;currentTenant&quot;] = updatedTenantKey
+
+        bookMap, err = bookAsset.Update(stub, bookMap)
+        if err != nil {
+            return nil, errors.WrapError(err, &quot;failed to update asset&quot;)
+        }
+
+        // Marshal asset back to JSON format
+        bookJSON, nerr := json.Marshal(bookMap)
+        if nerr != nil {
+            return nil, errors.WrapError(err, &quot;failed to marshal response&quot;)
+        }
+
+        return bookJSON, nil
+    },
+}
+</code></pre>
+<ul>
+<li>Any organization that starts with <strong>"org"</strong> followed by a number (org1, org2, org3, org4, etc) can call this method.</li>
+<li><strong>PUT</strong> method for Rest Api</li>
+<li>Argument <strong>book</strong> of type <strong>Book</strong> is mandatory.</li>
+<li>Argument <strong>person</strong> of type <strong>Person</strong> required.</li>
+<li>The transaction uses the <strong>Get</strong> function to read the the assets <strong>Book</strong> and <strong>Person</strong> information from the ledger</li>
+<li>The transaction uses the <strong>Update</strong> function to updates the asset information <strong>Book</strong> inside the ledger</li>
+</ul>
+<p>The definition of the <strong>GetNumberOfBooksFromLibrary</strong> transaction is as follows:</p>
+<pre><code class="language-golang">var GetNumberOfBooksFromLibrary = tx.Transaction{
+    Tag:         &quot;getNumberOfBooksFromLibrary&quot;,
+    Label:       &quot;Get Number Of Books From Library&quot;,
+    Description: &quot;Return the number of books of a library&quot;,
+    Method:      &quot;GET&quot;,
+    Callers:     []string{&quot;$org2MSP&quot;, &quot;$orgMSP&quot;}, // Only org2 can call this transactions
+
+    Args: []tx.Argument{
+        {
+            Tag:         &quot;library&quot;,
+            Label:       &quot;Library&quot;,
+            Description: &quot;Library&quot;,
+            DataType:    &quot;-&gt;library&quot;,
+            Required:    true,
+        },
+    },
+    Routine: func(stub *sw.StubWrapper, req map[string]interface{}) ([]byte, errors.ICCError) {
+        libraryKey, _ := req[&quot;library&quot;].(assets.Key)
+
+        // Returns Library from channel
+        libraryMap, err := libraryKey.GetMap(stub)
+        if err != nil {
+            return nil, errors.WrapError(err, &quot;failed to get asset from the ledger&quot;)
+        }
+
+        numberOfBooks := 0
+        books, ok := libraryMap[&quot;books&quot;].([]interface{})
+        if ok {
+            numberOfBooks = len(books)
+        }
+
+        returnMap := make(map[string]interface{})
+        returnMap[&quot;numberOfBooks&quot;] = numberOfBooks
+
+        // Marshal asset back to JSON format
+        returnJSON, nerr := json.Marshal(returnMap)
+        if nerr != nil {
+            return nil, errors.WrapError(err, &quot;failed to marshal response&quot;)
+        }
+
+        return returnJSON, nil
+    },
+}
+</code></pre>
+<ul>
+<li>Only <strong>org2</strong> can call this method.</li>
+<li><strong>GET</strong> method for Rest Api</li>
+<li>Argument <strong>library</strong> of type <strong>Library</strong> is required.</li>
+<li>The transaction uses the <strong>Get</strong> function to read <strong>Library</strong> asset information from the ledger</li>
+</ul>
+<h2 id="transaction-list-definition">Transaction list definition</h2>
+<p>The registration of the transactions that will be used by <strong>GoLedger CC-Tools</strong> library must be also done inside <strong>chaincode/txList.go</strong> file</p>
+<pre><code class="language-golang">var txList = []tx.Transaction{
+    tx.CreateAsset,
+    tx.UpdateAsset,
+    tx.DeleteAsset,
+
+    txdefs.CreateNewLibrary,
+    txdefs.GetNumberOfBooksFromLibrary,
+    txdefs.UpdateBookTenant,
+    txdefs.GetBooksByAuthor,
+}
+</code></pre>
+<h2 id="meta-inf">META-INF</h2>
+<p>Indexes allow a database to be queried without having to examine every row with every query, making them run faster and more efficiently. It's mandatory to create indexes for fields that will be used for sorted queries.</p>
+<p>The JSON index files must be located under the path <strong>META-INF/statedb/couchdb/indexes</strong> which is located inside the directory where the chaincode resides. For example:</p>
+<pre><code class="language-json">{
+    &quot;index&quot;:{
+        &quot;fields&quot;:[
+            {&quot;published&quot;: &quot;asc&quot;}
+        ]
+    },
+    &quot;ddoc&quot;:&quot;indexListarBooksAscDoc&quot;,
+    &quot;name&quot;:&quot;indexListarBooksAsc&quot;,
+    &quot;type&quot;:&quot;json&quot;
+}
+</code></pre>
+<p>See more on <a href="https://hyperledger-fabric.readthedocs.io/en/release-2.2/couchdb_tutorial.html#create-an-index">Create an index</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../events/" class="btn btn-neutral float-left" title="Events"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../external-tools/" class="btn btn-neutral float-right" title="External Tools">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../events/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../external-tools/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

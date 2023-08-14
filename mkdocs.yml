@@ -1,9 +1,12 @@
 site_name: GoLedger CC-Tools
+site_url: https://goledger-cc-tools.readthedocs.io/
 nav:
     - Home: index.md
     - Getting Started: getting-started.md
     - Tutorials: tutorials.md
     - Assets: assets.md
+    - Datatypes: datatypes.md
+    - Events: events.md
     - Transactions: transactions.md
     - External Tools: external-tools.md
     - Testing: testing.md
