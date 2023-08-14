@@ -2,52 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://goledger-cc-tools.readthedocs.io/</loc>
-         <lastmod>2023-08-03</lastmod>
+         <lastmod>2023-08-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://goledger-cc-tools.readthedocs.io/assets/</loc>
-         <lastmod>2023-08-03</lastmod>
+         <lastmod>2023-08-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://goledger-cc-tools.readthedocs.io/datatypes/</loc>
-         <lastmod>2023-08-03</lastmod>
+         <lastmod>2023-08-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://goledger-cc-tools.readthedocs.io/events/</loc>
-         <lastmod>2023-08-03</lastmod>
+         <lastmod>2023-08-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://goledger-cc-tools.readthedocs.io/external-tools/</loc>
-         <lastmod>2023-08-03</lastmod>
+         <lastmod>2023-08-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://goledger-cc-tools.readthedocs.io/functions/</loc>
-         <lastmod>2023-08-03</lastmod>
+         <lastmod>2023-08-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://goledger-cc-tools.readthedocs.io/getting-started/</loc>
-         <lastmod>2023-08-03</lastmod>
+         <lastmod>2023-08-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://goledger-cc-tools.readthedocs.io/testing/</loc>
-         <lastmod>2023-08-03</lastmod>
+         <lastmod>2023-08-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://goledger-cc-tools.readthedocs.io/transactions/</loc>
-         <lastmod>2023-08-03</lastmod>
+         <lastmod>2023-08-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://goledger-cc-tools.readthedocs.io/tutorials/</loc>
-         <lastmod>2023-08-03</lastmod>
+         <lastmod>2023-08-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

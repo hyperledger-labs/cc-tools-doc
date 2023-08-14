@@ -5,7 +5,7 @@ The **GoLedger CC-Tools** library is a collaborative effort from GoLedger to pro
 
 Developed using GoLang,  the **GoLedger CC-Tools** library has several features that facilitate the journey of learning, development and deployment in production of a chaincode.
 
-**GoLedger CC-Tools** is an open-source project lead by **GoLedger** and open for use to the Hyperledger development community.
+**GoLedger CC-Tools** is an open-source project led by **GoLedger** and open for use to the Hyperledger development community.
 
 Here's where you can start:
 
