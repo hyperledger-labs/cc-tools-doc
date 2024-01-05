@@ -13,7 +13,7 @@ Open repository with examples and transactions.
 The repository can be accessed as follows:
 
 ```sh
-git clone https://github.com/goledgerdev/cc-tools-demo.git
+git clone https://github.com/hyperledger-labs/cc-tools-demo.git
 ```
 
 ## cc-web-client

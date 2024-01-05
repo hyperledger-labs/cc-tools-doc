@@ -12,7 +12,7 @@ To learn how to use **GoLedger CC-Tools library**, download the demo code reposi
 
 ```sh
 cd $HOME \
-git clone https://github.com/goledgerdev/cc-tools-demo.git \
+git clone https://github.com/hyperledger-labs/cc-tools-demo.git \
 cd cc-tools-demo
 ```
 
