@@ -1042,5 +1042,5 @@ main.go:131: 200 getNumberOfBooksFromLibrary 31.298µs
 main.go:131: 200 updateBookTenant 136.09µs 
 main.go:131: 200 createNewLibrary 60.794µs 
 PASS
-ok      github.com/goledgerdev/cc-tools-demo/chaincode  0.006s
+ok      github.com/hyperledger-labs/cc-tools-demo/chaincode  0.006s
 ```
